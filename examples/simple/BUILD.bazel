@@ -1,38 +1,34 @@
 load("@build_bazel_rules_swift//swift:swift.bzl", "swift_binary")
 load("@cgrindel_rules_swiftformat//swiftformat:swiftformat.bzl", "swiftformat_format")
 
+# MARK: - Swift Targets
+
 swift_binary(
     name = "simple",
     srcs = ["main.swift"],
     visibility = ["//swift:__subpackages__"],
 )
 
-# sh_test(
-#     name = "simple_with_binary_test",
-#     srcs = ["simple_with_binary_test.sh"],
-#     data = [":simple_with_binary"],
-#     deps = ["@bazel_tools//tools/bash/runfiles"],
-# )
+sh_test(
+    name = "simple_test",
+    srcs = ["simple_test.sh"],
+    data = [":simple"],
+    deps = ["@bazel_tools//tools/bash/runfiles"],
+)
 
-# # Make sure that the binary is referenced. Otherwise, Bazel won't build it.
-# alias(
-#     name = "swiftlint",
-#     actual = "@swift_utils//SwiftLint:swiftlint",
-# )
+# MARK: - SwiftFormat Targets
 
-# sh_test(
-#     name = "swiftlint_test",
-#     srcs = ["swiftlint_test.sh"],
-#     data = [
-#         ":swiftlint",
-#     ],
-#     deps = ["@bazel_tools//tools/bash/runfiles"],
-# )
+swiftformat_format(
+    name = "format",
+    srcs = glob(["*.swift"]),
+)
+
+# MARK: - SwiftFormat for Developer Targets
 
 # # Make sure that the binary is referenced. Otherwise, Bazel won't build it.
 # alias(
 #     name = "swiftformat",
-#     actual = "@swift_utils//SwiftFormat:swiftformat",
+#     actual = "@swiftformat_repos//SwiftFormat:swiftformat",
 # )
 
 # sh_test(
@@ -43,10 +39,3 @@ swift_binary(
 #     ],
 #     deps = ["@bazel_tools//tools/bash/runfiles"],
 # )
-
-# MARK: - Format Tests
-
-swiftformat_format(
-    name = "format",
-    srcs = glob(["*.swift"]),
-)
