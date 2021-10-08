@@ -1,11 +1,13 @@
 load("@bazel_skylib//lib:paths.bzl", "paths")
 load(":providers.bzl", "SwiftFormatInfo")
 
-def _swiftformat_impl(ctx):
+def _swiftformat_format_impl(ctx):
     outputs = []
     format_map = {}
     for src in ctx.files.srcs:
-        out = ctx.actions.declare_file(paths.join(_FORMAT_DIRNAME, src.path))
+        out = ctx.actions.declare_file(
+            paths.join(ctx.attr.output_dirname, src.path),
+        )
         outputs.append(out)
         format_map[src] = out
         ctx.actions.run(
@@ -30,15 +32,19 @@ def _swiftformat_impl(ctx):
         SwiftFormatInfo(format_map = format_map),
     ]
 
-swiftformat = rule(
-    implementation = _swiftformat_impl,
+swiftformat_format = rule(
+    implementation = _swiftformat_format_impl,
     attrs = {
         "srcs": attr.label_list(
             allow_files = True,
             mandatory = True,
         ),
+        "output_dirname": attr.string(
+            default = "formatted",
+            doc = "The name of the directory that contains the formatted files.",
+        ),
         "_swiftformat": attr.label(
-            default = "@swift_utils//SwiftFormat:swiftformat",
+            default = "@swiftformat_repos//SwiftFormat:swiftformat",
             executable = True,
             cfg = "host",
             allow_files = True,

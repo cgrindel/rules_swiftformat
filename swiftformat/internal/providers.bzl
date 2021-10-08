@@ -1,4 +1,4 @@
-SwiftFormatInfo(
+SwiftFormatInfo = provider(
     doc = "Information about the files that were formatted.",
     fields = {
         "format_map": """\
