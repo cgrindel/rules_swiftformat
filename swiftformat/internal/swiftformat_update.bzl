@@ -20,7 +20,7 @@ def _swiftformat_update(ctx):
 runfiles_dir=$(pwd)
 cd $BUILD_WORKSPACE_DIRECTORY
 """ + "\n".join([
-            "cp -fv $(realpath \"${{runfiles_dir}}/{fmt}\") {src}".format(
+            "cp -f $(realpath \"${{runfiles_dir}}/{fmt}\") {src}".format(
                 src = src.short_path,
                 fmt = format_map[src].short_path,
             )

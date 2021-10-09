@@ -3,7 +3,7 @@ load(":swiftformat_format.bzl", "swiftformat_format")
 load(":swiftformat_update.bzl", "swiftformat_update")
 load("@bazel_skylib//rules:diff_test.bzl", "diff_test")
 
-def swiftformat(name, srcs = None):
+def swiftformat(name, srcs = None, config = None):
     if srcs == None:
         srcs = native.glob(["*.swift"])
 
@@ -16,6 +16,7 @@ def swiftformat(name, srcs = None):
         swiftformat_format(
             name = format_name,
             srcs = [src],
+            config = config,
         )
         diff_test(
             name = name + "_test_" + src_name,
