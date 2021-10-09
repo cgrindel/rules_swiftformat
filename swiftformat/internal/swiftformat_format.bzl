@@ -5,9 +5,7 @@ def _swiftformat_format_impl(ctx):
     outputs = []
     format_map = {}
     for src in ctx.files.srcs:
-        out = ctx.actions.declare_file(
-            paths.join(ctx.attr.output_dirname, src.path),
-        )
+        out = ctx.actions.declare_file(src.basename + ctx.attr.output_suffix)
         outputs.append(out)
         format_map[src] = out
         ctx.actions.run(
@@ -39,10 +37,14 @@ swiftformat_format = rule(
             allow_files = True,
             mandatory = True,
         ),
-        "output_dirname": attr.string(
-            default = "formatted",
-            doc = "The name of the directory that contains the formatted files.",
+        "output_suffix": attr.string(
+            default = "_formatted",
+            doc = "The suffix to add to the output filename.",
         ),
+        # "output_dirname": attr.string(
+        #     default = "formatted",
+        #     doc = "The name of the directory that contains the formatted files.",
+        # ),
         "_swiftformat": attr.label(
             default = "@swiftformat_repos//SwiftFormat:swiftformat",
             executable = True,
