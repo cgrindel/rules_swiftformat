@@ -8,7 +8,7 @@ def swiftformat(name, srcs = None, output_dirname = ""):
 
     for src in srcs:
         src_name = src.replace("/", "_")
-        format_name = name + "_format_" + src_name
+        format_name = name + "_fmt_" + src_name
         swiftformat_format(
             name = format_name,
             srcs = [src],

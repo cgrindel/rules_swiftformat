@@ -41,10 +41,6 @@ swiftformat_format = rule(
             default = "_formatted",
             doc = "The suffix to add to the output filename.",
         ),
-        # "output_dirname": attr.string(
-        #     default = "formatted",
-        #     doc = "The name of the directory that contains the formatted files.",
-        # ),
         "_swiftformat": attr.label(
             default = "@swiftformat_repos//SwiftFormat:swiftformat",
             executable = True,
