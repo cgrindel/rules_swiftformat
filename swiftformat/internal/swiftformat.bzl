@@ -1,4 +1,3 @@
-load(":providers.bzl", "providers")
 load(":swiftformat_format.bzl", "swiftformat_format")
 load(":swiftformat_update.bzl", "swiftformat_update")
 load("@bazel_skylib//rules:diff_test.bzl", "diff_test")
