@@ -12,21 +12,14 @@ def _swiftformat_update(ctx):
         files = [format_map[src] for src in format_map],
     )
 
-    update = ctx.actions.declare_file("update.sh")
+    update = ctx.actions.declare_file("update_with_formatted.sh")
     ctx.actions.write(
         output = update,
         content = """
 #!/usr/bin/env bash
 runfiles_dir=$(pwd)
-echo >&2 "*** CHUCK:  runfiles_dir: ${runfiles_dir}" 
-ls -l
-tree
 cd $BUILD_WORKSPACE_DIRECTORY
-ls -l "${runfiles_dir}"
-ls -l "${runfiles_dir}/main.swift_formatted"
-set -x
 """ + "\n".join([
-            # "cp -fv \"${{runfiles_dir}}/{fmt}\" {src}".format(
             "cp -fv $(realpath \"${{runfiles_dir}}/{fmt}\") {src}".format(
                 src = src.short_path,
                 fmt = format_map[src].short_path,
