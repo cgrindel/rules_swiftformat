@@ -7,3 +7,13 @@ formatted `File`.\
 """,
     },
 )
+
+def _format_map(src, out):
+    return struct(
+        src = src,
+        out = out,
+    )
+
+providers = struct(
+    format_map = _format_map,
+)

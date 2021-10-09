@@ -9,6 +9,9 @@ swift_binary(
     name = "simple",
     srcs = ["main.swift"],
     visibility = ["//swift:__subpackages__"],
+    deps = [
+        "//Foo",
+    ],
 )
 
 sh_test(
@@ -22,7 +25,6 @@ sh_test(
 
 swiftformat(
     name = "format",
-    # srcs = glob(["*.swift"]),
 )
 
 # MARK: - SwiftFormat for Developer Targets
