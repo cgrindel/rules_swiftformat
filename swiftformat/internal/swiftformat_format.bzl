@@ -18,7 +18,7 @@ def _swiftformat_format_impl(ctx):
                 "--cache",
                 "ignore",
                 "--swiftversion",
-                "5.4",
+                ctx.attr.swift_version,
                 "--output",
                 out.path,
                 src.path,
@@ -36,6 +36,10 @@ swiftformat_format = rule(
         "srcs": attr.label_list(
             allow_files = True,
             mandatory = True,
+        ),
+        "swift_version": attr.string(
+            default = "5.4",
+            doc = "The Swift version to be used by swiftformat",
         ),
         "output_suffix": attr.string(
             default = "_formatted",
