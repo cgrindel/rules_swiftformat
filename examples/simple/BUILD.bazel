@@ -1,7 +1,7 @@
 load("@build_bazel_rules_swift//swift:swift.bzl", "swift_binary")
-
-# load("@cgrindel_rules_swiftformat//swiftformat:swiftformat.bzl", "swiftformat_format")
 load("@cgrindel_rules_swiftformat//swiftformat:swiftformat.bzl", "swiftformat")
+
+exports_files([".swiftformat"])
 
 # MARK: - Swift Targets
 
@@ -25,7 +25,7 @@ sh_test(
 
 swiftformat(
     name = "format",
-    config = ".swiftformat",
+    config = "//:.swiftformat",
 )
 
 # MARK: - SwiftFormat for Developer Targets
