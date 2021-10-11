@@ -51,5 +51,7 @@ jobs:
         bazelisk //:update_all
         # This should succeed now that the formatted files have been updated
         bazelisk test //...
+        # Revert the code change
+        cp main.swift.orig main.swift
 
 
