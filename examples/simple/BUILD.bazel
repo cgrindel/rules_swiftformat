@@ -1,5 +1,9 @@
 load("@build_bazel_rules_swift//swift:swift.bzl", "swift_binary")
-load("@cgrindel_rules_swiftformat//swiftformat:swiftformat.bzl", "swiftformat")
+load(
+    "@cgrindel_rules_swiftformat//swiftformat:swiftformat.bzl",
+    "swiftformat",
+    "swiftformat_update_all",
+)
 
 exports_files([".swiftformat"])
 
@@ -28,12 +32,16 @@ swiftformat(
     config = "//:.swiftformat",
 )
 
-sh_binary(
+swiftformat_update_all(
     name = "update_all",
-    srcs = [
-        "update_all.sh",
-    ],
 )
+
+# sh_binary(
+#     name = "update_all",
+#     srcs = [
+#         "update_all.sh",
+#     ],
+# )
 
 # MARK: - SwiftFormat for Developer Targets
 
