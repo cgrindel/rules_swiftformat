@@ -48,7 +48,7 @@ jobs:
         # The spaces at the front of the statement should be removed by the formatter.
         echo "     let bar = 2" >> main.swift
         # Format the Swift files and copy them back to the workspace
-        bazelisk //:update_all
+        bazelisk run //:update_all
         # This should succeed now that the formatted files have been updated
         bazelisk test //...
         # Revert the code change
