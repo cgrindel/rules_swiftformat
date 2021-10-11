@@ -49,11 +49,10 @@ alias(
     actual = "@swiftformat_repos//SwiftFormat:swiftformat",
 )
 
-# sh_test(
-#     name = "swiftformat_test",
-#     srcs = ["swiftformat_test.sh"],
-#     data = [
-#         ":swiftformat",
-#     ],
-#     deps = ["@bazel_tools//tools/bash/runfiles"],
-# )
+# This test is just making sure that the swiftformat alias executes properly.
+sh_test(
+    name = "swiftformat_test",
+    srcs = ["swiftformat_test.sh"],
+    data = [":swiftformat"],
+    deps = ["@bazel_tools//tools/bash/runfiles"],
+)
