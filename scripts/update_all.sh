@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# This script will query for all of the swiftformat_update targets and execute
+# it each one.
+
 set -uo pipefail
 
 cd "${BUILD_WORKSPACE_DIRECTORY}"
