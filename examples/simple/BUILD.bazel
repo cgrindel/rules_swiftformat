@@ -5,8 +5,6 @@ load(
     "swiftformat_update_all",
 )
 
-exports_files([".swiftformat"])
-
 # MARK: - Swift Targets
 
 swift_binary(
@@ -27,22 +25,29 @@ sh_test(
 
 # MARK: - SwiftFormat Targets
 
+exports_files([".swiftformat"])
+
+# Defines targets for this package which will format the Swift source files,
+# test that the formatted files are in the workspace directory and copies
+# the formatted files to the workspace directory.
 swiftformat(
     name = "format",
     config = "//:.swiftformat",
 )
 
+# Defines a target that will copy all of the formatted Swift source files to
+# the workspace directory.
 swiftformat_update_all(
     name = "update_all",
 )
 
 # MARK: - SwiftFormat for Developer Targets
 
-# # Make sure that the binary is referenced. Otherwise, Bazel won't build it.
-# alias(
-#     name = "swiftformat",
-#     actual = "@swiftformat_repos//SwiftFormat:swiftformat",
-# )
+# Defines a convenient alias to execute the swiftformat executable.
+alias(
+    name = "swiftformat",
+    actual = "@swiftformat_repos//SwiftFormat:swiftformat",
+)
 
 # sh_test(
 #     name = "swiftformat_test",
