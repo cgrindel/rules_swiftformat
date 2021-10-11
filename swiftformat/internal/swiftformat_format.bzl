@@ -1,6 +1,9 @@
 load("@bazel_skylib//lib:paths.bzl", "paths")
 load(":providers.bzl", "SwiftFormatInfo")
 
+"""A build rule that formats Swift source files.
+"""
+
 def _swiftformat_format_impl(ctx):
     outputs = []
     format_map = {}

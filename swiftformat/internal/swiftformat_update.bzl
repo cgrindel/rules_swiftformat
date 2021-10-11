@@ -1,6 +1,10 @@
 load(":providers.bzl", "SwiftFormatInfo")
 load("@bazel_skylib//lib:dicts.bzl", "dicts")
 
+"""A binary rule that copies the formatted Swift sources to the workspace 
+directory.
+"""
+
 def _swiftformat_update(ctx):
     formats = [
         fmt[SwiftFormatInfo].format_map
@@ -40,4 +44,5 @@ swiftformat_update = rule(
         ),
     },
     executable = True,
+    doc = "Copies the formatted Swift sources to the workspace directory.",
 )

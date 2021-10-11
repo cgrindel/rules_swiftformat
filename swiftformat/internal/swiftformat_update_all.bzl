@@ -1,3 +1,7 @@
+"""A macro that defines a runnable target that will copy all of the formatted 
+Swift source files to the workspace directory.
+"""
+
 def swiftformat_update_all(name):
     """Defines a runnable target that will copy the formatted Swift files to 
     the source tree.
