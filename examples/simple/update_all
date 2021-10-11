@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -uo pipefail
+
+bazel_query="kind(swiftformat_update, //...)"
+update_targets=( $(bazel query "${bazel_query}" | sort) )
+
+for target in "${update_targets[@]}" ; do
+  bazel run "${target}"
+done
