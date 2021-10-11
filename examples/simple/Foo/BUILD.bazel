@@ -1,5 +1,5 @@
 load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
-load("@cgrindel_rules_swiftformat//swiftformat:swiftformat.bzl", "swiftformat")
+load("@cgrindel_rules_swiftformat//swiftformat:swiftformat.bzl", "swiftformat_pkg")
 
 swift_library(
     name = "Foo",
@@ -8,7 +8,7 @@ swift_library(
     visibility = ["//:__subpackages__"],
 )
 
-swiftformat(
+swiftformat_pkg(
     name = "format",
     config = "//:.swiftformat",
 )

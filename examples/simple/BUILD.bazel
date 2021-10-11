@@ -1,7 +1,7 @@
 load("@build_bazel_rules_swift//swift:swift.bzl", "swift_binary")
 load(
     "@cgrindel_rules_swiftformat//swiftformat:swiftformat.bzl",
-    "swiftformat",
+    "swiftformat_pkg",
     "swiftformat_update_all",
 )
 
@@ -32,7 +32,7 @@ exports_files([".swiftformat"])
 # Defines targets for this package which will format the Swift source files,
 # test that the formatted files are in the workspace directory and copies
 # the formatted files to the workspace directory.
-swiftformat(
+swiftformat_pkg(
     name = "format",
     config = "//:.swiftformat",
 )
@@ -41,20 +41,4 @@ swiftformat(
 # the workspace directory.
 swiftformat_update_all(
     name = "update_all",
-)
-
-# MARK: - SwiftFormat for Developer Targets
-
-# Defines a convenient alias to execute the swiftformat executable.
-alias(
-    name = "swiftformat",
-    actual = "@swiftformat_repos//SwiftFormat:swiftformat",
-)
-
-# This test is just making sure that the swiftformat alias executes properly.
-sh_test(
-    name = "swiftformat_test",
-    srcs = ["swiftformat_test.sh"],
-    data = [":swiftformat"],
-    deps = ["@bazel_tools//tools/bash/runfiles"],
 )
