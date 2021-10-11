@@ -6,7 +6,7 @@ load("@bazel_skylib//rules:diff_test.bzl", "diff_test")
 they are formatted and copies them to the workspace directory.
 """
 
-def swiftformat(name, srcs = None, config = None):
+def swiftformat_pkg(name, srcs = None, config = None):
     """Defines targets that will format, test and update the specified Swift 
     sources.
 

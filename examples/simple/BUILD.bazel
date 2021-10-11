@@ -1,7 +1,7 @@
 load("@build_bazel_rules_swift//swift:swift.bzl", "swift_binary")
 load(
     "@cgrindel_rules_swiftformat//swiftformat:swiftformat.bzl",
-    "swiftformat",
+    "swiftformat_pkg",
     "swiftformat_update_all",
 )
 
@@ -32,7 +32,7 @@ exports_files([".swiftformat"])
 # Defines targets for this package which will format the Swift source files,
 # test that the formatted files are in the workspace directory and copies
 # the formatted files to the workspace directory.
-swiftformat(
+swiftformat_pkg(
     name = "format",
     config = "//:.swiftformat",
 )
