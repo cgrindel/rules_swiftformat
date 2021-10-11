@@ -2,6 +2,8 @@
 
 set -uo pipefail
 
+cd "${BUILD_WORKSPACE_DIRECTORY}"
+
 bazel_query="kind(swiftformat_update, //...)"
 update_targets=( $(bazel query "${bazel_query}" | sort) )
 

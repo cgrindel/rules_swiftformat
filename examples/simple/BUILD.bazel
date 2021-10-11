@@ -28,6 +28,13 @@ swiftformat(
     config = "//:.swiftformat",
 )
 
+sh_binary(
+    name = "update_all",
+    srcs = [
+        "update_all.sh",
+    ],
+)
+
 # MARK: - SwiftFormat for Developer Targets
 
 # # Make sure that the binary is referenced. Otherwise, Bazel won't build it.
