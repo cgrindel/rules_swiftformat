@@ -42,19 +42,3 @@ swiftformat_pkg(
 swiftformat_update_all(
     name = "update_all",
 )
-
-# MARK: - SwiftFormat for Developer Targets
-
-# Defines a convenient alias to execute the swiftformat executable.
-alias(
-    name = "swiftformat",
-    actual = "@swiftformat_repos//SwiftFormat:swiftformat",
-)
-
-# This test is just making sure that the swiftformat alias executes properly.
-sh_test(
-    name = "swiftformat_test",
-    srcs = ["swiftformat_test.sh"],
-    data = [":swiftformat"],
-    deps = ["@bazel_tools//tools/bash/runfiles"],
-)
