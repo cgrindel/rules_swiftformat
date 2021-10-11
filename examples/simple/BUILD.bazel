@@ -25,6 +25,8 @@ sh_test(
 
 # MARK: - SwiftFormat Targets
 
+# We only need to export this file if there are any other packages that need to
+# reference the config file.
 exports_files([".swiftformat"])
 
 # Defines targets for this package which will format the Swift source files,
