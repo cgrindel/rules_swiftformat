@@ -1,6 +1,10 @@
 load(":providers.bzl", "SwiftFormatInfo")
 load("@bazel_skylib//lib:dicts.bzl", "dicts")
 
+"""A binary rule that copies the formatted Swift sources to the workspace 
+directory.
+"""
+
 def _swiftformat_update(ctx):
     formats = [
         fmt[SwiftFormatInfo].format_map
@@ -20,7 +24,7 @@ def _swiftformat_update(ctx):
 runfiles_dir=$(pwd)
 cd $BUILD_WORKSPACE_DIRECTORY
 """ + "\n".join([
-            "cp -f $(realpath \"${{runfiles_dir}}/{fmt}\") {src}".format(
+            "cp -f $(readlink \"${{runfiles_dir}}/{fmt}\") {src}".format(
                 src = src.short_path,
                 fmt = format_map[src].short_path,
             )
@@ -40,4 +44,5 @@ swiftformat_update = rule(
         ),
     },
     executable = True,
+    doc = "Copies the formatted Swift sources to the workspace directory.",
 )
