@@ -45,14 +45,15 @@ swiftformat_format = rule(
         "srcs": attr.label_list(
             allow_files = True,
             mandatory = True,
+            doc = "The Swift source files to format.",
         ),
         "swift_version": attr.string(
             default = "5.4",
-            doc = "The Swift version to be used by swiftformat",
+            doc = "The Swift version to be used by `swiftformat`",
         ),
         "config": attr.label(
             allow_single_file = True,
-            doc = "A .swiftformat config file.",
+            doc = "A swiftformat YAML config file.",
         ),
         "output_suffix": attr.string(
             default = "_formatted",
@@ -63,7 +64,8 @@ swiftformat_format = rule(
             executable = True,
             cfg = "host",
             allow_files = True,
+            doc = "The `swiftformat` executable.",
         ),
     },
-    doc = "Formats the provided source files.",
+    doc = "Formats the Swift source files using `nicklockwood/SwiftFormat`.",
 )
