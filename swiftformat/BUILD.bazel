@@ -6,3 +6,13 @@ bzl_library(
     name = "deps",
     srcs = ["deps.bzl"],
 )
+
+bzl_library(
+    name = "load_package",
+    srcs = ["load_package.bzl"],
+)
+
+bzl_library(
+    name = "swiftformat",
+    srcs = ["swiftformat.bzl"],
+)
