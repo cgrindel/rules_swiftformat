@@ -1,28 +1,6 @@
-load("@build_bazel_rules_swift//swift:swift.bzl", "swift_binary")
 load(
     "@cgrindel_rules_swiftformat//swiftformat:swiftformat.bzl",
-    "swiftformat_binary",
     "swiftformat_update_all",
-)
-
-# MARK: - Swift Targets
-
-# Defines a swift_binary and swiftformat_pkg.
-swiftformat_binary(
-    name = "simple",
-    srcs = ["main.swift"],
-    swiftformat_config = "//:.swiftformat",
-    visibility = ["//:__subpackages__"],
-    deps = [
-        "//Foo",
-    ],
-)
-
-sh_test(
-    name = "simple_test",
-    srcs = ["simple_test.sh"],
-    data = [":simple"],
-    deps = ["@bazel_tools//tools/bash/runfiles"],
 )
 
 # MARK: - SwiftFormat Targets

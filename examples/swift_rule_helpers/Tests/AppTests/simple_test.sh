@@ -18,7 +18,7 @@ err_msg() {
 }
 
 workspace="${TEST_WORKSPACE}"
-binary="$(rlocation "${workspace}/simple")"
+binary="$(rlocation "${workspace}/Sources/App/simple")"
 
 expected="Hello World"
 "${binary}" | grep "${expected}" || err_msg "Failed to find expected output. ${expected}"
