@@ -1,1 +1,41 @@
-# Intentionally blank
+load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
+
+package(default_visibility = ["//swiftformat:__subpackages__"])
+
+bzl_library(
+    name = "providers",
+    srcs = ["providers.bzl"],
+)
+
+bzl_library(
+    name = "swiftformat_format",
+    srcs = ["swiftformat_format.bzl"],
+    deps = [
+        ":providers",
+        "@bazel_skylib//lib:paths",
+    ],
+)
+
+bzl_library(
+    name = "swiftformat_pkg",
+    srcs = ["swiftformat_pkg.bzl"],
+    deps = [
+        ":swiftformat_format",
+        ":swiftformat_update",
+        "@bazel_skylib//rules:diff_test",
+    ],
+)
+
+bzl_library(
+    name = "swiftformat_update",
+    srcs = ["swiftformat_update.bzl"],
+    deps = [
+        ":providers",
+        "@bazel_skylib//lib:dicts",
+    ],
+)
+
+bzl_library(
+    name = "swiftformat_update_all",
+    srcs = ["swiftformat_update_all.bzl"],
+)

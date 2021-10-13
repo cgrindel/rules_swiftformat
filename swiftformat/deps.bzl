@@ -15,6 +15,14 @@ def swiftformat_rules_dependencies():
 
     maybe(
         http_archive,
+        name = "cgrindel_bazel_doc",
+        sha256 = "bae4a0f41cc5cf89f26c779fc04379f09bb290b4910b2cf206c0372ad0c8aac7",
+        strip_prefix = "bazel-doc-0.1.0",
+        urls = ["https://github.com/cgrindel/bazel-doc/archive/v0.1.0.tar.gz"],
+    )
+
+    maybe(
+        http_archive,
         name = "cgrindel_rules_spm",
         sha256 = "fab28a41793744f3944ad2606cdd9c0f8e2f4861dd29fb1d61aa4263c7a1400a",
         strip_prefix = "rules_spm-0.6.0",

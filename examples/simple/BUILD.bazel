@@ -29,16 +29,16 @@ sh_test(
 # reference the config file.
 exports_files([".swiftformat"])
 
+# Defines a target that will copy all of the formatted Swift source files to
+# the workspace directory.
+swiftformat_update_all(
+    name = "update_all",
+)
+
 # Defines targets for this package which will format the Swift source files,
 # test that the formatted files are in the workspace directory and copies
 # the formatted files to the workspace directory.
 swiftformat_pkg(
     name = "format",
     config = "//:.swiftformat",
-)
-
-# Defines a target that will copy all of the formatted Swift source files to
-# the workspace directory.
-swiftformat_update_all(
-    name = "update_all",
 )

@@ -3,8 +3,7 @@ Swift source files to the workspace directory.
 """
 
 def swiftformat_update_all(name):
-    """Defines a runnable target that will copy the formatted Swift files to 
-    the source tree.
+    """Defines a runnable target that will copy the formatted Swift files to the source tree.
 
     The utility queries for all of the swiftformat_update rules in the
     workspace and executes each one. Hence, only Swift source files that are

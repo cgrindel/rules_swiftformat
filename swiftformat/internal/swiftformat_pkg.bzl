@@ -7,8 +7,7 @@ they are formatted and copies them to the workspace directory.
 """
 
 def swiftformat_pkg(name, srcs = None, config = None):
-    """Defines targets that will format, test and update the specified Swift 
-    sources.
+    """Defines targets that will format, test and update the specified Swift sources.
 
     Args:
         name: The base name for the targets that will be defined.

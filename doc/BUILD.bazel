@@ -1,0 +1,63 @@
+load(
+    "@cgrindel_bazel_doc//bazeldoc:bazeldoc.bzl",
+    "doc_for_provs",
+    "write_file_list",
+    "write_header",
+    doc_providers = "providers",
+)
+
+# MARK: - Documentation Providers
+
+_PROVIDERS_DOC_PROVIDER = doc_providers.create(
+    name = "providers_overview",
+    stardoc_input = "//swiftformat:swiftformat.bzl",
+    symbols = [
+        "SwiftFormatInfo",
+    ],
+    deps = ["//swiftformat"],
+)
+
+_RULES_AND_MACROS_DOC_PROVIDER = doc_providers.create(
+    name = "rules_and_macros_overview",
+    stardoc_input = "//swiftformat:swiftformat.bzl",
+    symbols = [
+        "swiftformat_format",
+        "swiftformat_pkg",
+        "swiftformat_update",
+        "swiftformat_update_all",
+    ],
+    deps = ["//swiftformat"],
+)
+
+_ALL_DOC_PROVIDERS = [
+    _RULES_AND_MACROS_DOC_PROVIDER,
+    _PROVIDERS_DOC_PROVIDER,
+]
+
+# MARK: - Headers
+
+write_header(
+    name = _PROVIDERS_DOC_PROVIDER.header_label,
+    header_content = [
+        "# Providers",
+        "",
+        "The providers described below are used by [the rules](/doc/rules_and_macros_overview.md) to",
+        "pass along information about the source files and the formatted files.",
+    ],
+    symbols = _PROVIDERS_DOC_PROVIDER.symbols,
+)
+
+write_header(
+    name = _RULES_AND_MACROS_DOC_PROVIDER.header_label,
+    header_content = [
+        "# Rules and Macros",
+        "",
+        "The rules and macros described below are used to format, test and ",
+        "copy Swift source files.",
+    ],
+    symbols = _RULES_AND_MACROS_DOC_PROVIDER.symbols,
+)
+
+# MARK: - Generate Documentation from Providers
+
+doc_for_provs(doc_provs = _ALL_DOC_PROVIDERS)
