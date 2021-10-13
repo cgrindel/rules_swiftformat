@@ -18,5 +18,5 @@ def swiftformat_library(
     swiftformat_pkg(
         name = swiftformat_name,
         srcs = srcs,
-        conifg = swiftformat_config,
+        config = swiftformat_config,
     )
