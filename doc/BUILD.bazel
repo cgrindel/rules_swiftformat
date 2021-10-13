@@ -35,15 +35,18 @@ _RULES_AND_MACROS_DOC_PROVIDER = doc_providers.create(
     name = "rules_and_macros_overview",
     stardoc_input = "//swiftformat:swiftformat.bzl",
     symbols = [
-        "swiftformat_update_all",
-        "swiftformat_pkg",
         "swiftformat_format",
+        "swiftformat_pkg",
         "swiftformat_update",
+        "swiftformat_update_all",
     ],
     deps = ["//swiftformat"],
 )
 
-_ALL_DOC_PROVIDERS = _API_DOC_PROVIDERS + [_RULES_AND_MACROS_DOC_PROVIDER]
+_ALL_DOC_PROVIDERS = _API_DOC_PROVIDERS + [
+    _RULES_AND_MACROS_DOC_PROVIDER,
+    _PROVIDERS_DOC_PROVIDER,
+]
 
 # MARK: - API File List
 
@@ -70,9 +73,7 @@ write_header(
         "# Providers",
         "",
         "The providers described below are used by [the rules](/doc/rules_and_macros_overview.md) to",
-        "facilitate the formatting, testing that the formatted files are in ",
-        "the workspace directory and the copying of the formatted files to ",
-        "the workspace directory.",
+        "pass along information about the source files and the formatted files.",
     ],
     symbols = _PROVIDERS_DOC_PROVIDER.symbols,
 )

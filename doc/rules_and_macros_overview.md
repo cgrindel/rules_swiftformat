@@ -6,10 +6,10 @@ copy Swift source files.
 
 On this page:
 
-  * [swiftformat_update_all](#swiftformat_update_all)
-  * [swiftformat_pkg](#swiftformat_pkg)
   * [swiftformat_format](#swiftformat_format)
+  * [swiftformat_pkg](#swiftformat_pkg)
   * [swiftformat_update](#swiftformat_update)
+  * [swiftformat_update_all](#swiftformat_update_all)
 
 
 <a id="#swiftformat_format"></a>
