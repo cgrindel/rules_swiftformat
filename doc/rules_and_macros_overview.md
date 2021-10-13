@@ -6,8 +6,11 @@ copy Swift source files.
 
 On this page:
 
+  * [swiftformat_binary](#swiftformat_binary)
   * [swiftformat_format](#swiftformat_format)
+  * [swiftformat_library](#swiftformat_library)
   * [swiftformat_pkg](#swiftformat_pkg)
+  * [swiftformat_test](#swiftformat_test)
   * [swiftformat_update](#swiftformat_update)
   * [swiftformat_update_all](#swiftformat_update_all)
 
@@ -53,6 +56,50 @@ Copies the formatted Swift sources to the workspace directory.
 | <a id="swiftformat_update-formats"></a>formats |  The format build targets.   | <a href="https://bazel.build/docs/build-ref.html#labels">List of labels</a> | optional | [] |
 
 
+<a id="#swiftformat_binary"></a>
+
+## swiftformat_binary
+
+<pre>
+swiftformat_binary(<a href="#swiftformat_binary-name">name</a>, <a href="#swiftformat_binary-swiftformat_config">swiftformat_config</a>, <a href="#swiftformat_binary-swiftformat_name">swiftformat_name</a>, <a href="#swiftformat_binary-srcs">srcs</a>, <a href="#swiftformat_binary-kwargs">kwargs</a>)
+</pre>
+
+Defines a `swift_binary` along with a `swiftformat_pkg`.
+
+**PARAMETERS**
+
+
+| Name  | Description | Default Value |
+| :------------- | :------------- | :------------- |
+| <a id="swiftformat_binary-name"></a>name |  The name for the swift_binary as a <code>string</code>.   |  none |
+| <a id="swiftformat_binary-swiftformat_config"></a>swiftformat_config |  A <code>label</code> for the SwiftFormat config file.   |  <code>None</code> |
+| <a id="swiftformat_binary-swiftformat_name"></a>swiftformat_name |  Optional. The name for the <code>swiftformat_pkg</code>.   |  <code>"swiftformat"</code> |
+| <a id="swiftformat_binary-srcs"></a>srcs |  The Swift sources that should be used by the <code>swift_binary</code> and the <code>swiftformat_pkg</code>.   |  <code>None</code> |
+| <a id="swiftformat_binary-kwargs"></a>kwargs |  The attributes for <code>swift_binary</code>.   |  none |
+
+
+<a id="#swiftformat_library"></a>
+
+## swiftformat_library
+
+<pre>
+swiftformat_library(<a href="#swiftformat_library-name">name</a>, <a href="#swiftformat_library-swiftformat_config">swiftformat_config</a>, <a href="#swiftformat_library-swiftformat_name">swiftformat_name</a>, <a href="#swiftformat_library-srcs">srcs</a>, <a href="#swiftformat_library-kwargs">kwargs</a>)
+</pre>
+
+Defines a `swift_library` along with a `swiftformat_pkg`.
+
+**PARAMETERS**
+
+
+| Name  | Description | Default Value |
+| :------------- | :------------- | :------------- |
+| <a id="swiftformat_library-name"></a>name |  The name for the swift_library as a <code>string</code>.   |  none |
+| <a id="swiftformat_library-swiftformat_config"></a>swiftformat_config |  A <code>label</code> for the SwiftFormat config file.   |  <code>None</code> |
+| <a id="swiftformat_library-swiftformat_name"></a>swiftformat_name |  Optional. The name for the <code>swiftformat_pkg</code>.   |  <code>"swiftformat"</code> |
+| <a id="swiftformat_library-srcs"></a>srcs |  The Swift sources that should be used by the <code>swift_library</code> and the <code>swiftformat_pkg</code>.   |  <code>None</code> |
+| <a id="swiftformat_library-kwargs"></a>kwargs |  The attributes for <code>swift_library</code>.   |  none |
+
+
 <a id="#swiftformat_pkg"></a>
 
 ## swiftformat_pkg
@@ -71,6 +118,28 @@ Defines targets that will format, test and update the specified Swift sources.
 | <a id="swiftformat_pkg-name"></a>name |  The base name for the targets that will be defined.   |  none |
 | <a id="swiftformat_pkg-srcs"></a>srcs |  Optional. The Swift source files that should be formatted.   |  <code>None</code> |
 | <a id="swiftformat_pkg-config"></a>config |  Optional. The swiftformat YAML configuration file.   |  <code>None</code> |
+
+
+<a id="#swiftformat_test"></a>
+
+## swiftformat_test
+
+<pre>
+swiftformat_test(<a href="#swiftformat_test-name">name</a>, <a href="#swiftformat_test-swiftformat_config">swiftformat_config</a>, <a href="#swiftformat_test-swiftformat_name">swiftformat_name</a>, <a href="#swiftformat_test-srcs">srcs</a>, <a href="#swiftformat_test-kwargs">kwargs</a>)
+</pre>
+
+Defines a `swift_test` along with a `swiftformat_pkg`.
+
+**PARAMETERS**
+
+
+| Name  | Description | Default Value |
+| :------------- | :------------- | :------------- |
+| <a id="swiftformat_test-name"></a>name |  The name for the swift_test as a <code>string</code>.   |  none |
+| <a id="swiftformat_test-swiftformat_config"></a>swiftformat_config |  A <code>label</code> for the SwiftFormat config file.   |  <code>None</code> |
+| <a id="swiftformat_test-swiftformat_name"></a>swiftformat_name |  Optional. The name for the <code>swiftformat_pkg</code>.   |  <code>"swiftformat"</code> |
+| <a id="swiftformat_test-srcs"></a>srcs |  The Swift sources that should be used by the <code>swift_test</code> and the <code>swiftformat_pkg</code>.   |  <code>None</code> |
+| <a id="swiftformat_test-kwargs"></a>kwargs |  The attributes for <code>swift_test</code>.   |  none |
 
 
 <a id="#swiftformat_update_all"></a>

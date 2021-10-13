@@ -54,4 +54,8 @@ jobs:
         # Revert the code change
         cp main.swift.orig main.swift
 
-
+    - name: Test rules_swift Helpers Example
+      shell: bash
+      run: |
+        cd examples/swift_rule_helpers
+        bazelisk test //...

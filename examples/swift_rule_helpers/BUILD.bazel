@@ -1,0 +1,16 @@
+load(
+    "@cgrindel_rules_swiftformat//swiftformat:swiftformat.bzl",
+    "swiftformat_update_all",
+)
+
+# MARK: - SwiftFormat Targets
+
+# We only need to export this file if there are any other packages that need to
+# reference the config file.
+exports_files([".swiftformat"])
+
+# Defines a target that will copy all of the formatted Swift source files to
+# the workspace directory.
+swiftformat_update_all(
+    name = "update_all",
+)

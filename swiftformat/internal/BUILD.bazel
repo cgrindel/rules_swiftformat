@@ -39,3 +39,30 @@ bzl_library(
     name = "swiftformat_update_all",
     srcs = ["swiftformat_update_all.bzl"],
 )
+
+bzl_library(
+    name = "swiftformat_library",
+    srcs = ["swiftformat_library.bzl"],
+    deps = [
+        ":swiftformat_pkg",
+        "@build_bazel_rules_swift//swift",
+    ],
+)
+
+bzl_library(
+    name = "swiftformat_binary",
+    srcs = ["swiftformat_binary.bzl"],
+    deps = [
+        ":swiftformat_pkg",
+        "@build_bazel_rules_swift//swift",
+    ],
+)
+
+bzl_library(
+    name = "swiftformat_test",
+    srcs = ["swiftformat_test.bzl"],
+    deps = [
+        ":swiftformat_pkg",
+        "@build_bazel_rules_swift//swift",
+    ],
+)

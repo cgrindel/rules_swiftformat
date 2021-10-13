@@ -18,10 +18,25 @@ load(
     "//swiftformat/internal:providers.bzl",
     _SwiftFormatInfo = "SwiftFormatInfo",
 )
+load(
+    "//swiftformat/internal:swiftformat_library.bzl",
+    _swiftformat_library = "swiftformat_library",
+)
+load(
+    "//swiftformat/internal:swiftformat_binary.bzl",
+    _swiftformat_binary = "swiftformat_binary",
+)
+load(
+    "//swiftformat/internal:swiftformat_test.bzl",
+    _swiftformat_test = "swiftformat_test",
+)
 
 # Macros
 swiftformat_pkg = _swiftformat_pkg
 swiftformat_update_all = _swiftformat_update_all
+swiftformat_library = _swiftformat_library
+swiftformat_binary = _swiftformat_binary
+swiftformat_test = _swiftformat_test
 
 # Rules
 swiftformat_format = _swiftformat_format
