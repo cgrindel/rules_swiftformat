@@ -15,4 +15,11 @@ bzl_library(
 bzl_library(
     name = "swiftformat",
     srcs = ["swiftformat.bzl"],
+    deps = [
+        "//swiftformat/internal:providers",
+        "//swiftformat/internal:swiftformat_format",
+        "//swiftformat/internal:swiftformat_pkg",
+        "//swiftformat/internal:swiftformat_update",
+        "//swiftformat/internal:swiftformat_update_all",
+    ],
 )

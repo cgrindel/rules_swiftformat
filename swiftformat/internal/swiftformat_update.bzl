@@ -5,7 +5,7 @@ load("@bazel_skylib//lib:dicts.bzl", "dicts")
 directory.
 """
 
-def _swiftformat_update(ctx):
+def _swiftformat_update_impl(ctx):
     formats = [
         fmt[SwiftFormatInfo].format_map
         for fmt in ctx.attr.formats
@@ -36,7 +36,7 @@ cd $BUILD_WORKSPACE_DIRECTORY
     return DefaultInfo(executable = update, runfiles = runfiles)
 
 swiftformat_update = rule(
-    implementation = _swiftformat_update,
+    implementation = _swiftformat_update_impl,
     attrs = {
         "formats": attr.label_list(
             providers = [[SwiftFormatInfo]],

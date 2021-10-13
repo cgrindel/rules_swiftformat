@@ -1,0 +1,106 @@
+load(
+    "@cgrindel_bazel_doc//bazeldoc:bazeldoc.bzl",
+    "doc_for_provs",
+    "write_file_list",
+    "write_header",
+    doc_providers = "providers",
+)
+
+# MARK: - Documentation Providers
+
+_API_SRCS = [
+    "providers",
+]
+
+_API_DOC_PROVIDERS = [
+    doc_providers.create(
+        name = name,
+        stardoc_input = "//swiftformat:swiftformat.bzl",
+        symbols = [name],
+        deps = ["//swiftformat"],
+    )
+    for name in _API_SRCS
+]
+
+_PROVIDERS_DOC_PROVIDER = doc_providers.create(
+    name = "providers_overview",
+    stardoc_input = "//swiftformat:swiftformat.bzl",
+    symbols = [
+        "SwiftFormatInfo",
+    ],
+    deps = ["//swiftformat"],
+)
+
+_RULES_AND_MACROS_DOC_PROVIDER = doc_providers.create(
+    name = "rules_and_macros_overview",
+    stardoc_input = "//swiftformat:swiftformat.bzl",
+    symbols = [
+        "swiftformat_update_all",
+        "swiftformat_pkg",
+        "swiftformat_format",
+        "swiftformat_update",
+    ],
+    deps = ["//swiftformat"],
+)
+
+_ALL_DOC_PROVIDERS = _API_DOC_PROVIDERS + [_RULES_AND_MACROS_DOC_PROVIDER]
+
+# MARK: - API File List
+
+# Write the api.md_ file as a special case.
+write_file_list(
+    name = "api_doc",
+    out = "api.md_",
+    doc_provs = _API_DOC_PROVIDERS,
+    header_content = [
+        "# Build API",
+        "",
+        "The APIs described below are used by ",
+        "[the rules and macros](/doc/rules_and_macros_overview.md) to facilitate the ",
+        "formatting, testing and copying of Swift source files.",
+        "",
+    ],
+)
+
+# MARK: - Headers
+
+write_header(
+    name = _PROVIDERS_DOC_PROVIDER.header_label,
+    header_content = [
+        "# Providers",
+        "",
+        "The providers described below are used by [the rules](/doc/rules_and_macros_overview.md) to",
+        "facilitate the formatting, testing that the formatted files are in ",
+        "the workspace directory and the copying of the formatted files to ",
+        "the workspace directory.",
+    ],
+    symbols = _PROVIDERS_DOC_PROVIDER.symbols,
+)
+
+write_header(
+    name = _RULES_AND_MACROS_DOC_PROVIDER.header_label,
+    header_content = [
+        "# Rules and Macros",
+        "",
+        "The rules and macros described below are used to format, test and ",
+        "copy Swift source files.",
+    ],
+    symbols = _RULES_AND_MACROS_DOC_PROVIDER.symbols,
+)
+
+# Write the API headers
+[
+    write_header(
+        name = doc_prov.header_label,
+        out = doc_prov.header_basename,
+        header_content = [
+            "# `{name}` API".format(name = doc_prov.name),
+        ],
+    )
+    for doc_prov in _API_DOC_PROVIDERS
+    if doc_prov.is_stardoc
+]
+
+# MARK: - Generate Documentation from Providers
+
+doc_for_provs(doc_provs = _ALL_DOC_PROVIDERS)
