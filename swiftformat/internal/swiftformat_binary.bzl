@@ -7,6 +7,19 @@ def swiftformat_binary(
         swiftformat_name = "swiftformat",
         srcs = None,
         **kwargs):
+    """Defines a `swift_binary` along with a `swiftformat_pkg`.
+
+    Args:
+        name: The name for the swift_binary as a `string`.
+        swiftformat_config: A `label` for the SwiftFormat config file.
+        swiftformat_name: Optional. The name for the `swiftformat_pkg`.
+        srcs: The Swift sources that should be used by the `swift_binary` and the `swiftformat_pkg`.
+        **kwargs: The attributes for `swift_binary`.
+
+    Returns:
+        None.
+    """
+
     # Define the swift binary
     swift_binary(
         name = name,
