@@ -62,7 +62,8 @@ swiftformat_load_package()
 ### 2. Update the `BUILD.bazel` at the root of your workspace
 
 At the root of your workspace, create a `BUILD.bazel` file, if you don't have one. Then, define a
-target for your SwiftFormat configuration file (`.swiftformat`). 
+target for your [SwiftFormat configuration file
+(`.swiftformat`)](https://github.com/nicklockwood/SwiftFormat#config-file). 
 
 ```python
 # We export this file to make it available to other Bazel packages in the workspace.
@@ -73,8 +74,6 @@ Next, add the following to define a runnable Bazel target that will copy all of 
 source files to your workspace directory.
 
 ```python
-# Defines a target that will copy all of the formatted Swift source files to
-# the workspace directory.
 swiftformat_update_all(
     name = "update_all",
 )
@@ -97,7 +96,7 @@ swiftformat_pkg(
 )
 ```
 
-The `swiftformat_pkg` macro defines targets for this package which will format the Swift source
+The `swiftformat_pkg` macro defines targets for a Bazel package which will format the Swift source
 files, test that the formatted files are in the workspace directory and copies the formatted files
 to the workspace directory.
 
