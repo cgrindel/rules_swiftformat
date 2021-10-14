@@ -9,6 +9,5 @@ swift_library(
 )
 
 swiftformat_pkg(
-    name = "format",
-    config = "//:.swiftformat",
+    name = "swiftformat",
 )

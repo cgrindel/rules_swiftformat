@@ -31,7 +31,7 @@ Formats the Swift source files using `nicklockwood/SwiftFormat`.
 | Name  | Description | Type | Mandatory | Default |
 | :------------- | :------------- | :------------- | :------------- | :------------- |
 | <a id="swiftformat_format-name"></a>name |  A unique name for this target.   | <a href="https://bazel.build/docs/build-ref.html#name">Name</a> | required |  |
-| <a id="swiftformat_format-config"></a>config |  A swiftformat config file.   | <a href="https://bazel.build/docs/build-ref.html#labels">Label</a> | optional | None |
+| <a id="swiftformat_format-config"></a>config |  A swiftformat config file.   | <a href="https://bazel.build/docs/build-ref.html#labels">Label</a> | optional | @//:.swiftformat |
 | <a id="swiftformat_format-output_suffix"></a>output_suffix |  The suffix to add to the output filename.   | String | optional | "_formatted" |
 | <a id="swiftformat_format-srcs"></a>srcs |  The Swift source files to format.   | <a href="https://bazel.build/docs/build-ref.html#labels">List of labels</a> | required |  |
 | <a id="swiftformat_format-swift_version"></a>swift_version |  The Swift version to be used by <code>swiftformat</code>. You probably want to add this to your config file instead of adding it here.   | String | optional | "" |

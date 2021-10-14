@@ -39,6 +39,5 @@ swiftformat_update_all(
 # test that the formatted files are in the workspace directory and copies
 # the formatted files to the workspace directory.
 swiftformat_pkg(
-    name = "format",
-    config = "//:.swiftformat",
+    name = "swiftformat",
 )

@@ -112,7 +112,6 @@ load(
 
 swiftformat_pkg(
     name = "format",
-    config = "//:.swiftformat",
 )
 ```
 
