@@ -60,6 +60,7 @@ to your config file instead of adding it here.\
         "config": attr.label(
             allow_single_file = True,
             doc = "A swiftformat config file.",
+            default = "@//:.swiftformat",
         ),
         "output_suffix": attr.string(
             default = "_formatted",
