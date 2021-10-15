@@ -30,7 +30,7 @@ formatting target. We assumed that other folks would want to do the same. So, we
 [`swiftformat_binary`](/doc/rules_and_macros_overview.md#swiftformat_binary), and
 [`swiftformat_test`](/doc/rules_and_macros_overview.md#swiftformat_test). These macros define
 the corresponding `swift_XXX` declaration and the appropriate `swiftformat_pkg` declaration.  This
-technique is demonstrated in our [swift_rule_helpers example](/examples/swift_rule_helpers).
+technique is demonstrated in our [rules_swift_helpers example](/examples/rules_swift_helpers).
 
 In short, the `swiftformat_XXX` macros take all of the same attributes as their `swift_XXX`
 counterparts. In addition, they have two other attributes:
