@@ -10,7 +10,7 @@ files exist in the workspace directory, and copy the formatted files to the work
 ## Quickstart
 
 The following provides a quick introduction on how to use the rules in this repository. Also, check
-out the [examples directory](examples/) for more information.
+out [the documentation](/doc/) and [the examples](/examples/) for more information.
 
 ### 1. Configure your workspace to use `rules_swiftformat`
 
