@@ -63,9 +63,3 @@ So, the typical development workflow goes something like this:
 If like most developers, you have integrated SwiftFormat into your IDE. There is a very good
 chance that you will never need to perform the update step as your source code will already be
 formatted. 
-
-// TODO: Add link to the IDE integration article.
-
-If you would like to leverage the SwiftFormat executable that is built for your project in your IDE
-integration, check out this article on fashining a script that will smartly build and execute
-SwiftFormat.
