@@ -64,34 +64,30 @@ swiftformat_load_package()
 
 ### 2. Update the `BUILD.bazel` at the root of your workspace
 
-At the root of your workspace, create a `BUILD.bazel` file, if you don't have one. Add the following
-load statement.
+At the root of your workspace, create a `BUILD.bazel` file, if you don't have one. Add the
+following:
 
 ```python
 load(
     "@cgrindel_rules_swiftformat//swiftformat:swiftformat.bzl",
     "swiftformat_update_all",
 )
-```
 
-Define a target for your [SwiftFormat configuration file
-(`.swiftformat`)](https://github.com/nicklockwood/SwiftFormat#config-file). 
-
-```python
 # We export this file to make it available to other Bazel packages in the workspace.
 exports_files([".swiftformat"])
-```
 
-Next, add the following:
-
-```python
+# Define a runnable target to copy all of the formatted files to the workspace directory.
 swiftformat_update_all(
     name = "update_all",
 )
 ```
 
-The [`swiftformat_update_all`](/doc/rules_and_macros_overview.md#swiftformat_update_all) macro will
-define a runnable target that will copy all of the formatted Swift source files to the workspace
+The `exports_files` declaration defines a target for your [SwiftFormat configuration file
+(`.swiftformat`)](https://github.com/nicklockwood/SwiftFormat#config-file). It is referenced by the
+`swiftformat_pkg` that we will add to each of the Bazel packages that contain Swift source files.
+
+The [`swiftformat_update_all`](/doc/rules_and_macros_overview.md#swiftformat_update_all) macro 
+defines a runnable target that copies all of the formatted Swift source files to the workspace
 directory.
 
 
@@ -115,7 +111,7 @@ The `swiftformat_pkg` macro defines targets for a Bazel package which will forma
 files, test that the formatted files are in the workspace directory and copies the formatted files
 to the workspace directory.
 
-### 4. Format, Copy, and Test
+### 4. Format, Update, and Test
 
 From the command-line, you can format the Swift source files, copy them back to the workspace
 directory and execute the tests that ensure the formatted soures are in the workspace directory.
