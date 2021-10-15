@@ -1,4 +1,4 @@
-# How to Integrate `rules_swiftformat` with `rules_swift`
+# How to Integrate `rules_swiftformat` Into Your Project
 
 You have decided to integrate Swift source code formatting into your project using
 `rules_swiftformat`. Now, the question is what is the best way to do so.
