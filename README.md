@@ -6,11 +6,6 @@ This repository contains Bazel rules and macros that will format Swift source fi
 [nicklockwood/SwiftFormat](https://github.com/nicklockwood/SwiftFormat), test that the formatted
 files exist in the workspace directory, and copy the formatted files to the workspace directory.
 
-## Reference Documentation
-
-[Click here](/doc) for reference documentation for the rules and other definitions in this
-repository.
-
 <a id="#quickstart"></a>
 ## Quickstart
 
@@ -136,8 +131,10 @@ $ bazel test //...
 ## Learn More
 
 - [How It Works](/doc/how_it_works.md)
-- [Learn how to seamlessly build and format your Swift source
-  code](/doc/build_and_format_swift_source_code.md) using swiftformat_library, swiftformat_binary,
-swiftformat_test. 
-
+- [How to seamlessly build and format your Swift source
+  code](/doc/integrate_with_rules_swift.md) using
+[swiftformat_library](/doc/rules_and_macros_overview.md#swiftformat_library),
+[swiftformat_binary](/doc/rules_and_macros_overview.md#swiftformat_binary), and
+[swiftformat_test](/doc/rules_and_macros_overview.md#swiftformat_test). 
+- Check out the [rest of the documentation](/doc)
 
