@@ -107,9 +107,9 @@ swiftformat_pkg(
 )
 ```
 
-The `swiftformat_pkg` macro defines targets for a Bazel package which will format the Swift source
-files, test that the formatted files are in the workspace directory and copies the formatted files
-to the workspace directory.
+The [`swiftformat_pkg`](/doc/rules_and_macros_overview.md#swiftformat_pkg) macro defines targets for
+a Bazel package which will format the Swift source files, test that the formatted files are in the
+workspace directory and copies the formatted files to the workspace directory.
 
 ### 4. Format, Update, and Test
 
