@@ -57,5 +57,5 @@ jobs:
     - name: Test rules_swift Helpers Example
       shell: bash
       run: |
-        cd examples/swift_rule_helpers
+        cd examples/rules_swift_helpers
         bazelisk test //...

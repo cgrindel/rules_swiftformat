@@ -1,4 +1,4 @@
-workspace(name = "swift_rule_helpers_example")
+workspace(name = "rules_swift_helpers_example")
 
 local_repository(
     name = "cgrindel_rules_swiftformat",

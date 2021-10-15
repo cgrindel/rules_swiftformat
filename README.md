@@ -6,16 +6,11 @@ This repository contains Bazel rules and macros that will format Swift source fi
 [nicklockwood/SwiftFormat](https://github.com/nicklockwood/SwiftFormat), test that the formatted
 files exist in the workspace directory, and copy the formatted files to the workspace directory.
 
-## Reference Documentation
-
-[Click here](/doc) for reference documentation for the rules and other definitions in this
-repository.
-
 <a id="#quickstart"></a>
 ## Quickstart
 
 The following provides a quick introduction on how to use the rules in this repository. Also, check
-out the [examples directory](examples/) for more information.
+out [the documentation](/doc/) and [the examples](/examples/) for more information.
 
 ### 1. Configure your workspace to use `rules_swiftformat`
 
@@ -25,10 +20,11 @@ Add the following to your `WORKSPACE` file to add this repository and its depend
 
 # Download and configure rules_swiftformat.
 
-# GH008 Update this section once release 0.1.0 is available.
-local_repository(
+http_archive(
     name = "cgrindel_rules_swiftformat",
-    path = "../..",
+    sha256 = "4942ca4f8f88d926964c7ff9c449c5c7eb2e0f1059675d16f75ea57bfdebb504",
+    strip_prefix = "rules_swiftformat-0.1.0",
+    urls = ["https://github.com/cgrindel/rules_swiftformat/archive/v0.1.0.tar.gz"],
 )
 
 load("@cgrindel_rules_swiftformat//swiftformat:deps.bzl", "swiftformat_rules_dependencies")
@@ -68,34 +64,30 @@ swiftformat_load_package()
 
 ### 2. Update the `BUILD.bazel` at the root of your workspace
 
-At the root of your workspace, create a `BUILD.bazel` file, if you don't have one. Add the following
-load statement.
+At the root of your workspace, create a `BUILD.bazel` file, if you don't have one. Add the
+following:
 
 ```python
 load(
     "@cgrindel_rules_swiftformat//swiftformat:swiftformat.bzl",
     "swiftformat_update_all",
 )
-```
 
-Define a target for your [SwiftFormat configuration file
-(`.swiftformat`)](https://github.com/nicklockwood/SwiftFormat#config-file). 
-
-```python
 # We export this file to make it available to other Bazel packages in the workspace.
 exports_files([".swiftformat"])
-```
 
-Next, add the following:
-
-```python
+# Define a runnable target to copy all of the formatted files to the workspace directory.
 swiftformat_update_all(
     name = "update_all",
 )
 ```
 
-The [`swiftformat_update_all`](/doc/rules_and_macros_overview.md#swiftformat_update_all) macro will
-define a runnable target that will copy all of the formatted Swift source files to the workspace
+The `exports_files` declaration defines a target for your [SwiftFormat configuration file
+(`.swiftformat`)](https://github.com/nicklockwood/SwiftFormat#config-file). It is referenced by the
+`swiftformat_pkg` that we will add to each of the Bazel packages that contain Swift source files.
+
+The [`swiftformat_update_all`](/doc/rules_and_macros_overview.md#swiftformat_update_all) macro 
+defines a runnable target that copies all of the formatted Swift source files to the workspace
 directory.
 
 
@@ -111,52 +103,34 @@ load(
 )
 
 swiftformat_pkg(
-    name = "format",
+    name = "swiftformat",
 )
 ```
 
-The `swiftformat_pkg` macro defines targets for a Bazel package which will format the Swift source
-files, test that the formatted files are in the workspace directory and copies the formatted files
-to the workspace directory.
+The [`swiftformat_pkg`](/doc/rules_and_macros_overview.md#swiftformat_pkg) macro defines targets for
+a Bazel package which will format the Swift source files, test that the formatted files are in the
+workspace directory and copies the formatted files to the workspace directory.
 
-## How it works - Format, Test, and Update
+### 4. Format, Update, and Test
 
-### Format
-
-The Swift source files will be formatted whenever `bazel build` or `bazel test` are invoked in a
-package that has a `swiftformat_pkg` declaration.  However, the formatted files are not copied to
-the workspace directory at this point. They only exist in Bazel's output directories.
-
-### Test
-
-The tests that `rules_swiftformat` defines will compare the formatted files in the output directory
-to the files in the workspace/source directory. If they do not match, the test fails. As you might
-expect, the tests only run when `bazel test` is invoked for a Bazel package.
-
-### Update
-
-Each Bazel package that has a `swiftformat_pkg` declaration will contain runnable target that will
-copy the formatted source file from the output directory to the workspace/source directory.
-
-For instance, if you defined your `swiftformat_pkg` with the name `format`, the runnable target is
-called `format_update`. So, to update the files in a single package you would run:
+From the command-line, you can format the Swift source files, copy them back to the workspace
+directory and execute the tests that ensure the formatted soures are in the workspace directory.
 
 ```sh
-$ bazel run //path/to/pkg:format_update
-```
-
-Since finding and running these commands manually would be tedious, we added a
-`swiftformat_update_all` declaration at the root of the workspace. This will find all of the update
-commands and run them.
-
-```sh
+# Format the Swift source files and copy the formatted files back to the workspace directory
 $ bazel run //:update_all
+
+# Execute all of your tests including the formatting checks
+$ bazel test //...
 ```
 
-### Putting it all together
+## Learn More
 
-So, the workflow goes something like this:
+- [How It Works](/doc/how_it_works.md)
+- [How to seamlessly build and format your Swift source
+  code](/doc/integrate_with_rules_swift.md) using
+[swiftformat_library](/doc/rules_and_macros_overview.md#swiftformat_library),
+[swiftformat_binary](/doc/rules_and_macros_overview.md#swiftformat_binary), and
+[swiftformat_test](/doc/rules_and_macros_overview.md#swiftformat_test). 
+- Check out the [rest of the documentation](/doc)
 
-1. Make a code change.
-2. Build and test: `bazel test //...`.
-3. If a format test fails, copy the formatted files: `bazel run //:update_all`.
