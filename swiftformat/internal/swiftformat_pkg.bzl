@@ -22,7 +22,7 @@ def swiftformat_pkg(name, srcs = None, config = None):
 
     format_names = []
     for src in srcs:
-        src_name = src.replace("/", "_")
+        src_name = src.replace("/", "_").replace(":", "")
         format_name = name + "_fmt_" + src_name
         format_names.append(":" + format_name)
 
