@@ -20,6 +20,8 @@ def swiftformat_library(
     Returns:
         None.
     """
+    if srcs == None:
+        srcs = native.glob(["*.swift"])
 
     # Define the swift library
     swift_library(

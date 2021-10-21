@@ -20,6 +20,8 @@ def swiftformat_test(
     Returns:
         None.
     """
+    if srcs == None:
+        srcs = native.glob(["*.swift"])
 
     # Define the swift binary
     swift_test(
