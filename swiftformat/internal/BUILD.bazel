@@ -8,6 +8,11 @@ bzl_library(
 )
 
 bzl_library(
+    name = "src_utils",
+    srcs = ["src_utils.bzl"],
+)
+
+bzl_library(
     name = "swiftformat_format",
     srcs = ["swiftformat_format.bzl"],
     deps = [
@@ -20,6 +25,7 @@ bzl_library(
     name = "swiftformat_pkg",
     srcs = ["swiftformat_pkg.bzl"],
     deps = [
+        ":src_utils",
         ":swiftformat_format",
         ":swiftformat_update",
         "@bazel_skylib//rules:diff_test",

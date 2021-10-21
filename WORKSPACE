@@ -28,3 +28,7 @@ swift_rules_extra_dependencies()
 load("//swiftformat:load_package.bzl", "swiftformat_load_package")
 
 swiftformat_load_package()
+
+load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
+
+bazel_skylib_workspace()
