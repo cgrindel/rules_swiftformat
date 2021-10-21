@@ -1,0 +1,12 @@
+load(
+    "@cgrindel_rules_swiftformat//swiftformat:swiftformat.bzl",
+    "swiftformat_test",
+)
+
+swiftformat_test(
+    name = "FooTests",
+    swiftformat_exclude = ["PoorlyFormattedTests.swift"],
+    deps = [
+        "//Sources/Foo",
+    ],
+)

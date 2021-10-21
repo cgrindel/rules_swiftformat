@@ -16,7 +16,9 @@ def _swiftformat_update_impl(ctx):
         files = [format_map[src] for src in format_map],
     )
 
-    update = ctx.actions.declare_file("update_with_formatted.sh")
+    update = ctx.actions.declare_file(
+        ctx.label.name + "_update_with_formatted.sh",
+    )
     ctx.actions.write(
         output = update,
         content = """
