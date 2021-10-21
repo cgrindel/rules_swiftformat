@@ -1,0 +1,14 @@
+load(
+    "@cgrindel_rules_swiftformat//swiftformat:swiftformat.bzl",
+    "swiftformat_binary",
+)
+
+# Defines a swift_binary and swiftformat_pkg.
+swiftformat_binary(
+    name = "simple",
+    swiftformat_exclude = ["exclude.swift"],
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//Sources/Foo",
+    ],
+)
