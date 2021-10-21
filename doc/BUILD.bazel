@@ -32,10 +32,30 @@ _RULES_AND_MACROS_DOC_PROVIDER = doc_providers.create(
     deps = ["//swiftformat"],
 )
 
+_API_SRCS = [
+    "src_utils",
+]
+
+_API_DOC_PROVIDERS = [
+    doc_providers.create(
+        name = name,
+        stardoc_input = "//swiftformat:swiftformat.bzl",
+        symbols = [name],
+        deps = ["//swiftformat"],
+    )
+    for name in _API_SRCS
+]
+
 _ALL_DOC_PROVIDERS = [
     _RULES_AND_MACROS_DOC_PROVIDER,
     _PROVIDERS_DOC_PROVIDER,
-]
+    doc_providers.create(
+        name = "api",
+        is_stardoc = False,
+        stardoc_input = "//swiftformat:swiftformat.bzl",
+        deps = ["//swiftformat"],
+    ),
+] + _API_DOC_PROVIDERS
 
 # MARK: - Headers
 
@@ -59,6 +79,34 @@ write_header(
         "copy Swift source files.",
     ],
     symbols = _RULES_AND_MACROS_DOC_PROVIDER.symbols,
+)
+
+# Write the API headers
+[
+    write_header(
+        name = doc_prov.header_label,
+        out = doc_prov.header_basename,
+        header_content = [
+            "# `{name}` API".format(name = doc_prov.name),
+        ],
+    )
+    for doc_prov in _API_DOC_PROVIDERS
+    if doc_prov.is_stardoc
+]
+
+# MARK: - Special Case api.md
+
+# Write the api.md_ file as a special case.
+write_file_list(
+    name = "api_doc",
+    out = "api.md_",
+    doc_provs = _API_DOC_PROVIDERS,
+    header_content = [
+        "# Build API",
+        "",
+        "The APIs list below are used by rules_swiftformat.",
+        "",
+    ],
 )
 
 # MARK: - Generate Documentation from Providers

@@ -3,8 +3,19 @@ load(
     "swiftformat_library",
 )
 
+genrule(
+    name = "poorly_formatted_gen_file",
+    srcs = [],
+    outs = ["PoorlyFormattedGenFile.swift"],
+    cmd = """\
+echo '    struct PoorlyFormattedGenFile { var name = "" }' > $@
+""",
+)
+
 swiftformat_library(
     name = "Foo",
+    # The generated file should be skipped for formatting because it is a label.
+    srcs = glob(["*.swift"]) + [":poorly_formatted_gen_file"],
     module_name = "Foo",
     swiftformat_exclude = ["PoorlyFormatted.swift"],
     visibility = ["//:__subpackages__"],

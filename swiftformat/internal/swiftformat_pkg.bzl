@@ -1,3 +1,4 @@
+load(":src_utils.bzl", "src_utils")
 load(":swiftformat_format.bzl", "swiftformat_format")
 load(":swiftformat_update.bzl", "swiftformat_update")
 load("@bazel_skylib//rules:diff_test.bzl", "diff_test")
@@ -6,14 +7,10 @@ load("@bazel_skylib//rules:diff_test.bzl", "diff_test")
 they are formatted and copies them to the workspace directory.
 """
 
-def _is_label(src):
-    return src.find(":") > -1
-
-def _is_path(src):
-    return not _is_label(src)
-
 def swiftformat_pkg(name, srcs = None, config = None):
     """Defines targets that will format, test and update the specified Swift sources.
+
+    NOTE: Any labels detected in the `srcs` will be ignored.
 
     Args:
         name: The base name for the targets that will be defined.
@@ -27,11 +24,11 @@ def swiftformat_pkg(name, srcs = None, config = None):
         srcs = native.glob(["*.swift"])
 
     # Only process paths; ignore labels
-    src_paths = [src for src in srcs if _is_path(src)]
+    src_paths = [src for src in srcs if src_utils.is_path(src)]
 
     format_names = []
     for src in src_paths:
-        src_name = src.replace("/", "_").replace(":", "")
+        src_name = src.replace("/", "_")
         format_name = name + "_fmt_" + src_name
         format_names.append(":" + format_name)
 

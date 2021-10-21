@@ -30,6 +30,10 @@ load(
     "//swiftformat/internal:swiftformat_test.bzl",
     _swiftformat_test = "swiftformat_test",
 )
+load(
+    "//swiftformat/internal:src_utils.bzl",
+    _src_utils = "src_utils",
+)
 
 # Macros
 swiftformat_pkg = _swiftformat_pkg
@@ -44,3 +48,6 @@ swiftformat_update = _swiftformat_update
 
 # Providers
 SwiftFormatInfo = _SwiftFormatInfo
+
+# APIs
+src_utils = _src_utils
