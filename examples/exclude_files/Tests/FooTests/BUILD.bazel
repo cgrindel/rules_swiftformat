@@ -5,6 +5,7 @@ load(
 
 swiftformat_test(
     name = "FooTests",
+    swiftformat_exclude = ["PoorlyFormattedTests.swift"],
     deps = [
         "//Sources/Foo",
     ],
