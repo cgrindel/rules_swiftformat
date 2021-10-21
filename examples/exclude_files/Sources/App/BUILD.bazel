@@ -6,7 +6,7 @@ load(
 # Defines a swift_binary and swiftformat_pkg.
 swiftformat_binary(
     name = "simple",
-    swiftformat_exclude = ["exclude.swift"],
+    swiftformat_exclude = ["PoorlyFormatted.swift"],
     visibility = ["//:__subpackages__"],
     deps = [
         "//Sources/Foo",

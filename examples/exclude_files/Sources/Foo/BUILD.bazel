@@ -6,6 +6,6 @@ load(
 swiftformat_library(
     name = "Foo",
     module_name = "Foo",
-    swiftformat_exclude = ["exclude.swift"],
+    swiftformat_exclude = ["PoorlyFormatted.swift"],
     visibility = ["//:__subpackages__"],
 )
