@@ -110,6 +110,9 @@ swiftformat_pkg(<a href="#swiftformat_pkg-name">name</a>, <a href="#swiftformat_
 
 Defines targets that will format, test and update the specified Swift sources.
 
+NOTE: Any labels detected in the `srcs` will be ignored.
+
+
 **PARAMETERS**
 
 

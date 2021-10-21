@@ -17,6 +17,7 @@ bzl_library(
     srcs = ["swiftformat.bzl"],
     deps = [
         "//swiftformat/internal:providers",
+        "//swiftformat/internal:src_utils",
         "//swiftformat/internal:swiftformat_binary",
         "//swiftformat/internal:swiftformat_format",
         "//swiftformat/internal:swiftformat_library",
