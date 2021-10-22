@@ -22,9 +22,9 @@ Add the following to your `WORKSPACE` file to add this repository and its depend
 
 http_archive(
     name = "cgrindel_rules_swiftformat",
-    sha256 = "6dfbdd90ff1e3849ad9102d116c114aee6eef6114d1765de654a6cdad5421c58",
-    strip_prefix = "rules_swiftformat-0.2.0",
-    urls = ["https://github.com/cgrindel/rules_swiftformat/archive/v0.2.0.tar.gz"],
+    sha256 = "8cd36a5dc1c716082f78959b9430e38328bef3500935d006faab4d4a8433b6db",
+    strip_prefix = "rules_swiftformat-0.2.1",
+    urls = ["https://github.com/cgrindel/rules_swiftformat/archive/v0.2.1.tar.gz"],
 )
 
 load("@cgrindel_rules_swiftformat//swiftformat:deps.bzl", "swiftformat_rules_dependencies")
