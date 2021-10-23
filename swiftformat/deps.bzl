@@ -14,6 +14,12 @@ def swiftformat_rules_dependencies():
     )
 
     maybe(
+        native.local_repository,
+        name = "cgrindel_rules_updatesrc",
+        path = "../rules_updatesrc",
+    )
+
+    maybe(
         http_archive,
         name = "cgrindel_bazel_doc",
         sha256 = "bae4a0f41cc5cf89f26c779fc04379f09bb290b4910b2cf206c0372ad0c8aac7",
