@@ -16,7 +16,7 @@ def swiftformat_rules_dependencies():
     maybe(
         native.local_repository,
         name = "cgrindel_rules_updatesrc",
-        path = "../rules_updatesrc",
+        path = "/Users/chuck/code/cgrindel/rules_updatesrc",
     )
 
     maybe(

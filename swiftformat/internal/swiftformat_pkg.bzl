@@ -1,7 +1,7 @@
 load(":src_utils.bzl", "src_utils")
 load(":swiftformat_format.bzl", "swiftformat_format")
-load(":swiftformat_update.bzl", "swiftformat_update")
 load("@bazel_skylib//rules:diff_test.bzl", "diff_test")
+load("@cgrindel_rules_updatesrc//updatesrc:updatesrc.bzl", "updatesrc_update")
 
 """A macro which defines targets that format Swift source files, test that 
 they are formatted and copies them to the workspace directory.
@@ -43,7 +43,7 @@ def swiftformat_pkg(name, srcs = None, config = None):
             file2 = ":" + format_name,
         )
 
-    swiftformat_update(
+    updatesrc_update(
         name = name + "_update",
-        formats = format_names,
+        deps = format_names,
     )

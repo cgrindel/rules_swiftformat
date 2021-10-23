@@ -18,6 +18,7 @@ bzl_library(
     deps = [
         ":providers",
         "@bazel_skylib//lib:paths",
+        "@cgrindel_rules_updatesrc//updatesrc",
     ],
 )
 
