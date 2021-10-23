@@ -23,7 +23,5 @@ bzl_library(
         "//swiftformat/internal:swiftformat_library",
         "//swiftformat/internal:swiftformat_pkg",
         "//swiftformat/internal:swiftformat_test",
-        "//swiftformat/internal:swiftformat_update",
-        "//swiftformat/internal:swiftformat_update_all",
     ],
 )

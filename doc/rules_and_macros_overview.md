@@ -37,25 +37,6 @@ Formats the Swift source files using `nicklockwood/SwiftFormat`.
 | <a id="swiftformat_format-swift_version"></a>swift_version |  The Swift version to be used by <code>swiftformat</code>. You probably want to add this to your config file instead of adding it here.   | String | optional | "" |
 
 
-<a id="#swiftformat_update"></a>
-
-## swiftformat_update
-
-<pre>
-swiftformat_update(<a href="#swiftformat_update-name">name</a>, <a href="#swiftformat_update-formats">formats</a>)
-</pre>
-
-Copies the formatted Swift sources to the workspace directory.
-
-**ATTRIBUTES**
-
-
-| Name  | Description | Type | Mandatory | Default |
-| :------------- | :------------- | :------------- | :------------- | :------------- |
-| <a id="swiftformat_update-name"></a>name |  A unique name for this target.   | <a href="https://bazel.build/docs/build-ref.html#name">Name</a> | required |  |
-| <a id="swiftformat_update-formats"></a>formats |  The format build targets.   | <a href="https://bazel.build/docs/build-ref.html#labels">List of labels</a> | optional | [] |
-
-
 <a id="#swiftformat_binary"></a>
 
 ## swiftformat_binary
@@ -143,29 +124,5 @@ Defines a `swift_test` along with a `swiftformat_pkg`.
 | <a id="swiftformat_test-swiftformat_exclude"></a>swiftformat_exclude |  A <code>list</code> of files or glob patterns that should be ignored for formatting.   |  <code>[]</code> |
 | <a id="swiftformat_test-srcs"></a>srcs |  The Swift sources that should be used by the <code>swift_test</code> and the <code>swiftformat_pkg</code>.   |  <code>None</code> |
 | <a id="swiftformat_test-kwargs"></a>kwargs |  The attributes for <code>swift_test</code>.   |  none |
-
-
-<a id="#swiftformat_update_all"></a>
-
-## swiftformat_update_all
-
-<pre>
-swiftformat_update_all(<a href="#swiftformat_update_all-name">name</a>)
-</pre>
-
-Defines a runnable target that will copy the formatted Swift files to the source tree.
-
-The utility queries for all of the swiftformat_update rules in the
-workspace and executes each one. Hence, only Swift source files that are
-referenced by a swiftformat_update will be copied to the workspace
-directory.
-
-
-**PARAMETERS**
-
-
-| Name  | Description | Default Value |
-| :------------- | :------------- | :------------- |
-| <a id="swiftformat_update_all-name"></a>name |  The name of the target.   |  none |
 
 
