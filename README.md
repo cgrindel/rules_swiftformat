@@ -34,6 +34,13 @@ swiftformat_rules_dependencies()
 # Configure the dependencies for rules_swiftformat
 
 load(
+    "@cgrindel_rules_updatesrc//updatesrc:deps.bzl",
+    "updatesrc_rules_dependencies",
+)
+
+updatesrc_rules_dependencies()
+
+load(
     "@cgrindel_rules_spm//spm:deps.bzl",
     "spm_rules_dependencies",
 )
@@ -69,15 +76,15 @@ following:
 
 ```python
 load(
-    "@cgrindel_rules_swiftformat//swiftformat:swiftformat.bzl",
-    "swiftformat_update_all",
+    "@cgrindel_rules_updatesrc//updatesrc:updatesrc.bzl",
+    "updatesrc_update_all",
 )
 
 # We export this file to make it available to other Bazel packages in the workspace.
 exports_files([".swiftformat"])
 
 # Define a runnable target to copy all of the formatted files to the workspace directory.
-swiftformat_update_all(
+updatesrc_update_all(
     name = "update_all",
 )
 ```

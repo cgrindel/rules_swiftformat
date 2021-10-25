@@ -11,8 +11,6 @@ On this page:
   * [swiftformat_library](#swiftformat_library)
   * [swiftformat_pkg](#swiftformat_pkg)
   * [swiftformat_test](#swiftformat_test)
-  * [swiftformat_update](#swiftformat_update)
-  * [swiftformat_update_all](#swiftformat_update_all)
 
 
 <a id="#swiftformat_format"></a>

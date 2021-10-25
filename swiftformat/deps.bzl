@@ -13,6 +13,7 @@ def swiftformat_rules_dependencies():
         ],
     )
 
+    # TODO: Switch to release version.
     maybe(
         native.local_repository,
         name = "cgrindel_rules_updatesrc",
