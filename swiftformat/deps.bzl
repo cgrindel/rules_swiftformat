@@ -13,11 +13,12 @@ def swiftformat_rules_dependencies():
         ],
     )
 
-    # TODO: Switch to release version.
     maybe(
-        native.local_repository,
+        http_archive,
         name = "cgrindel_rules_updatesrc",
-        path = "/Users/chuck/code/cgrindel/rules_updatesrc",
+        sha256 = "18eb6620ac4684c2bc722b8fe447dfaba76f73d73e2dfcaf837f542379ed9bc3",
+        strip_prefix = "rules_updatesrc-0.1.0",
+        urls = ["https://github.com/cgrindel/rules_updatesrc/archive/v0.1.0.tar.gz"],
     )
 
     maybe(
