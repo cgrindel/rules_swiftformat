@@ -1,16 +1,18 @@
 load("@bazel_skylib//lib:paths.bzl", "paths")
-load(":providers.bzl", "SwiftFormatInfo")
+load(
+    "@cgrindel_rules_updatesrc//updatesrc:updatesrc.bzl",
+    "UpdateSrcsInfo",
+    "update_srcs",
+)
 
 """A build rule that formats Swift source files.
 """
 
 def _swiftformat_format_impl(ctx):
-    outputs = []
-    format_map = {}
+    updsrcs = []
     for src in ctx.files.srcs:
         out = ctx.actions.declare_file(src.basename + ctx.attr.output_suffix)
-        outputs.append(out)
-        format_map[src] = out
+        updsrcs.append(update_srcs.create(src = src, out = out))
         inputs = [src]
 
         args = ctx.actions.args()
@@ -39,8 +41,8 @@ def _swiftformat_format_impl(ctx):
         )
 
     return [
-        DefaultInfo(files = depset(outputs)),
-        SwiftFormatInfo(format_map = format_map),
+        DefaultInfo(files = depset([updsrc.out for updsrc in updsrcs])),
+        UpdateSrcsInfo(update_srcs = depset(updsrcs)),
     ]
 
 swiftformat_format = rule(

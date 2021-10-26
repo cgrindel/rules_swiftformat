@@ -5,6 +5,13 @@ load("//swiftformat:deps.bzl", "swiftformat_rules_dependencies")
 swiftformat_rules_dependencies()
 
 load(
+    "@cgrindel_rules_updatesrc//updatesrc:deps.bzl",
+    "updatesrc_rules_dependencies",
+)
+
+updatesrc_rules_dependencies()
+
+load(
     "@cgrindel_rules_spm//spm:deps.bzl",
     "spm_rules_dependencies",
 )
