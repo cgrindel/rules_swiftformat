@@ -56,6 +56,10 @@ Defines a `swift_binary` along with a `swiftformat_pkg`.
 | <a id="swiftformat_binary-srcs"></a>srcs |  The Swift sources that should be used by the <code>swift_binary</code> and the <code>swiftformat_pkg</code>.   |  <code>None</code> |
 | <a id="swiftformat_binary-kwargs"></a>kwargs |  The attributes for <code>swift_binary</code>.   |  none |
 
+**RETURNS**
+
+None.
+
 
 <a id="#swiftformat_library"></a>
 
@@ -77,6 +81,10 @@ Defines a `swift_library` along with a `swiftformat_pkg`.
 | <a id="swiftformat_library-swiftformat_exclude"></a>swiftformat_exclude |  A <code>list</code> of files or glob patterns that should be ignored for formatting.   |  <code>[]</code> |
 | <a id="swiftformat_library-srcs"></a>srcs |  The Swift sources that should be used by the <code>swift_library</code> and the <code>swiftformat_pkg</code>.   |  <code>None</code> |
 | <a id="swiftformat_library-kwargs"></a>kwargs |  The attributes for <code>swift_library</code>.   |  none |
+
+**RETURNS**
+
+None.
 
 
 <a id="#swiftformat_pkg"></a>
@@ -101,6 +109,10 @@ NOTE: Any labels detected in the `srcs` will be ignored.
 | <a id="swiftformat_pkg-srcs"></a>srcs |  Optional. The Swift source files that should be formatted.   |  <code>None</code> |
 | <a id="swiftformat_pkg-config"></a>config |  Optional. The swiftformat YAML configuration file.   |  <code>None</code> |
 
+**RETURNS**
+
+None.
+
 
 <a id="#swiftformat_test"></a>
 
@@ -122,5 +134,9 @@ Defines a `swift_test` along with a `swiftformat_pkg`.
 | <a id="swiftformat_test-swiftformat_exclude"></a>swiftformat_exclude |  A <code>list</code> of files or glob patterns that should be ignored for formatting.   |  <code>[]</code> |
 | <a id="swiftformat_test-srcs"></a>srcs |  The Swift sources that should be used by the <code>swift_test</code> and the <code>swiftformat_pkg</code>.   |  <code>None</code> |
 | <a id="swiftformat_test-kwargs"></a>kwargs |  The attributes for <code>swift_test</code>.   |  none |
+
+**RETURNS**
+
+None.
 
 

@@ -4,12 +4,20 @@ load("//swiftformat:deps.bzl", "swiftformat_rules_dependencies")
 
 swiftformat_rules_dependencies()
 
+load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
+
+bazel_skylib_workspace()
+
 load(
     "@cgrindel_rules_updatesrc//updatesrc:deps.bzl",
     "updatesrc_rules_dependencies",
 )
 
 updatesrc_rules_dependencies()
+
+load("@cgrindel_bazel_doc//bazeldoc:deps.bzl", "bazeldoc_dependencies")
+
+bazeldoc_dependencies()
 
 load(
     "@cgrindel_rules_spm//spm:deps.bzl",
@@ -31,10 +39,6 @@ load(
 )
 
 swift_rules_extra_dependencies()
-
-load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
-
-bazel_skylib_workspace()
 
 load("@cgrindel_rules_bzlformat//bzlformat:deps.bzl", "bzlformat_rules_dependencies")
 

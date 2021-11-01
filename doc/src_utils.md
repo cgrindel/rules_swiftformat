@@ -19,6 +19,10 @@ Determines whether the provided string is a path.
 | :------------- | :------------- | :------------- |
 | <a id="src_utils.is_path-src"></a>src |  A <code>string</code> value.   |  none |
 
+**RETURNS**
+
+A `bool` specifying whether the `string` value looks like a path.
+
 
 <a id="#src_utils.is_label"></a>
 
@@ -36,5 +40,9 @@ Determines whether the provided string is a label.
 | Name  | Description | Default Value |
 | :------------- | :------------- | :------------- |
 | <a id="src_utils.is_label-src"></a>src |  A <code>string</code> value.   |  none |
+
+**RETURNS**
+
+A `bool` specifying whether the `string` value looks like a label.
 
 
