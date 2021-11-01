@@ -4,6 +4,7 @@ load("@cgrindel_rules_bzlformat//bzlformat:bzlformat.bzl", "bzlformat_pkg")
 package(default_visibility = ["//swiftformat:__subpackages__"])
 
 bzlformat_pkg(
+    name = "bzlformat",
     format_visibility = ["//visibility:private"],
     update_visibility = ["//:__subpackages__"],
 )
