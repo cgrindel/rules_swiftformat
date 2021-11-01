@@ -19,6 +19,14 @@ load("@cgrindel_bazel_doc//bazeldoc:deps.bzl", "bazeldoc_dependencies")
 
 bazeldoc_dependencies()
 
+load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
+
+bazel_skylib_workspace()
+
+load("@io_bazel_stardoc//:setup.bzl", "stardoc_repositories")
+
+stardoc_repositories()
+
 load(
     "@cgrindel_rules_spm//spm:deps.bzl",
     "spm_rules_dependencies",
