@@ -36,3 +36,9 @@ def swiftformat_rules_dependencies():
         strip_prefix = "rules_spm-0.6.0",
         urls = ["https://github.com/cgrindel/rules_spm/archive/v0.6.0.tar.gz"],
     )
+
+    maybe(
+        native.local_repository,
+        name = "cgrindel_rules_bzlformat",
+        path = "/Users/chuck/code/cgrindel/rules_bzlformat",
+    )

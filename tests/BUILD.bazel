@@ -1,5 +1,8 @@
-load("@bazel_skylib//rules:build_test.bzl", "build_test")
 load(":src_utils_tests.bzl", "src_utils_test_suite")
+load("@bazel_skylib//rules:build_test.bzl", "build_test")
+load("@cgrindel_rules_bzlformat//bzlformat:bzlformat.bzl", "bzlformat_pkg")
+
+bzlformat_pkg()
 
 build_test(
     name = "public_api",
