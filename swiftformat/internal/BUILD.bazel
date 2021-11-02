@@ -1,6 +1,13 @@
 load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
+load("@cgrindel_rules_bzlformat//bzlformat:bzlformat.bzl", "bzlformat_pkg")
 
 package(default_visibility = ["//swiftformat:__subpackages__"])
+
+bzlformat_pkg(
+    name = "bzlformat",
+    format_visibility = ["//visibility:private"],
+    update_visibility = ["//:__subpackages__"],
+)
 
 bzl_library(
     name = "providers",
