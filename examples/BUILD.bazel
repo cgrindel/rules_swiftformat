@@ -29,6 +29,7 @@ _EXAMPLE_NAMES = [
     "rules_swift_helpers",
 ]
 
+# Integration tests executed against current version of Bazel
 [
     bazel_integration_test(
         name = example + "_test",
@@ -38,6 +39,18 @@ _EXAMPLE_NAMES = [
     )
     for example in _EXAMPLE_NAMES
 ]
+
+# GH030: Finish implementation.
+#
+# # Integration tests executed against current version of Bazel with custom test runner
+# bazel_integration_test(
+#     name = "change_update_all_test",
+#     bazel_version = CURRENT_BAZEL_VERSION,
+#     test_runner_srcs = ["change_update_all_test.sh"],
+#     workspace_files = integration_test_utils.glob_workspace_files("simple") +
+#                       ADDITIONAL_WORKSPACE_FILES,
+#     workspace_path = "simple",
+# )
 
 bazel_integration_tests(
     name = "simple_test",
@@ -52,6 +65,9 @@ test_suite(
     name = "all_integration_tests",
     tags = integration_test_utils.DEFAULT_INTEGRATION_TEST_TAGS,
     tests = [
+        # GH030: Enable this test once it is implemented.
+        # ":change_update_all_test",
+    ] + [
         example + "_test"
         for example in _EXAMPLE_NAMES
     ] + integration_test_utils.bazel_integration_test_names(
