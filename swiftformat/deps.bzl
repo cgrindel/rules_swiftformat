@@ -44,3 +44,10 @@ def swiftformat_rules_dependencies():
         strip_prefix = "rules_bzlformat-0.1.0",
         urls = ["https://github.com/cgrindel/rules_bzlformat/archive/v0.1.0.tar.gz"],
     )
+
+    # TODO: FIXME
+    maybe(
+        native.local_repository,
+        name = "cgrindel_rules_bazel_integration_test",
+        path = "/Users/chuck/code/cgrindel/rules_bazel_integration_test",
+    )

@@ -32,3 +32,9 @@ bzl_library(
         "//swiftformat/internal:swiftformat_test",
     ],
 )
+
+filegroup(
+    name = "all_files",
+    srcs = glob(["*"]),
+    visibility = ["//:__subpackages__"],
+)
