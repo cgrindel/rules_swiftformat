@@ -34,11 +34,10 @@ jobs:
       run: |
         bazelisk build //... 
 
-    - name: Test Simple Example - No Changes
+    - name: Execute Integration Tests
       shell: bash
       run: |
-        cd examples/simple
-        bazelisk test //...
+        bazelisk test //examples:all_integration_tests
 
     - name: Test Simple Example with Poorly Formatted Code Change
       shell: bash
@@ -54,14 +53,3 @@ jobs:
         # Revert the code change
         cp main.swift.orig main.swift
 
-    - name: Test rules_swift Helpers Example
-      shell: bash
-      run: |
-        cd examples/rules_swift_helpers
-        bazelisk test //...
-
-    - name: Test File Exclusion Example
-      shell: bash
-      run: |
-        cd examples/exclude_files
-        bazelisk test //...
