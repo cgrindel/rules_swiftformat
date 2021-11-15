@@ -45,9 +45,10 @@ def swiftformat_rules_dependencies():
         urls = ["https://github.com/cgrindel/rules_bzlformat/archive/v0.1.0.tar.gz"],
     )
 
-    # TODO: FIXME
     maybe(
-        native.local_repository,
+        http_archive,
         name = "cgrindel_rules_bazel_integration_test",
-        path = "/Users/chuck/code/cgrindel/rules_bazel_integration_test",
+        sha256 = "4fa679d98318df3e280e9c8b7f445cd06de7954aa0454702a62ebab8c820ce7e",
+        strip_prefix = "rules_bazel_integration_test-0.1.0",
+        urls = ["https://github.com/cgrindel/rules_bazel_integration_test/archive/v0.1.0.tar.gz"],
     )
