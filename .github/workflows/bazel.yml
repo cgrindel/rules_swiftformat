@@ -37,7 +37,7 @@ jobs:
     - name: Execute Integration Tests
       shell: bash
       run: |
-        bazelisk test //examples:all_integration_tests
+        bazelisk test //:all_integration_tests
 
     - name: Test Simple Example with Poorly Formatted Code Change
       shell: bash
