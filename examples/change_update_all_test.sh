@@ -52,7 +52,7 @@ cd "${scratch_dir}"
 
 # MARK - Test Change, Test, and Update All
 
-# Should fail due to unformatted
+# Should not fail, no changes
 "${bazel}" test //... || fail "Expected test to succeed as nothing has changed yet."
 
 # Modify the file
