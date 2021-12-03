@@ -45,10 +45,26 @@ def swiftformat_rules_dependencies():
         urls = ["https://github.com/cgrindel/rules_bzlformat/archive/v0.1.0.tar.gz"],
     )
 
+    # TODO: FIX ME
+
+    # maybe(
+    #     http_archive,
+    #     name = "cgrindel_rules_bazel_integration_test",
+    #     sha256 = "ef6cf463a269d969bdb3b31eed53c50d3667f02e004abc9ce7a3a2413eadca6a",
+    #     strip_prefix = "rules_bazel_integration_test-0.3.0",
+    #     urls = ["https://github.com/cgrindel/rules_bazel_integration_test/archive/v0.3.0.tar.gz"],
+    # )
+
+    maybe(
+        native.local_repository,
+        name = "cgrindel_rules_bazel_integration_test",
+        path = "/Users/chuck/code/cgrindel/rules_bazel_integration_test",
+    )
+
     maybe(
         http_archive,
-        name = "cgrindel_rules_bazel_integration_test",
-        sha256 = "ef6cf463a269d969bdb3b31eed53c50d3667f02e004abc9ce7a3a2413eadca6a",
-        strip_prefix = "rules_bazel_integration_test-0.3.0",
-        urls = ["https://github.com/cgrindel/rules_bazel_integration_test/archive/v0.3.0.tar.gz"],
+        name = "cgrindel_bazel_shlib",
+        sha256 = "39c250852fb455e5de18f836c0c339075d6e52ea5ec52a76d62ef9e2eed56337",
+        strip_prefix = "bazel_shlib-0.2.1",
+        urls = ["https://github.com/cgrindel/bazel_shlib/archive/v0.2.1.tar.gz"],
     )

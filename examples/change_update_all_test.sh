@@ -1,44 +1,33 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+# --- begin runfiles.bash initialization v2 ---
+# Copy-pasted from the Bazel Bash runfiles library v2.
+set -uo pipefail; f=bazel_tools/tools/bash/runfiles/runfiles.bash
+source "${RUNFILES_DIR:-/dev/null}/$f" 2>/dev/null || \
+  source "$(grep -sm1 "^$f " "${RUNFILES_MANIFEST_FILE:-/dev/null}" | cut -f2- -d' ')" 2>/dev/null || \
+  source "$0.runfiles/$f" 2>/dev/null || \
+  source "$(grep -sm1 "^$f " "$0.runfiles_manifest" | cut -f2- -d' ')" 2>/dev/null || \
+  source "$(grep -sm1 "^$f " "$0.exe.runfiles_manifest" | cut -f2- -d' ')" 2>/dev/null || \
+  { echo>&2 "ERROR: cannot find $f"; exit 1; }; f=; set -e
+# --- end runfiles.bash initialization v2 ---
 
-# Switch the default Xcode to be incompatible, then use DEVELOPER_DIR 
-# attribute on spm_repositories to specify the one that should be used.
+assertions_sh_location=cgrindel_bazel_shlib/lib/assertions.sh
+assertions_sh="$(rlocation "${assertions_sh_location}")" || \
+  (echo >&2 "Failed to locate ${assertions_sh_location}" && exit 1)
+source "${assertions_sh}"
 
-exit_on_error() {
-  local err_msg="${1:-}"
-  [[ -n "${err_msg}" ]] || err_msg="Unspecified error occurred."
-  echo >&2 "${err_msg}"
-  exit 1
-}
+create_scratch_dir_sh_location=cgrindel_rules_bazel_integration_test/tools/create_scratch_dir.sh
+create_scratch_dir_sh="$(rlocation "${create_scratch_dir_sh_location}")" || \
+  (echo >&2 "Failed to locate ${create_scratch_dir_sh_location}" && exit 1)
 
-normalize_path() {
-  local path="${1}"
-  if [[ -d "${path}" ]]; then
-    local dirname="$(dirname "${path}")"
-  else
-    local dirname="$(dirname "${path}")"
-    local basename="$(basename "${path}")"
-  fi
-  dirname="$(cd "${dirname}" > /dev/null && pwd)"
-  if [[ -z "${basename:-}" ]]; then
-    echo "${dirname}"
-  fi
-  echo "${dirname}/${basename}"
-}
 
-starting_dir="$(pwd)"
-bazel_cmds=()
+# MARK - Process Flags
 
 # Process args
 while (("$#")); do
   case "${1}" in
     "--bazel")
-      bazel_rel_path="${2}"
-      shift 2
-      ;;
-    "--bazel_cmd")
-      bazel_cmds+=("${2}")
+      bazel="${2}"
       shift 2
       ;;
     "--workspace")
@@ -51,42 +40,30 @@ while (("$#")); do
   esac
 done
 
-
-[[ -n "${bazel_rel_path:-}" ]] || exit_on_error "Must specify the location of the Bazel binary."
+[[ -n "${bazel:-}" ]] || exit_on_error "Must specify the location of the Bazel binary."
 [[ -n "${workspace_path:-}" ]] || exit_on_error "Must specify the location of the workspace file."
 
-starting_path="$(pwd)"
-starting_path="${starting_path%%*( )}"
-bazel="$(normalize_path "${bazel_rel_path}")"
-
 workspace_dir="$(dirname "${workspace_path}")"
-cd "${workspace_dir}"
 
-# BEGIN Custom test logic 
+# MARK - Create Scratch Directory
 
-modified_file="main.swift"
-backup_file="${modified_file}.orig"
+scratch_dir="$("${create_scratch_dir_sh}" --workspace "${workspace_dir}")"
+cd "${scratch_dir}"
 
-# Rename the file and copy the contents of the symlink to the original filename
-# This should handle if the source if a symlink or the actual file.
-mv "${modified_file}" "${backup_file}"
-cp "${backup_file}" "${modified_file}"
+# MARK - Test Change, Test, and Update All
 
-# Set trap for cleanup
-cleanup() {
-  mv -f "${backup_file}" "${modified_file}"
-  cd "${starting_dir}"
-}
-trap cleanup EXIT
+# Should fail due to unformatted
+"${bazel}" test //... || fail "Expected test to succeed as nothing has changed yet."
 
 # Modify the file
 # The spaces at the front of the statement should be removed by the formatter.
 echo "     let bar = 2" >> main.swift
 
+# Should fail due to unformatted
+"${bazel}" test //... && fail "Expected test to fail due to unformatted files."
+
 # Format the Swift files and copy them back to the workspace
-"${bazel}" run //:update_all
+"${bazel}" run //:update_all || fail "Expected update_all to succeed."
 
 # This should succeed now that the formatted files have been updated
-"${bazel}" test //...
-
-# END Custom test logic 
+"${bazel}" test //... || fail "Expected test to succeed after update_all."
