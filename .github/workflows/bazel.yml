@@ -34,6 +34,11 @@ jobs:
       run: |
         bazelisk build //... 
 
+    - name: Ensure all packages have bzlformat checks
+      shell: bash
+      run: |
+        bazelisk run //:bzlformat_missing_pkgs_test
+
     - name: Execute Integration Tests
       shell: bash
       run: |
