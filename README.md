@@ -34,11 +34,11 @@ swiftformat_rules_dependencies()
 # Configure the dependencies for rules_swiftformat
 
 load(
-    "@cgrindel_rules_updatesrc//updatesrc:deps.bzl",
-    "updatesrc_rules_dependencies",
+    "@cgrindel_bazel_starlib//:deps.bzl",
+    "bazel_starlib_dependencies",
 )
 
-updatesrc_rules_dependencies()
+bazel_starlib_dependencies()
 
 load(
     "@cgrindel_rules_spm//spm:deps.bzl",
@@ -76,7 +76,7 @@ following:
 
 ```python
 load(
-    "@cgrindel_rules_updatesrc//updatesrc:updatesrc.bzl",
+    "@cgrindel_bazel_starlib//updatesrc:defs.bzl",
     "updatesrc_update_all",
 )
 

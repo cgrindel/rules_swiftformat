@@ -1,6 +1,6 @@
 load("@bazel_skylib//lib:paths.bzl", "paths")
 load(
-    "@cgrindel_rules_updatesrc//updatesrc:updatesrc.bzl",
+    "@cgrindel_bazel_starlib//updatesrc:defs.bzl",
     "UpdateSrcsInfo",
     "update_srcs",
 )
