@@ -45,7 +45,7 @@ $ bazel run //path/to/pkg:swiftformat_update
 ```
 
 Since finding and running these commands manually would be tedious, we added a
-`swiftformat_update_all` declaration at the root of the workspace. This will find all of the update
+`updatesrc_update_all` declaration at the root of the workspace. This will find all of the update
 commands and run them.
 
 ```sh
