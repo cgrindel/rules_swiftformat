@@ -93,8 +93,8 @@ The `exports_files` declaration defines a target for your [SwiftFormat configura
 (`.swiftformat`)](https://github.com/nicklockwood/SwiftFormat#config-file). It is referenced by the
 `swiftformat_pkg` that we will add to each of the Bazel packages that contain Swift source files.
 
-The [`swiftformat_update_all`](/doc/rules_and_macros_overview.md#swiftformat_update_all) macro 
-defines a runnable target that copies all of the formatted Swift source files to the workspace
+The [updatesrc_update_all](https://github.com/cgrindel/bazel-starlib/blob/main/doc/updatesrc/rules_and_macros_overview.md#updatesrc_update_all)
+macro defines a runnable target that copies all of the formatted Swift source files to the workspace
 directory.
 
 
