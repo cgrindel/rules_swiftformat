@@ -10,6 +10,11 @@ bzlformat_pkg(
 )
 
 bzl_library(
+    name = "bazel_tools_repo_utils",
+    srcs = ["@bazel_tools//tools/build_defs/repo:utils.bzl"],
+)
+
+bzl_library(
     name = "deps",
     srcs = ["deps.bzl"],
 )
@@ -18,7 +23,8 @@ bzl_library(
     name = "load_package",
     srcs = ["load_package.bzl"],
     deps = [
-        "@cgrindel_rules_spm//spm",
+        ":bazel_tools_repo_utils",
+        "@cgrindel_rules_spm//spm:defs",
     ],
 )
 

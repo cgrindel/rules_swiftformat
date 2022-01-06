@@ -1,5 +1,5 @@
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
-load("@cgrindel_rules_spm//spm:spm.bzl", "spm_pkg", "spm_repositories")
+load("@cgrindel_rules_spm//spm:defs.bzl", "spm_pkg", "spm_repositories")
 
 def swiftformat_load_package(version = None):
     """Loads SwiftFormat using Swift Package Manager via `rules_spm`.
