@@ -39,4 +39,4 @@ swift_rules_extra_dependencies()
 
 load("@cgrindel_rules_swiftformat//swiftformat:load_package.bzl", "swiftformat_load_package")
 
-swiftformat_load_package()
+swiftformat_load_package(version = "0.49.1")
