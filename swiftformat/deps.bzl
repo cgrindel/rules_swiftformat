@@ -13,13 +13,12 @@ def swiftformat_rules_dependencies():
         sha256 = "c6966ec828da198c5d9adbaa94c05e3a1c7f21bd012a0b29ba8ddbccb2c93b0d",
     )
 
-    maybe(
-        http_archive,
+    http_archive(
         name = "cgrindel_bazel_starlib",
-        sha256 = "238c05abf31447b93bd15b616c7413c4c719ee7b5e81c1489ca20f02ce628489",
-        strip_prefix = "bazel-starlib-0.2.0",
+        sha256 = "5b36e7f11bf0c1d52480f1b022430611b402b5424979f280f13c52550de76584",
+        strip_prefix = "bazel-starlib-0.3.0",
         urls = [
-            "http://github.com/cgrindel/bazel-starlib/archive/v0.2.0.tar.gz",
+            "http://github.com/cgrindel/bazel-starlib/archive/v0.3.0.tar.gz",
         ],
     )
 
