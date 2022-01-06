@@ -9,15 +9,6 @@ load(
 
 # MARK: - Documentation Providers
 
-_PROVIDERS_DOC_PROVIDER = doc_providers.create(
-    name = "providers_overview",
-    stardoc_input = "//swiftformat:swiftformat.bzl",
-    symbols = [
-        "SwiftFormatInfo",
-    ],
-    deps = ["//swiftformat"],
-)
-
 _RULES_AND_MACROS_DOC_PROVIDER = doc_providers.create(
     name = "rules_and_macros_overview",
     stardoc_input = "//swiftformat:swiftformat.bzl",
@@ -57,7 +48,6 @@ _API_DOC_PROVIDERS = [
 _ALL_DOC_PROVIDERS = [
     _RULES_AND_MACROS_DOC_PROVIDER,
     _REPOSITORY_RULES_DOC_PROVIDER,
-    _PROVIDERS_DOC_PROVIDER,
     doc_providers.create(
         name = "api",
         is_stardoc = False,
@@ -67,17 +57,6 @@ _ALL_DOC_PROVIDERS = [
 ] + _API_DOC_PROVIDERS
 
 # MARK: - Headers
-
-write_header(
-    name = _PROVIDERS_DOC_PROVIDER.header_label,
-    header_content = [
-        "# Providers",
-        "",
-        "The providers described below are used by [the rules](/doc/rules_and_macros_overview.md) to",
-        "pass along information about the source files and the formatted files.",
-    ],
-    symbols = _PROVIDERS_DOC_PROVIDER.symbols,
-)
 
 write_header(
     name = _RULES_AND_MACROS_DOC_PROVIDER.header_label,

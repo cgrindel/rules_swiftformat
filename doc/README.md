@@ -14,5 +14,4 @@
 
 - [Rules and Macros](/doc/rules_and_macros_overview.md)
 - [Repository Rules and Macros](/doc/repository_rules_overview.md)
-- [Providers](/doc/providers_overview.md)
 - [APIs](/doc/api.md)

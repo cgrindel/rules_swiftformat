@@ -7,10 +7,6 @@ load(
     _swiftformat_format = "swiftformat_format",
 )
 load(
-    "//swiftformat/internal:providers.bzl",
-    _SwiftFormatInfo = "SwiftFormatInfo",
-)
-load(
     "//swiftformat/internal:swiftformat_library.bzl",
     _swiftformat_library = "swiftformat_library",
 )
@@ -35,9 +31,6 @@ swiftformat_test = _swiftformat_test
 
 # Rules
 swiftformat_format = _swiftformat_format
-
-# Providers
-SwiftFormatInfo = _SwiftFormatInfo
 
 # APIs
 src_utils = _src_utils
