@@ -7,8 +7,10 @@ def swiftformat_load_package(version = None):
         "products": ["swiftformat"],
     }
     if version == None:
+        # Load the latest 0.x.x version of SwiftFormat.
         spm_pkg_args["from_version"] = "0.0.0"
     else:
+        # Load the specified version of SwiftFormat
         spm_pkg_args["exact_version"] = version
 
     maybe(

@@ -131,6 +131,23 @@ $ bazel run //:update_all
 $ bazel test //...
 ```
 
+## Specifying the Version of SwiftFormat
+
+By default, `rules_swiftformat` will load the [latest release of
+SwiftFormat](https://github.com/nicklockwood/SwiftFormat/releases). This works well for most cases.
+However, if you would like to specify the SwiftFormat release, you can do so by passing the version
+to the `swiftformat_load_package` function in your `WORKSPACE`.
+
+```python
+load("@cgrindel_rules_swiftformat//swiftformat:load_package.bzl", "swiftformat_load_package")
+
+swiftformat_load_package(version = "0.49.1")
+```
+
+One reason you may want to do so is to ensure that everyone working on your project is using the
+same version of SwiftFormat. Without the version specification, Bazel will cache whichever version
+was the latest when the project was run for the first time or when the cache was cleared.
+
 ## Learn More
 
 - [How It Works](/doc/how_it_works.md)

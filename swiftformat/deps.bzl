@@ -23,12 +23,20 @@ def swiftformat_rules_dependencies():
         ],
     )
 
+    # TODO: FIX ME
+
+    # maybe(
+    #     http_archive,
+    #     name = "cgrindel_rules_spm",
+    #     sha256 = "fab28a41793744f3944ad2606cdd9c0f8e2f4861dd29fb1d61aa4263c7a1400a",
+    #     strip_prefix = "rules_spm-0.6.0",
+    #     urls = ["https://github.com/cgrindel/rules_spm/archive/v0.6.0.tar.gz"],
+    # )
+
     maybe(
-        http_archive,
+        native.local_repository,
         name = "cgrindel_rules_spm",
-        sha256 = "fab28a41793744f3944ad2606cdd9c0f8e2f4861dd29fb1d61aa4263c7a1400a",
-        strip_prefix = "rules_spm-0.6.0",
-        urls = ["https://github.com/cgrindel/rules_spm/archive/v0.6.0.tar.gz"],
+        path = "/Users/chuck/code/cgrindel/rules_spm",
     )
 
     maybe(
