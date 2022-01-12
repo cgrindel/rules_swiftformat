@@ -26,8 +26,8 @@ out [the documentation](/doc/) and [the examples](/examples/) for more informati
 
 Add the following to your `WORKSPACE` file to add this repository and its dependencies.
 
+<!-- BEGIN WORKSPACE SNIPPET -->
 ```python
-
 # Download and configure rules_swiftformat.
 
 http_archive(
@@ -78,6 +78,7 @@ load("@cgrindel_rules_swiftformat//swiftformat:load_package.bzl", "swiftformat_l
 
 swiftformat_load_package()
 ```
+<!-- END WORKSPACE SNIPPET -->
 
 ### 2. Update the `BUILD.bazel` at the root of your workspace
 
