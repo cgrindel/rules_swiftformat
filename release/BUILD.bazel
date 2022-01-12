@@ -1,3 +1,4 @@
+load("@cgrindel_bazel_starlib//bzlformat:defs.bzl", "bzlformat_pkg")
 load(
     "@cgrindel_bazel_starlib//bzlrelease:defs.bzl",
     "create_release",
@@ -27,3 +28,5 @@ create_release(
     name = "create",
     workflow_name = "Create Release",
 )
+
+bzlformat_pkg(name = "bzlformat")
