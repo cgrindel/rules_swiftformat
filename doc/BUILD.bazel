@@ -9,15 +9,6 @@ load(
 
 # MARK: - Documentation Providers
 
-_PROVIDERS_DOC_PROVIDER = doc_providers.create(
-    name = "providers_overview",
-    stardoc_input = "//swiftformat:swiftformat.bzl",
-    symbols = [
-        "SwiftFormatInfo",
-    ],
-    deps = ["//swiftformat"],
-)
-
 _RULES_AND_MACROS_DOC_PROVIDER = doc_providers.create(
     name = "rules_and_macros_overview",
     stardoc_input = "//swiftformat:swiftformat.bzl",
@@ -29,6 +20,15 @@ _RULES_AND_MACROS_DOC_PROVIDER = doc_providers.create(
         "swiftformat_test",
     ],
     deps = ["//swiftformat"],
+)
+
+_REPOSITORY_RULES_DOC_PROVIDER = doc_providers.create(
+    name = "repository_rules_overview",
+    stardoc_input = "//swiftformat:load_package.bzl",
+    symbols = [
+        "swiftformat_load_package",
+    ],
+    deps = ["//swiftformat:load_package"],
 )
 
 _API_SRCS = [
@@ -47,7 +47,7 @@ _API_DOC_PROVIDERS = [
 
 _ALL_DOC_PROVIDERS = [
     _RULES_AND_MACROS_DOC_PROVIDER,
-    _PROVIDERS_DOC_PROVIDER,
+    _REPOSITORY_RULES_DOC_PROVIDER,
     doc_providers.create(
         name = "api",
         is_stardoc = False,
@@ -59,17 +59,6 @@ _ALL_DOC_PROVIDERS = [
 # MARK: - Headers
 
 write_header(
-    name = _PROVIDERS_DOC_PROVIDER.header_label,
-    header_content = [
-        "# Providers",
-        "",
-        "The providers described below are used by [the rules](/doc/rules_and_macros_overview.md) to",
-        "pass along information about the source files and the formatted files.",
-    ],
-    symbols = _PROVIDERS_DOC_PROVIDER.symbols,
-)
-
-write_header(
     name = _RULES_AND_MACROS_DOC_PROVIDER.header_label,
     header_content = [
         "# Rules and Macros",
@@ -78,6 +67,17 @@ write_header(
         "copy Swift source files.",
     ],
     symbols = _RULES_AND_MACROS_DOC_PROVIDER.symbols,
+)
+
+write_header(
+    name = _REPOSITORY_RULES_DOC_PROVIDER.header_label,
+    header_content = [
+        "# Repository Rules and Macros",
+        "",
+        "The rules and macros described below are used to configure and download ",
+        "dependencies for rules_swiftformat.",
+    ],
+    symbols = _REPOSITORY_RULES_DOC_PROVIDER.symbols,
 )
 
 # Write the API headers

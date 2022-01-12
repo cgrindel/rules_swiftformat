@@ -6,6 +6,16 @@ This repository contains Bazel rules and macros that will format Swift source fi
 [nicklockwood/SwiftFormat](https://github.com/nicklockwood/SwiftFormat), test that the formatted
 files exist in the workspace directory, and copy the formatted files to the workspace directory.
 
+## Table of Contents
+
+* [Quickstart](#quickstart)
+  * [1\. Configure your workspace to use rules\_swiftformat](#1-configure-your-workspace-to-use-rules_swiftformat)
+  * [2\. Update the BUILD\.bazel at the root of your workspace](#2-update-the-buildbazel-at-the-root-of-your-workspace)
+  * [3\. Add swiftformat\_pkg to every Bazel package with Swift source files](#3-add-swiftformat_pkg-to-every-bazel-package-with-swift-source-files)
+  * [4\. Format, Update, and Test](#4-format-update-and-test)
+* [Specifying the Version of SwiftFormat](#specifying-the-version-of-swiftformat)
+* [Learn More](#learn-more)
+
 <a id="#quickstart"></a>
 ## Quickstart
 
@@ -130,6 +140,23 @@ $ bazel run //:update_all
 # Execute all of your tests including the formatting checks
 $ bazel test //...
 ```
+
+## Specifying the Version of SwiftFormat
+
+By default, `rules_swiftformat` will load the [latest release of
+SwiftFormat](https://github.com/nicklockwood/SwiftFormat/releases). This works well for most cases.
+However, if you would like to specify the SwiftFormat release, you can do so by passing the version
+to the [`swiftformat_load_package`](/doc/repository_rules_overview.md#swiftformat_load_package) function in your `WORKSPACE`.
+
+```python
+load("@cgrindel_rules_swiftformat//swiftformat:load_package.bzl", "swiftformat_load_package")
+
+swiftformat_load_package(version = "0.49.1")
+```
+
+One reason you may want to do so is to ensure that everyone working on your project is using the
+same version of SwiftFormat. Without the version specification, Bazel will cache whichever version
+was the latest when the project was run for the first time after the cache was cleared.
 
 ## Learn More
 
