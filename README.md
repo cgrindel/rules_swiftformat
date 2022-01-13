@@ -1,6 +1,6 @@
 # SwiftFormat Rules for Bazel
 
-[![Build](https://github.com/cgrindel/rules_swiftformat/actions/workflows/bazel.yml/badge.svg)](https://github.com/cgrindel/rules_swiftformat/actions/workflows/bazel.yml)
+[![Build](https://github.com/cgrindel/rules_swiftformat/actions/workflows/ci.yml/badge.svg)](https://github.com/cgrindel/rules_swiftformat/actions/workflows/ci.yml)
 
 This repository contains Bazel rules and macros that will format Swift source files using
 [nicklockwood/SwiftFormat](https://github.com/nicklockwood/SwiftFormat), test that the formatted
