@@ -13,12 +13,13 @@ def swiftformat_rules_dependencies():
         sha256 = "c6966ec828da198c5d9adbaa94c05e3a1c7f21bd012a0b29ba8ddbccb2c93b0d",
     )
 
-    http_archive(
+    maybe(
+        http_archive,
         name = "cgrindel_bazel_starlib",
-        sha256 = "5b36e7f11bf0c1d52480f1b022430611b402b5424979f280f13c52550de76584",
-        strip_prefix = "bazel-starlib-0.3.0",
+        sha256 = "9e054e423bb7674e02052e52725b41288369dd94efff963479f76fe269b5177f",
+        strip_prefix = "bazel-starlib-0.3.1",
         urls = [
-            "http://github.com/cgrindel/bazel-starlib/archive/v0.3.0.tar.gz",
+            "http://github.com/cgrindel/bazel-starlib/archive/v0.3.1.tar.gz",
         ],
     )
 
@@ -35,7 +36,9 @@ def swiftformat_rules_dependencies():
     maybe(
         http_archive,
         name = "cgrindel_rules_bazel_integration_test",
-        sha256 = "50b808269ee09373c099256103c40629db8a66fd884030d7a36cf9a2e8675b75",
-        strip_prefix = "rules_bazel_integration_test-0.3.1",
-        urls = ["https://github.com/cgrindel/rules_bazel_integration_test/archive/v0.3.1.tar.gz"],
+        sha256 = "39071d2ec8e3be74c8c4a6c395247182b987cdb78d3a3955b39e343ece624982",
+        strip_prefix = "rules_bazel_integration_test-0.5.0",
+        urls = [
+            "http://github.com/cgrindel/rules_bazel_integration_test/archive/v0.5.0.tar.gz",
+        ],
     )
