@@ -35,18 +35,3 @@ jobs:
       shell: bash
       run: |
         bazelisk test //:all_integration_tests
-
-    - name: Test Simple Example with Poorly Formatted Code Change
-      shell: bash
-      run: |
-        cd examples/simple
-        cp main.swift main.swift.orig
-        # The spaces at the front of the statement should be removed by the formatter.
-        echo "     let bar = 2" >> main.swift
-        # Format the Swift files and copy them back to the workspace
-        bazelisk run //:update_all
-        # This should succeed now that the formatted files have been updated
-        bazelisk test //...
-        # Revert the code change
-        cp main.swift.orig main.swift
-
