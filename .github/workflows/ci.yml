@@ -23,7 +23,7 @@ jobs:
       shell: bash
       run: |
         swift --version
-        which swift-autolink-extract
+        which swift-autolink-extract || echo "swift-autolink-extract not found"
         ls -l /usr/local/bin
         which swift
     - uses: actions/checkout@v2
