@@ -23,6 +23,9 @@ jobs:
       shell: bash
       run: |
         swift --version
+        which swift-autolink-extract
+        ls -l /usr/local/bin
+        which swift
     - uses: actions/checkout@v2
     - uses: cgrindel/gha_set_up_bazel@v1
       with:
