@@ -19,12 +19,9 @@ jobs:
     env:
       CC: clang
     steps:
-    - name: Install Swift 5.5
+    - name: Install Swift Ubuntu
       shell: bash
       run: |
-        # DEBUG BEGIN
-        set -x
-        # DEBUG END
         wget https://download.swift.org/swift-5.5.2-release/ubuntu2004/swift-5.5.2-RELEASE/swift-5.5.2-RELEASE-ubuntu20.04.tar.gz
         tar -xvzf swift-5.5.2-RELEASE-ubuntu20.04.tar.gz -C ~
         echo "${HOME}/swift-5.5.2-RELEASE-ubuntu20.04/usr/bin" >> "${GITHUB_PATH}"
@@ -34,11 +31,18 @@ jobs:
         which swift
         swift --version
         which swift-autolink-extract || echo "swift-autolink-extract not found"
-        ls -l /usr/local/bin
     - uses: actions/checkout@v2
     - uses: cgrindel/gha_set_up_bazel@v1
       with:
         repo_name: rules_swiftformat
+
+    # DEBUG BEGIN
+    - name: Test with action_env PATH
+      shell: bash
+      run: |
+        bazel test --action_env=PATH //...
+    # DEBUG END
+
     - uses: ./.github/actions/build_and_test
 
   all_ci_tests:
