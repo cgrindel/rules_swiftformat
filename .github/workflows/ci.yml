@@ -27,7 +27,7 @@ jobs:
         # DEBUG END
         wget https://download.swift.org/swift-5.5.2-release/ubuntu2004/swift-5.5.2-RELEASE/swift-5.5.2-RELEASE-ubuntu20.04.tar.gz
         tar -xvzf swift-5.5.2-RELEASE-ubuntu20.04.tar.gz -C ~
-        echo "PATH=~/swift-5.5.2-RELEASE-ubuntu20.04/usr/bin:$PATH" >> "${GITHUB_PATH}"
+        echo "${HOME}/swift-5.5.2-RELEASE-ubuntu20.04/usr/bin" >> "${GITHUB_PATH}"
     - name: DEBUG
       shell: bash
       run: |
