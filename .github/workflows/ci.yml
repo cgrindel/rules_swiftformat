@@ -19,30 +19,14 @@ jobs:
     env:
       CC: clang
     steps:
-    - name: Install Swift Ubuntu
-      shell: bash
-      run: |
-        wget https://download.swift.org/swift-5.5.2-release/ubuntu2004/swift-5.5.2-RELEASE/swift-5.5.2-RELEASE-ubuntu20.04.tar.gz
-        tar -xvzf swift-5.5.2-RELEASE-ubuntu20.04.tar.gz -C ~
-        echo "${HOME}/swift-5.5.2-RELEASE-ubuntu20.04/usr/bin" >> "${GITHUB_PATH}"
-    - name: DEBUG
-      shell: bash
-      run: |
-        which swift
-        swift --version
-        which swift-autolink-extract || echo "swift-autolink-extract not found"
+    - uses: cgrindel/gha_install_swift_on_ubuntu@v1
+      with:
+        swift_release_tag: "swift-5.5.2-RELEASE"
+        ubuntu_version: "20.04"
     - uses: actions/checkout@v2
     - uses: cgrindel/gha_set_up_bazel@v1
       with:
         repo_name: rules_swiftformat
-
-    # # DEBUG BEGIN
-    # - name: Test with action_env PATH
-    #   shell: bash
-    #   run: |
-    #     bazel test --action_env=PATH //...
-    # # DEBUG END
-
     - name: Update local.bazelrc with Linux Flags
       shell: bash
       run: |
@@ -50,7 +34,6 @@ jobs:
         # Need to expose the PATH so that the Swift toolchain can be found
         build --action_env=PATH
         EOF
-
     - uses: ./.github/actions/build_and_test
 
   all_ci_tests:
