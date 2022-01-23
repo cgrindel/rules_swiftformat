@@ -36,12 +36,20 @@ jobs:
       with:
         repo_name: rules_swiftformat
 
-    # DEBUG BEGIN
-    - name: Test with action_env PATH
+    # # DEBUG BEGIN
+    # - name: Test with action_env PATH
+    #   shell: bash
+    #   run: |
+    #     bazel test --action_env=PATH //...
+    # # DEBUG END
+
+    - name: Update local.bazelrc with Linux Flags
       shell: bash
       run: |
-        bazel test --action_env=PATH //...
-    # DEBUG END
+        cat >> "local.bazelrc" <<EOF
+        # Need to expose the PATH so that the Swift toolchain can be found
+        build --action_env=PATH
+        EOF
 
     - uses: ./.github/actions/build_and_test
 
