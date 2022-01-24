@@ -1,3 +1,5 @@
 # Ignore Bazel symlinks
 bazel-*
 
+# The local.bazelrc is machine-specific.
+local.bazelrc
