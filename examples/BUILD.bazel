@@ -22,13 +22,6 @@ ADDITIONAL_WORKSPACE_FILES = [
     "//:local_repository_files",
 ]
 
-config_setting(
-    name = "linux_os",
-    constraint_values = [
-        "@platforms//os:linux",
-    ],
-)
-
 # MARK: - Integration Tests
 
 _EXAMPLE_NAMES = [
@@ -39,12 +32,6 @@ _EXAMPLE_NAMES = [
 
 default_test_runner(
     name = "default_test_runner",
-    # bazel_flags = select({
-    #     ":linux_os": [
-    #         "--action_env=PATH",
-    #     ],
-    #     "//conditions:default": [],
-    # }),
 )
 
 # Integration tests executed against current version of Bazel
