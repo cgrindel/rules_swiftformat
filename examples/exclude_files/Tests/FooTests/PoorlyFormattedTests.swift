@@ -9,4 +9,7 @@ import XCTest
             pfmt.name = value
             XCTAssertEqual(pfmt.name, value)
         }
+      static var allTests = [
+        ("test_init", test_init),
+      ]
     }

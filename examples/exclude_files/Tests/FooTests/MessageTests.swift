@@ -7,4 +7,8 @@ class MessageTests: XCTestCase {
     let msg = Message(value: value)
     XCTAssertEqual(msg.value, value)
   }
+
+  static var allTests = [
+    ("test_init", test_init),
+  ]
 }
