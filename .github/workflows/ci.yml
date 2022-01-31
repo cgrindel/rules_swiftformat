@@ -3,6 +3,9 @@ name: CI for PR Merge
 on:
   pull_request:
     branches: [ main ]
+  schedule:
+    # Every day at 11:16 UTC.
+    - cron: '16 11 * * *'
 
 jobs:
   macos_build:
