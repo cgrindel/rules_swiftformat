@@ -29,8 +29,8 @@ bzl_library(
 )
 
 bzl_library(
-    name = "swiftformat",
-    srcs = ["swiftformat.bzl"],
+    name = "defs",
+    srcs = ["defs.bzl"],
     deps = [
         "//swiftformat/internal:src_utils",
         "//swiftformat/internal:swiftformat_binary",
@@ -38,6 +38,14 @@ bzl_library(
         "//swiftformat/internal:swiftformat_library",
         "//swiftformat/internal:swiftformat_pkg",
         "//swiftformat/internal:swiftformat_test",
+    ],
+)
+
+bzl_library(
+    name = "swiftformat",
+    srcs = ["swiftformat.bzl"],
+    deps = [
+        ":defs",
     ],
 )
 
