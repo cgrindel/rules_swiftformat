@@ -1,5 +1,5 @@
 load(
-    "@cgrindel_rules_swiftformat//swiftformat:swiftformat.bzl",
+    "@cgrindel_rules_swiftformat//swiftformat:defs.bzl",
     "swiftformat_binary",
 )
 
