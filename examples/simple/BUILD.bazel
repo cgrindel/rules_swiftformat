@@ -1,6 +1,6 @@
 load("@build_bazel_rules_swift//swift:swift.bzl", "swift_binary")
 load(
-    "@cgrindel_rules_swiftformat//swiftformat:swiftformat.bzl",
+    "@cgrindel_rules_swiftformat//swiftformat:defs.bzl",
     "swiftformat_pkg",
 )
 load(

@@ -118,7 +118,7 @@ In every Bazel package that contains Swift source files, add a
 
 ```python
 load(
-    "@cgrindel_rules_swiftformat//swiftformat:swiftformat.bzl",
+    "@cgrindel_rules_swiftformat//swiftformat:defs.bzl",
     "swiftformat_pkg",
 )
 

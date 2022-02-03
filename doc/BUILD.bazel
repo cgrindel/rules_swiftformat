@@ -11,7 +11,7 @@ load(
 
 _RULES_AND_MACROS_DOC_PROVIDER = doc_providers.create(
     name = "rules_and_macros_overview",
-    stardoc_input = "//swiftformat:swiftformat.bzl",
+    stardoc_input = "//swiftformat:defs.bzl",
     symbols = [
         "swiftformat_binary",
         "swiftformat_format",
@@ -38,7 +38,7 @@ _API_SRCS = [
 _API_DOC_PROVIDERS = [
     doc_providers.create(
         name = name,
-        stardoc_input = "//swiftformat:swiftformat.bzl",
+        stardoc_input = "//swiftformat:defs.bzl",
         symbols = [name],
         deps = ["//swiftformat"],
     )
@@ -51,7 +51,7 @@ _ALL_DOC_PROVIDERS = [
     doc_providers.create(
         name = "api",
         is_stardoc = False,
-        stardoc_input = "//swiftformat:swiftformat.bzl",
+        stardoc_input = "//swiftformat:defs.bzl",
         deps = ["//swiftformat"],
     ),
 ] + _API_DOC_PROVIDERS
