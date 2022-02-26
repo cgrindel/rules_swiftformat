@@ -1,6 +1,6 @@
-load(":src_utils_tests.bzl", "src_utils_test_suite")
 load("@bazel_skylib//rules:build_test.bzl", "build_test")
 load("@cgrindel_bazel_starlib//bzlformat:defs.bzl", "bzlformat_pkg")
+load(":src_utils_tests.bzl", "src_utils_test_suite")
 
 bzlformat_pkg(name = "bzlformat")
 

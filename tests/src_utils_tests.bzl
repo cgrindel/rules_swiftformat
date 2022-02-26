@@ -1,5 +1,7 @@
+"""Tests for src_utils module."""
+
 load("@bazel_skylib//lib:unittest.bzl", "asserts", "unittest")
-load("//swiftformat/internal:src_utils.bzl", "src_utils")
+load("//swiftformat:defs.bzl", "src_utils")
 
 def _is_label_test(ctx):
     env = unittest.begin(ctx)

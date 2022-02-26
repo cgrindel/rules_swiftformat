@@ -1,11 +1,12 @@
-load(":src_utils.bzl", "src_utils")
-load(":swiftformat_format.bzl", "swiftformat_format")
+"""\
+A macro which defines targets that format Swift source files, test that \
+they are formatted and copies them to the workspace directory.\
+"""
+
 load("@bazel_skylib//rules:diff_test.bzl", "diff_test")
 load("@cgrindel_bazel_starlib//updatesrc:defs.bzl", "updatesrc_update")
-
-"""A macro which defines targets that format Swift source files, test that 
-they are formatted and copies them to the workspace directory.
-"""
+load(":src_utils.bzl", "src_utils")
+load(":swiftformat_format.bzl", "swiftformat_format")
 
 def swiftformat_pkg(name, srcs = None, config = None):
     """Defines targets that will format, test and update the specified Swift sources.
@@ -16,9 +17,6 @@ def swiftformat_pkg(name, srcs = None, config = None):
         name: The base name for the targets that will be defined.
         srcs: Optional. The Swift source files that should be formatted.
         config: Optional. The swiftformat YAML configuration file.
-
-    Returns:
-        None.
     """
     if srcs == None:
         srcs = native.glob(["*.swift"])

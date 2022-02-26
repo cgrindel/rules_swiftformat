@@ -1,12 +1,10 @@
-load("@bazel_skylib//lib:paths.bzl", "paths")
+"""A build rule that formats Swift source files. """
+
 load(
     "@cgrindel_bazel_starlib//updatesrc:defs.bzl",
     "UpdateSrcsInfo",
     "update_srcs",
 )
-
-"""A build rule that formats Swift source files.
-"""
 
 def _swiftformat_format_impl(ctx):
     updsrcs = []
@@ -48,6 +46,15 @@ def _swiftformat_format_impl(ctx):
 swiftformat_format = rule(
     implementation = _swiftformat_format_impl,
     attrs = {
+        "config": attr.label(
+            allow_single_file = True,
+            doc = "A swiftformat config file.",
+            default = "@//:.swiftformat",
+        ),
+        "output_suffix": attr.string(
+            default = "_formatted",
+            doc = "The suffix to add to the output filename.",
+        ),
         "srcs": attr.label_list(
             allow_files = True,
             mandatory = True,
@@ -58,15 +65,6 @@ swiftformat_format = rule(
 The Swift version to be used by `swiftformat`. You probably want to add this \
 to your config file instead of adding it here.\
 """,
-        ),
-        "config": attr.label(
-            allow_single_file = True,
-            doc = "A swiftformat config file.",
-            default = "@//:.swiftformat",
-        ),
-        "output_suffix": attr.string(
-            default = "_formatted",
-            doc = "The suffix to add to the output filename.",
         ),
         "_swiftformat": attr.label(
             default = "@swiftformat_repos//SwiftFormat:swiftformat",

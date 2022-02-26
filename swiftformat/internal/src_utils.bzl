@@ -1,3 +1,5 @@
+"""Definition for src_utils module."""
+
 def _is_label(src):
     """Determines whether the provided string is a label.
 

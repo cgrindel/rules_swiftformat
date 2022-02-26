@@ -39,19 +39,13 @@ swift_rules_extra_dependencies()
 
 # MARK: - Buildifier
 
-load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
+load("@buildifier_prebuilt//:deps.bzl", "buildifier_prebuilt_deps")
 
-go_rules_dependencies()
+buildifier_prebuilt_deps()
 
-go_register_toolchains(version = "1.17.2")
+load("@buildifier_prebuilt//:defs.bzl", "buildifier_prebuilt_register_toolchains")
 
-load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
-
-gazelle_dependencies()
-
-load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
-
-protobuf_deps()
+buildifier_prebuilt_register_toolchains()
 
 # MARK: - Integration Testing
 
@@ -59,8 +53,8 @@ load("@cgrindel_rules_bazel_integration_test//bazel_integration_test:deps.bzl", 
 
 bazel_integration_test_rules_dependencies()
 
-load("//:bazel_versions.bzl", "SUPPORTED_BAZEL_VERSIONS")
 load("@cgrindel_rules_bazel_integration_test//bazel_integration_test:defs.bzl", "bazel_binaries")
+load("//:bazel_versions.bzl", "SUPPORTED_BAZEL_VERSIONS")
 
 bazel_binaries(versions = SUPPORTED_BAZEL_VERSIONS)
 
