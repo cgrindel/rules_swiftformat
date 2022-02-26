@@ -1,3 +1,5 @@
+"""Definition for swiftformat_load_package function."""
+
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 load("@cgrindel_rules_spm//spm:defs.bzl", "spm_pkg", "spm_repositories")
 
@@ -11,8 +13,8 @@ def swiftformat_load_package(version = None):
         version: Optional. A valid semver `string` for SwiftFormat.
     """
     spm_pkg_args = {
-        "url": "https://github.com/nicklockwood/SwiftFormat.git",
         "products": ["swiftformat"],
+        "url": "https://github.com/nicklockwood/SwiftFormat.git",
     }
     if version == None:
         # Load the latest 0.x.x version of SwiftFormat.

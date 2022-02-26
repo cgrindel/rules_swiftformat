@@ -1,3 +1,5 @@
+"""Definition for swiftformat_binary macro."""
+
 load("@build_bazel_rules_swift//swift:swift.bzl", "swift_binary")
 load(":swiftformat_pkg.bzl", "swiftformat_pkg")
 

@@ -1,6 +1,12 @@
+"""Public API for rules_swiftformat."""
+
 load(
-    "//swiftformat/internal:swiftformat_pkg.bzl",
-    _swiftformat_pkg = "swiftformat_pkg",
+    "//swiftformat/internal:src_utils.bzl",
+    _src_utils = "src_utils",
+)
+load(
+    "//swiftformat/internal:swiftformat_binary.bzl",
+    _swiftformat_binary = "swiftformat_binary",
 )
 load(
     "//swiftformat/internal:swiftformat_format.bzl",
@@ -11,16 +17,12 @@ load(
     _swiftformat_library = "swiftformat_library",
 )
 load(
-    "//swiftformat/internal:swiftformat_binary.bzl",
-    _swiftformat_binary = "swiftformat_binary",
+    "//swiftformat/internal:swiftformat_pkg.bzl",
+    _swiftformat_pkg = "swiftformat_pkg",
 )
 load(
     "//swiftformat/internal:swiftformat_test.bzl",
     _swiftformat_test = "swiftformat_test",
-)
-load(
-    "//swiftformat/internal:src_utils.bzl",
-    _src_utils = "src_utils",
 )
 
 # Macros

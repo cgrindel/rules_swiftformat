@@ -109,10 +109,6 @@ NOTE: Any labels detected in the `srcs` will be ignored.
 | <a id="swiftformat_pkg-srcs"></a>srcs |  Optional. The Swift source files that should be formatted.   |  <code>None</code> |
 | <a id="swiftformat_pkg-config"></a>config |  Optional. The swiftformat YAML configuration file.   |  <code>None</code> |
 
-**RETURNS**
-
-None.
-
 
 <a id="#swiftformat_test"></a>
 
