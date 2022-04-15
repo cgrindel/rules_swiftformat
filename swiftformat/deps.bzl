@@ -34,13 +34,3 @@ def swiftformat_rules_dependencies():
             "http://github.com/cgrindel/rules_spm/archive/v0.7.0.tar.gz",
         ],
     )
-
-    maybe(
-        http_archive,
-        name = "cgrindel_rules_bazel_integration_test",
-        sha256 = "39071d2ec8e3be74c8c4a6c395247182b987cdb78d3a3955b39e343ece624982",
-        strip_prefix = "rules_bazel_integration_test-0.5.0",
-        urls = [
-            "http://github.com/cgrindel/rules_bazel_integration_test/archive/v0.5.0.tar.gz",
-        ],
-    )
