@@ -32,10 +32,10 @@ Add the following to your `WORKSPACE` file to add this repository and its depend
 
 http_archive(
     name = "cgrindel_rules_swiftformat",
-    sha256 = "d54f3ef6c027e49f45c49e8c287cecfb8b7dd87309a17ad6ec9684f09970436a",
-    strip_prefix = "rules_swiftformat-0.4.0",
+    sha256 = "f496774f56e8260e277dc17366cf670b55dee3616327a13d2d04bd1b62cdcc88",
+    strip_prefix = "rules_swiftformat-0.4.1",
     urls = [
-        "http://github.com/cgrindel/rules_swiftformat/archive/v0.4.0.tar.gz",
+        "http://github.com/cgrindel/rules_swiftformat/archive/v0.4.1.tar.gz",
     ],
 )
 
