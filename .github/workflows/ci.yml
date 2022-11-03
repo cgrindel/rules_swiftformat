@@ -11,7 +11,7 @@ jobs:
   macos_build:
     runs-on: macos-11.0
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - uses: cgrindel/gha_set_up_bazel@v1
       with:
         repo_name: rules_swiftformat
@@ -26,7 +26,7 @@ jobs:
       with:
         swift_release_tag: "swift-5.5.2-RELEASE"
         ubuntu_version: "20.04"
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - uses: cgrindel/gha_set_up_bazel@v1
       with:
         repo_name: rules_swiftformat
