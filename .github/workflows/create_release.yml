@@ -36,7 +36,6 @@ jobs:
     - uses: cgrindel/gha_configure_git_user@v1
 
     # Create the release
-    # TOUCH
     - uses: cgrindel/gha_create_release@v1
       with:
         release_tag: ${{  github.event.inputs.release_tag }}
