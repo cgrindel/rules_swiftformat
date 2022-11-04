@@ -15,13 +15,6 @@ jobs:
     - uses: cgrindel/gha_set_up_bazel@v1
       with:
         repo_name: rules_swiftformat
-    - name: DEBUG
-      shell: bash
-      run: |
-        echo "Bazel Repo"
-        ls -la ~/.cache/bazel_repo
-        echo "Bazel Disk"
-        ls -la ~/.cache/bazel_disk
     - uses: ./.github/actions/build_and_test
 
   ubuntu_build:
@@ -31,19 +24,12 @@ jobs:
     steps:
     - uses: cgrindel/gha_install_swift_on_ubuntu@v1
       with:
-        swift_release_tag: "swift-5.5.2-RELEASE"
+        swift_release_tag: "swift-5.7.1-RELEASE"
         ubuntu_version: "20.04"
     - uses: actions/checkout@v3
     - uses: cgrindel/gha_set_up_bazel@v1
       with:
         repo_name: rules_swiftformat
-    - name: DEBUG
-      shell: bash
-      run: |
-        echo "Bazel Repo"
-        ls -la ~/.cache/bazel_repo
-        echo "Bazel Disk"
-        ls -la ~/.cache/bazel_disk
     - name: Update local.bazelrc with Linux Flags
       shell: bash
       run: |
