@@ -28,9 +28,9 @@ def swiftformat_rules_dependencies():
     maybe(
         http_archive,
         name = "cgrindel_rules_spm",
-        sha256 = "cbe5d5dccdc8d5aa300e1538c4214f44a1266895d9817e8279a9335bcbee2f1e",
-        strip_prefix = "rules_spm-0.7.0",
+        sha256 = "03718eb865a100ba4449ebcbca6d97bf6ea78fa17346ce6d55532312e8bf9aa8",
+        strip_prefix = "rules_spm-0.11.0",
         urls = [
-            "http://github.com/cgrindel/rules_spm/archive/v0.7.0.tar.gz",
+            "http://github.com/cgrindel/rules_spm/archive/v0.11.0.tar.gz",
         ],
     )
