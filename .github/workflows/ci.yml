@@ -22,7 +22,7 @@ jobs:
         ls -la ~/.cache/bazel_repo
         echo "Bazel Disk"
         ls -la ~/.cache/bazel_disk
-    # - uses: ./.github/actions/build_and_test
+    - uses: ./.github/actions/build_and_test
 
   ubuntu_build:
     runs-on: ubuntu-20.04
@@ -37,6 +37,13 @@ jobs:
     - uses: cgrindel/gha_set_up_bazel@v1
       with:
         repo_name: rules_swiftformat
+    - name: DEBUG
+      shell: bash
+      run: |
+        echo "Bazel Repo"
+        ls -la ~/.cache/bazel_repo
+        echo "Bazel Disk"
+        ls -la ~/.cache/bazel_disk
     - name: Update local.bazelrc with Linux Flags
       shell: bash
       run: |
