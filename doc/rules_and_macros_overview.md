@@ -13,7 +13,7 @@ On this page:
   * [swiftformat_test](#swiftformat_test)
 
 
-<a id="#swiftformat_format"></a>
+<a id="swiftformat_format"></a>
 
 ## swiftformat_format
 
@@ -28,14 +28,14 @@ Formats the Swift source files using `nicklockwood/SwiftFormat`.
 
 | Name  | Description | Type | Mandatory | Default |
 | :------------- | :------------- | :------------- | :------------- | :------------- |
-| <a id="swiftformat_format-name"></a>name |  A unique name for this target.   | <a href="https://bazel.build/docs/build-ref.html#name">Name</a> | required |  |
-| <a id="swiftformat_format-config"></a>config |  A swiftformat config file.   | <a href="https://bazel.build/docs/build-ref.html#labels">Label</a> | optional | @//:.swiftformat |
-| <a id="swiftformat_format-output_suffix"></a>output_suffix |  The suffix to add to the output filename.   | String | optional | "_formatted" |
-| <a id="swiftformat_format-srcs"></a>srcs |  The Swift source files to format.   | <a href="https://bazel.build/docs/build-ref.html#labels">List of labels</a> | required |  |
-| <a id="swiftformat_format-swift_version"></a>swift_version |  The Swift version to be used by <code>swiftformat</code>. You probably want to add this to your config file instead of adding it here.   | String | optional | "" |
+| <a id="swiftformat_format-name"></a>name |  A unique name for this target.   | <a href="https://bazel.build/concepts/labels#target-names">Name</a> | required |  |
+| <a id="swiftformat_format-config"></a>config |  A swiftformat config file.   | <a href="https://bazel.build/concepts/labels">Label</a> | optional | <code>@//:.swiftformat</code> |
+| <a id="swiftformat_format-output_suffix"></a>output_suffix |  The suffix to add to the output filename.   | String | optional | <code>"_formatted"</code> |
+| <a id="swiftformat_format-srcs"></a>srcs |  The Swift source files to format.   | <a href="https://bazel.build/concepts/labels">List of labels</a> | required |  |
+| <a id="swiftformat_format-swift_version"></a>swift_version |  The Swift version to be used by <code>swiftformat</code>. You probably want to add this to your config file instead of adding it here.   | String | optional | <code>""</code> |
 
 
-<a id="#swiftformat_binary"></a>
+<a id="swiftformat_binary"></a>
 
 ## swiftformat_binary
 
@@ -61,7 +61,7 @@ Defines a `swift_binary` along with a `swiftformat_pkg`.
 None.
 
 
-<a id="#swiftformat_library"></a>
+<a id="swiftformat_library"></a>
 
 ## swiftformat_library
 
@@ -87,7 +87,7 @@ Defines a `swift_library` along with a `swiftformat_pkg`.
 None.
 
 
-<a id="#swiftformat_pkg"></a>
+<a id="swiftformat_pkg"></a>
 
 ## swiftformat_pkg
 
@@ -110,7 +110,7 @@ NOTE: Any labels detected in the `srcs` will be ignored.
 | <a id="swiftformat_pkg-config"></a>config |  Optional. The swiftformat YAML configuration file.   |  <code>None</code> |
 
 
-<a id="#swiftformat_test"></a>
+<a id="swiftformat_test"></a>
 
 ## swiftformat_test
 
