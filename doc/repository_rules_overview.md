@@ -9,7 +9,7 @@ On this page:
   * [swiftformat_load_package](#swiftformat_load_package)
 
 
-<a id="#swiftformat_load_package"></a>
+<a id="swiftformat_load_package"></a>
 
 ## swiftformat_load_package
 
