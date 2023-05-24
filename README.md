@@ -52,12 +52,9 @@ load(
 
 bazel_starlib_dependencies()
 
-load(
-    "@cgrindel_rules_spm//spm:deps.bzl",
-    "spm_rules_dependencies",
-)
+load("@rules_swift_package_manager//:deps.bzl", "swift_bazel_dependencies")
 
-spm_rules_dependencies()
+swift_bazel_dependencies()
 
 load(
     "@build_bazel_rules_swift//swift:repositories.bzl",
@@ -73,8 +70,8 @@ load(
 
 swift_rules_extra_dependencies()
 
-# We are using rules_spm to download and build SwiftFormat. The following will configure
-# rules_spm to do that.
+# We are using rules_swift_package_manager to download and build SwiftFormat. The following will 
+# configure rules_swift_package_manager to do that.
 
 load("@cgrindel_rules_swiftformat//swiftformat:load_package.bzl", "swiftformat_load_package")
 

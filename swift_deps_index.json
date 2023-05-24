@@ -1,0 +1,77 @@
+{
+  "direct_dep_identities": [
+    "swiftformat"
+  ],
+  "modules": [
+    {
+      "name": "CommandLineTool",
+      "c99name": "CommandLineTool",
+      "src_type": "swift",
+      "label": "@swiftpkg_swiftformat//:CommandLineTool",
+      "package_identity": "swiftformat",
+      "product_memberships": [
+        "swiftformat",
+        "SwiftFormatPlugin"
+      ]
+    },
+    {
+      "name": "SwiftFormatPlugin",
+      "c99name": "SwiftFormatPlugin",
+      "src_type": "unknown",
+      "label": "@swiftpkg_swiftformat//:Plugins_SwiftFormatPlugin",
+      "package_identity": "swiftformat",
+      "product_memberships": [
+        "SwiftFormatPlugin"
+      ]
+    },
+    {
+      "name": "SwiftFormat",
+      "c99name": "SwiftFormat",
+      "src_type": "swift",
+      "label": "@swiftpkg_swiftformat//:Sources_SwiftFormat",
+      "package_identity": "swiftformat",
+      "product_memberships": [
+        "swiftformat",
+        "SwiftFormat",
+        "SwiftFormatPlugin"
+      ]
+    }
+  ],
+  "products": [
+    {
+      "identity": "swiftformat",
+      "name": "SwiftFormat",
+      "type": "library",
+      "target_labels": [
+        "@swiftpkg_swiftformat//:Sources_SwiftFormat"
+      ]
+    },
+    {
+      "identity": "swiftformat",
+      "name": "SwiftFormatPlugin",
+      "type": "plugin",
+      "target_labels": [
+        "@swiftpkg_swiftformat//:Plugins_SwiftFormatPlugin"
+      ]
+    },
+    {
+      "identity": "swiftformat",
+      "name": "swiftformat",
+      "type": "executable",
+      "target_labels": [
+        "@swiftpkg_swiftformat//:CommandLineTool"
+      ]
+    }
+  ],
+  "packages": [
+    {
+      "name": "swiftpkg_swiftformat",
+      "identity": "swiftformat",
+      "remote": {
+        "commit": "f9dc4ddc78ef09d58abb0f5aa8fb855282f4dfaa",
+        "remote": "https://github.com/nicklockwood/SwiftFormat",
+        "version": "0.51.10"
+      }
+    }
+  ]
+}
