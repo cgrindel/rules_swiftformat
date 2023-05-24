@@ -86,10 +86,6 @@ bazel_binaries(versions = [
 
 # Load the SwiftFormat package
 
-load("//swiftformat:load_package.bzl", "swiftformat_load_package")
-
-swiftformat_load_package()
-
 load("//:swift_deps.bzl", "swift_dependencies")
 
 # gazelle:repository_macro swift_deps.bzl%swift_dependencies

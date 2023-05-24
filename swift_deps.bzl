@@ -1,8 +1,11 @@
-load("@rules_swift_package_manager//swiftpkg:defs.bzl", "swift_package")
-
 """Swift Dependencies"""
 
+load("@rules_swift_package_manager//swiftpkg:defs.bzl", "swift_package")
+
 def swift_dependencies():
+    """Loads the Swift dependencies for rules_swift_package_manager.
+    """
+
     # version: 0.51.10
     swift_package(
         name = "swiftpkg_swiftformat",

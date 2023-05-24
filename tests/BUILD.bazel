@@ -8,7 +8,6 @@ build_test(
     name = "public_api",
     targets = [
         "//swiftformat:deps",
-        "//swiftformat:load_package",
         "//swiftformat:swiftformat",
     ],
 )
