@@ -1,0 +1,19 @@
+load("@cgrindel_bazel_starlib//bzlformat:defs.bzl", "bzlformat_pkg")
+load(":toolchain.bzl", "swiftformat_toolchain")
+
+bzlformat_pkg(name = "bzlformat")
+
+# Toolchain
+
+toolchain_type(name = "toolchain_type")
+
+swiftformat_toolchain(
+    name = "spm",
+    tool_executable = "@swiftpkg_swiftformat//:swiftformat",
+)
+
+toolchain(
+    name = "spm_toolchain",
+    toolchain = ":spm",
+    toolchain_type = ":toolchain_type",
+)
