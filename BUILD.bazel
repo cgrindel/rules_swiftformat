@@ -71,6 +71,11 @@ gazelle(
     gazelle = ":gazelle_bin",
 )
 
+exports_files([
+    "swift_deps.bzl",
+    # "swift_deps_index.json",
+])
+
 # MARK: - Related to Integration Tests
 
 # Provides the *.bazlerc files for the example workspace integration tests.

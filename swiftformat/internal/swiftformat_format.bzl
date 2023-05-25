@@ -21,7 +21,8 @@ def _swiftformat_format_impl(ctx):
         if ctx.attr.swift_version != "":
             args.add_all(["--swiftversion", ctx.attr.swift_version])
 
-        swiftformat_info = ctx.toolchains["//swiftformat_tools:toolchain"]
+        toolchain_info = ctx.toolchains["//swiftformat_tools:toolchain_type"]
+        swiftformat_info = toolchain_info.swiftformat_info
         args.add_all([
             "--quiet",
             "--symlinks",
