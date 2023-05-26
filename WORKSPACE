@@ -1,8 +1,10 @@
 workspace(name = "cgrindel_rules_swiftformat")
 
-load("//swiftformat:deps.bzl", "swiftformat_rules_dependencies")
+load("//swiftformat:deps.bzl", "swiftformat_register_toolchains", "swiftformat_rules_dependencies")
 
 swiftformat_rules_dependencies()
+
+swiftformat_register_toolchains(version = "0.51.10")
 
 load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
 
@@ -86,7 +88,7 @@ bazel_binaries(versions = [
 
 # Load the SwiftFormat package
 
-load("//:swift_deps.bzl", "swift_dependencies")
+# load("//:swift_deps.bzl", "swift_dependencies")
 
-# gazelle:repository_macro swift_deps.bzl%swift_dependencies
-swift_dependencies()
+# # gazelle:repository_macro swift_deps.bzl%swift_dependencies
+# swift_dependencies()

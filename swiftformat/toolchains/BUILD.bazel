@@ -1,0 +1,26 @@
+load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
+load("@cgrindel_bazel_starlib//bzlformat:defs.bzl", "bzlformat_pkg")
+load(":toolchain.bzl", "declare_swiftformat_toolchains")
+
+bzlformat_pkg(name = "bzlformat")
+
+bzl_library(
+    name = "assets",
+    srcs = ["assets.bzl"],
+    visibility = ["//swiftformat:__subpackages__"],
+)
+
+# Toolchain
+
+# swiftformat_toolchain(
+#     name = "spm",
+#     tool = "@swiftpkg_swiftformat//:swiftformat",
+# )
+#
+# toolchain(
+#     name = "spm_toolchain",
+#     toolchain = ":spm",
+#     toolchain_type = ":toolchain_type",
+# )
+
+declare_swiftformat_toolchains()

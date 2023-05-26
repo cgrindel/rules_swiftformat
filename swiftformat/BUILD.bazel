@@ -45,3 +45,5 @@ filegroup(
     srcs = glob(["*"]),
     visibility = ["//:__subpackages__"],
 )
+
+toolchain_type(name = "toolchain")
