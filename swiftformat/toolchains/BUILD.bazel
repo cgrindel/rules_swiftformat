@@ -4,12 +4,6 @@ load(":toolchain.bzl", "declare_swiftformat_toolchains")
 
 bzlformat_pkg(name = "bzlformat")
 
-bzl_library(
-    name = "assets",
-    srcs = ["assets.bzl"],
-    visibility = ["//swiftformat:__subpackages__"],
-)
-
 # Toolchain
 
 # swiftformat_toolchain(
@@ -24,3 +18,17 @@ bzl_library(
 # )
 
 declare_swiftformat_toolchains()
+
+bzl_library(
+    name = "assets",
+    srcs = ["assets.bzl"],
+    visibility = ["//visibility:public"],
+    deps = ["@bazel_tools//tools/build_defs/repo:http.bzl"],
+)
+
+bzl_library(
+    name = "toolchain",
+    srcs = ["toolchain.bzl"],
+    visibility = ["//visibility:public"],
+    deps = [":assets"],
+)

@@ -32,15 +32,6 @@ def swiftformat_rules_dependencies():
 
     maybe(
         http_archive,
-        name = "rules_swift_package_manager",
-        sha256 = "54f358ac1ed2bcf65404bc26c9d1298486ea88bfc230f452531e7ac26bcfca8b",
-        urls = [
-            "https://github.com/cgrindel/rules_swift_package_manager/releases/download/v0.4.3/rules_swift_package_manager.v0.4.3.tar.gz",
-        ],
-    )
-
-    maybe(
-        http_archive,
         name = "build_bazel_rules_swift",
         sha256 = "b98bd1ec03c713e2ff5c3aa8c05930d8b6ab85cc82b3ae5d869058da4731f230",
         url = "https://github.com/bazelbuild/rules_swift/releases/download/1.8.0/rules_swift.1.8.0.tar.gz",

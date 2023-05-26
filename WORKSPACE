@@ -1,6 +1,10 @@
 workspace(name = "cgrindel_rules_swiftformat")
 
-load("//swiftformat:deps.bzl", "swiftformat_register_toolchains", "swiftformat_rules_dependencies")
+load(
+    "//swiftformat:deps.bzl",
+    "swiftformat_register_toolchains",
+    "swiftformat_rules_dependencies",
+)
 
 swiftformat_rules_dependencies()
 
@@ -18,10 +22,6 @@ load("@io_bazel_stardoc//:setup.bzl", "stardoc_repositories")
 
 stardoc_repositories()
 
-load("@rules_swift_package_manager//:deps.bzl", "swift_bazel_dependencies")
-
-swift_bazel_dependencies()
-
 load(
     "@build_bazel_rules_swift//swift:repositories.bzl",
     "swift_rules_dependencies",
@@ -36,16 +36,29 @@ load(
 
 swift_rules_extra_dependencies()
 
+# MARK: - Skylib Gazelle Plugin
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+http_archive(
+    name = "bazel_skylib_gazelle_plugin",
+    sha256 = "0a466b61f331585f06ecdbbf2480b9edf70e067a53f261e0596acd573a7d2dc3",
+    urls = [
+        "https://mirror.bazel.build/github.com/bazelbuild/bazel-skylib/releases/download/1.4.1/bazel-skylib-gazelle-plugin-1.4.1.tar.gz",
+        "https://github.com/bazelbuild/bazel-skylib/releases/download/1.4.1/bazel-skylib-gazelle-plugin-1.4.1.tar.gz",
+    ],
+)
+
+load("@bazel_skylib_gazelle_plugin//:workspace.bzl", "bazel_skylib_gazelle_plugin_workspace")
+
+bazel_skylib_gazelle_plugin_workspace()
+
 # MARK: - Gazelle
 
 # gazelle:repo bazel_gazelle
 
 load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
 load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
-load("@rules_swift_package_manager//:go_deps.bzl", "swift_bazel_go_dependencies")
-
-# Declare Go dependencies before calling go_rules_dependencies.
-swift_bazel_go_dependencies()
 
 go_rules_dependencies()
 
@@ -65,8 +78,6 @@ buildifier_prebuilt_register_toolchains()
 
 # MARK: - Integration Testing
 
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-
 http_archive(
     name = "rules_bazel_integration_test",
     sha256 = "9335f584d139c37aeeab46dc70aaf5a644d4fdc60f3d1abf0c2ba7e448dd22aa",
@@ -85,10 +96,3 @@ bazel_binaries(versions = [
     "//:.bazelversion",
     "7.0.0-pre.20230504.4",
 ])
-
-# Load the SwiftFormat package
-
-# load("//:swift_deps.bzl", "swift_dependencies")
-
-# # gazelle:repository_macro swift_deps.bzl%swift_dependencies
-# swift_dependencies()

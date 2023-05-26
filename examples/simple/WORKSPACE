@@ -13,16 +13,14 @@ load(
 
 swiftformat_rules_dependencies()
 
+swiftformat_register_toolchains(version = "0.51.10")
+
 load(
     "@cgrindel_bazel_starlib//:deps.bzl",
     "bazel_starlib_dependencies",
 )
 
 bazel_starlib_dependencies()
-
-load("@rules_swift_package_manager//:deps.bzl", "swift_bazel_dependencies")
-
-swift_bazel_dependencies()
 
 load(
     "@build_bazel_rules_swift//swift:repositories.bzl",
@@ -37,15 +35,3 @@ load(
 )
 
 swift_rules_extra_dependencies()
-
-# load("@cgrindel_rules_swiftformat//swiftformat:load_package.bzl", "swiftformat_load_package")
-# swiftformat_load_package(version = "0.49.1")
-
-# load(
-#     "@cgrindel_rules_swiftformat//:swift_deps.bzl",
-#     _swiftformat_swift_dependencies = "swift_dependencies",
-# )
-# _swiftformat_swift_dependencies()
-# register_toolchains("@cgrindel_rules_swiftformat//swiftformat_tools:all")
-
-swiftformat_register_toolchains(version = "0.51.10")

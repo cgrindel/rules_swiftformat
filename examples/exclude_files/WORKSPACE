@@ -5,9 +5,15 @@ local_repository(
     path = "../..",
 )
 
-load("@cgrindel_rules_swiftformat//swiftformat:deps.bzl", "swiftformat_rules_dependencies")
+load(
+    "//swiftformat:deps.bzl",
+    "swiftformat_register_toolchains",
+    "swiftformat_rules_dependencies",
+)
 
 swiftformat_rules_dependencies()
+
+swiftformat_register_toolchains(version = "0.51.10")
 
 load(
     "@cgrindel_bazel_starlib//:deps.bzl",
@@ -15,10 +21,6 @@ load(
 )
 
 bazel_starlib_dependencies()
-
-load("@rules_swift_package_manager//:deps.bzl", "swift_bazel_dependencies")
-
-swift_bazel_dependencies()
 
 load(
     "@build_bazel_rules_swift//swift:repositories.bzl",
@@ -33,7 +35,3 @@ load(
 )
 
 swift_rules_extra_dependencies()
-
-load("@cgrindel_rules_swiftformat//swiftformat:load_package.bzl", "swiftformat_load_package")
-
-swiftformat_load_package()
