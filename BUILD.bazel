@@ -76,6 +76,7 @@ filegroup(
         "WORKSPACE",
         "//swiftformat:all_files",
         "//swiftformat/internal:all_files",
+        "//swiftformat/toolchains:all_files",
     ],
     visibility = ["//:__subpackages__"],
 )

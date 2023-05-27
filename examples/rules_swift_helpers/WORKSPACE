@@ -6,7 +6,7 @@ local_repository(
 )
 
 load(
-    "//swiftformat:deps.bzl",
+    "@cgrindel_rules_swiftformat//swiftformat:deps.bzl",
     "swiftformat_register_toolchains",
     "swiftformat_rules_dependencies",
 )

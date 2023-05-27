@@ -4,6 +4,12 @@ load(":toolchain.bzl", "declare_swiftformat_toolchains")
 
 bzlformat_pkg(name = "bzlformat")
 
+filegroup(
+    name = "all_files",
+    srcs = glob(["*"]),
+    visibility = ["//:__subpackages__"],
+)
+
 # Toolchain
 
 # swiftformat_toolchain(

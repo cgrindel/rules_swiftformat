@@ -92,7 +92,4 @@ bazel_integration_test_rules_dependencies()
 
 load("@rules_bazel_integration_test//bazel_integration_test:defs.bzl", "bazel_binaries")
 
-bazel_binaries(versions = [
-    "//:.bazelversion",
-    "7.0.0-pre.20230504.4",
-])
+bazel_binaries(versions = ["//:.bazelversion"])
