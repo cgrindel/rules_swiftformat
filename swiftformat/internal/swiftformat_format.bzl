@@ -38,6 +38,9 @@ def _swiftformat_format_impl(ctx):
             inputs = inputs,
             executable = swiftformat_info.executable,
             arguments = [args],
+            # This allows LD_LIBRARY_PATH to be used for finding dynamically 
+            # linked libraries like libFoundation.so.
+            use_default_shell_env = True,
         )
 
     return [
