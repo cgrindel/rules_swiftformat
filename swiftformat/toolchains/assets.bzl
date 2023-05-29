@@ -16,8 +16,7 @@ def _create(os, cpu, file, archive = None):
         repo = repo,
         swiftformat_toolchain_name = swiftformat_toolchain_name,
         toolchain_name = toolchain_name,
-        executable_label = "@{repo}//:{file}".format(
-            file = file,
+        executable_label = "@{repo}//:executable".format(
             repo = repo,
         ),
     )
@@ -85,7 +84,13 @@ def swiftformat_register_toolchains(version, register_toolchains = True):
             build_file_content = """\
 package(default_visibility = ["//visibility:public"])
 
-exports_files(["{file}"])
+genrule(
+    name = "executable",
+    srcs = ["{file}"],
+    outs = ["swiftformat_exec"],
+    executable = True,
+    cmd = "cp $< $@ && chmod +x $@",
+)
 """.format(file = repo.file),
         )
     if register_toolchains:
