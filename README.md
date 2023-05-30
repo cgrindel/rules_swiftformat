@@ -38,10 +38,16 @@ http_archive(
         "http://github.com/cgrindel/rules_swiftformat/archive/v0.4.1.tar.gz",
     ],
 )
-
-load("@cgrindel_rules_swiftformat//swiftformat:deps.bzl", "swiftformat_rules_dependencies")
+load(
+    "//swiftformat:deps.bzl",
+    "swiftformat_register_toolchains",
+    "swiftformat_rules_dependencies",
+)
 
 swiftformat_rules_dependencies()
+
+# Specify the version of SwiftFormat that you want to use
+swiftformat_register_toolchains(version = "0.51.10")
 
 # Configure the dependencies for rules_swiftformat
 
@@ -51,13 +57,6 @@ load(
 )
 
 bazel_starlib_dependencies()
-
-load(
-    "@cgrindel_rules_spm//spm:deps.bzl",
-    "spm_rules_dependencies",
-)
-
-spm_rules_dependencies()
 
 load(
     "@build_bazel_rules_swift//swift:repositories.bzl",
@@ -72,13 +71,6 @@ load(
 )
 
 swift_rules_extra_dependencies()
-
-# We are using rules_spm to download and build SwiftFormat. The following will configure
-# rules_spm to do that.
-
-load("@cgrindel_rules_swiftformat//swiftformat:load_package.bzl", "swiftformat_load_package")
-
-swiftformat_load_package()
 ```
 <!-- END WORKSPACE SNIPPET -->
 

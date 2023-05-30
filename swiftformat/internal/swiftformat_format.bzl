@@ -21,6 +21,8 @@ def _swiftformat_format_impl(ctx):
         if ctx.attr.swift_version != "":
             args.add_all(["--swiftversion", ctx.attr.swift_version])
 
+        toolchain_info = ctx.toolchains["//swiftformat:toolchain"]
+        swiftformat_info = toolchain_info.swiftformat_info
         args.add_all([
             "--quiet",
             "--symlinks",
@@ -34,8 +36,11 @@ def _swiftformat_format_impl(ctx):
         ctx.actions.run(
             outputs = [out],
             inputs = inputs,
-            executable = ctx.executable._swiftformat,
+            executable = swiftformat_info.executable,
             arguments = [args],
+            # This allows LD_LIBRARY_PATH to be used for finding dynamically
+            # linked libraries like libFoundation.so.
+            use_default_shell_env = True,
         )
 
     return [
@@ -66,13 +71,7 @@ The Swift version to be used by `swiftformat`. You probably want to add this \
 to your config file instead of adding it here.\
 """,
         ),
-        "_swiftformat": attr.label(
-            default = "@swiftformat_repos//SwiftFormat:swiftformat",
-            executable = True,
-            cfg = "exec",
-            allow_files = True,
-            doc = "The `swiftformat` executable.",
-        ),
     },
+    toolchains = ["//swiftformat:toolchain"],
     doc = "Formats the Swift source files using `nicklockwood/SwiftFormat`.",
 )

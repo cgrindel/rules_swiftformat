@@ -22,15 +22,6 @@ _RULES_AND_MACROS_DOC_PROVIDER = doc_providers.create(
     deps = ["//swiftformat"],
 )
 
-_REPOSITORY_RULES_DOC_PROVIDER = doc_providers.create(
-    name = "repository_rules_overview",
-    stardoc_input = "//swiftformat:load_package.bzl",
-    symbols = [
-        "swiftformat_load_package",
-    ],
-    deps = ["//swiftformat:load_package"],
-)
-
 _API_SRCS = [
     "src_utils",
 ]
@@ -47,7 +38,6 @@ _API_DOC_PROVIDERS = [
 
 _ALL_DOC_PROVIDERS = [
     _RULES_AND_MACROS_DOC_PROVIDER,
-    _REPOSITORY_RULES_DOC_PROVIDER,
     doc_providers.create(
         name = "api",
         is_stardoc = False,
@@ -67,17 +57,6 @@ write_header(
         "copy Swift source files.",
     ],
     symbols = _RULES_AND_MACROS_DOC_PROVIDER.symbols,
-)
-
-write_header(
-    name = _REPOSITORY_RULES_DOC_PROVIDER.header_label,
-    header_content = [
-        "# Repository Rules and Macros",
-        "",
-        "The rules and macros described below are used to configure and download ",
-        "dependencies for rules_swiftformat.",
-    ],
-    symbols = _REPOSITORY_RULES_DOC_PROVIDER.symbols,
 )
 
 # Write the API headers

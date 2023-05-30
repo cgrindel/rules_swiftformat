@@ -3,3 +3,6 @@ bazel-*
 
 # The local.bazelrc is machine-specific.
 local.bazelrc
+
+# Swift package manager build directory
+.build
