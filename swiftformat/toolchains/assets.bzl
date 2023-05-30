@@ -59,7 +59,7 @@ def _urls(asset, version):
     ]
 
 # buildifier: disable=unnamed-macro
-def swiftformat_register_toolchains(version, register_toolchains = True):
+def swiftformat_register_prebuilt_toolchains(version, register_toolchains = True):
     """Register the toolchains for SwiftFormat.
 
     Args:

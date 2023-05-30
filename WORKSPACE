@@ -2,13 +2,13 @@ workspace(name = "cgrindel_rules_swiftformat")
 
 load(
     "//swiftformat:deps.bzl",
-    "swiftformat_register_toolchains",
+    "swiftformat_register_prebuilt_toolchains",
     "swiftformat_rules_dependencies",
 )
 
 swiftformat_rules_dependencies()
 
-swiftformat_register_toolchains(version = "0.51.10")
+swiftformat_register_prebuilt_toolchains(version = "0.51.10")
 
 load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
 
