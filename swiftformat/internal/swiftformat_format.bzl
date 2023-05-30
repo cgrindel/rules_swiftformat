@@ -71,13 +71,6 @@ The Swift version to be used by `swiftformat`. You probably want to add this \
 to your config file instead of adding it here.\
 """,
         ),
-        # "_swiftformat": attr.label(
-        #     default = "@swiftformat_repos//SwiftFormat:swiftformat",
-        #     executable = True,
-        #     cfg = "exec",
-        #     allow_files = True,
-        #     doc = "The `swiftformat` executable.",
-        # ),
     },
     toolchains = ["//swiftformat:toolchain"],
     doc = "Formats the Swift source files using `nicklockwood/SwiftFormat`.",
