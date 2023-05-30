@@ -42,8 +42,7 @@ updatesrc_update_all(
 )
 
 # This declaration builds a Gazelle binary that incorporates all of the Gazelle
-# plugins for the languages that you use in your workspace. In this example, we
-# are only listing the Gazelle plugin for Swift from rules_swift_package_manager.
+# plugins for the languages that you use in your workspace.
 gazelle_binary(
     name = "gazelle_bin",
     languages = [
