@@ -54,6 +54,18 @@ https://github.com/nicklockwood/SwiftFormat/releases/download/{version}/{archive
 """
 
 def _create_swiftformat(version, os, cpu, file, sha256 = None):
+    """Create an asset declaration for the swiftformat tool.
+
+    Args:
+        version: The version as a `string`.
+        os: The operating system name as a `string`.
+        cpu: The cpu as a `string`.
+        file: The name of the executable in the archive as a `string`.
+        sha256: Optional. The SHA256 value for the archive file as a `string`.
+
+    Returns:
+        An asset `struct` as returned by `prebuilt_assets.create()`.
+    """
     repo = "swiftformat_download_{os}_{cpu}".format(
         os = os,
         cpu = cpu,
