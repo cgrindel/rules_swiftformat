@@ -87,7 +87,8 @@ def _create_swiftformat(version, os, cpu, file, sha256 = None):
     )
 
 def _from_json(json_str):
-    """Returns an asset `struct` or a `list` of asset `struct` values as represented by the JSON `string`.
+    """Returns an asset `struct` or a `list` of asset `struct` values as \
+    represented by the JSON `string`.
 
     Args:
         json_str: A JSON `string` representing an asset or a list of assets.
