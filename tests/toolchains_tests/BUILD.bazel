@@ -1,0 +1,6 @@
+load("@cgrindel_bazel_starlib//bzlformat:defs.bzl", "bzlformat_pkg")
+load(":prebuilt_assets_tests.bzl", "prebuilt_assets_test_suite")
+
+bzlformat_pkg(name = "bzlformat")
+
+prebuilt_assets_test_suite()

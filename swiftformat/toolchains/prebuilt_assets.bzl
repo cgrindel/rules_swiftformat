@@ -2,32 +2,30 @@
 
 load("@bazel_skylib//lib:types.bzl", "types")
 
-_VALID_TOOLS = ["swiftformat"]
+# _VALID_TOOLS = ["swiftformat"]
 
 def _create(
-        tool,
         os,
         cpu,
         file,
         urls,
+        executable_label,
+        repo,
         sha256 = None,
-        repo = None,
-        executable_label = None,
         swiftformat_toolchain_name = None,
         toolchain_name = None):
     """Create an asset.
 
     Args:
-        tool: The name of the tool (e.g. swiftformat) as a `string`.
         os: The operating system name as a `string`.
         cpu: The cpu as a `string`.
         file: The name of the executable in the archive as a `string`.
         urls: A `list` of urls to download the archive file that contains the
             executable.
+        executable_label: The label for the executable as a `string`.
+        repo: The name of the repository for the downloaded archive as a
+            `string`.
         sha256: Optional. The SHA256 value for the archive as a `string`.
-        repo: Optional. The name of the repository for the downloaded archive
-            as a `string`.
-        executable_label: Optional. The label for the executable as a `string`.
         swiftformat_toolchain_name: Optional. The name for the
             `swiftformat_toolchain` as a `string`.
         toolchain_name: Optional. The name of the `toolchain` as a `string`.
@@ -35,22 +33,11 @@ def _create(
     Returns:
         A `struct` representing a downloadable asset.
     """
-    if tool not in _VALID_TOOLS:
-        fail("Invalid tool. tool: {}".format(tool))
-    if repo == None:
-        repo = "{tool}_download_{os}_{cpu}".format(
-            tool = tool,
-            os = os,
-            cpu = cpu,
-        )
     if swiftformat_toolchain_name == None:
         swiftformat_toolchain_name = repo
     if toolchain_name == None:
         toolchain_name = swiftformat_toolchain_name + "_toolchain"
-    if executable_label == None:
-        executable_label = "@{repo}//:executable".format(repo = repo)
     return struct(
-        tool = tool,
         os = os,
         cpu = cpu,
         file = file,
@@ -66,11 +53,13 @@ _SWIFTFORMAT_DOWNLOAD_URL_TEMPLATE = """\
 https://github.com/nicklockwood/SwiftFormat/releases/download/{version}/{archive}\
 """
 
-def _create_swiftformat(version, os, cpu, file, archive = None, sha256 = None):
-    if archive == None:
-        archive = file + ".zip"
+def _create_swiftformat(version, os, cpu, file, sha256 = None):
+    repo = "swiftformat_download_{os}_{cpu}".format(
+        os = os,
+        cpu = cpu,
+    )
+    archive = file + ".zip"
     return _create(
-        tool = "swiftformat",
         os = os,
         cpu = cpu,
         file = file,
@@ -80,6 +69,8 @@ def _create_swiftformat(version, os, cpu, file, archive = None, sha256 = None):
                 archive = archive,
             ),
         ],
+        executable_label = "@{repo}//:executable".format(repo = repo),
+        repo = repo,
         sha256 = sha256,
     )
 
