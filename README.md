@@ -40,14 +40,10 @@ http_archive(
 )
 load(
     "//swiftformat:deps.bzl",
-    "swiftformat_register_toolchains",
     "swiftformat_rules_dependencies",
 )
 
 swiftformat_rules_dependencies()
-
-# Specify the version of SwiftFormat that you want to use
-swiftformat_register_toolchains(version = "0.51.10")
 
 # Configure the dependencies for rules_swiftformat
 
@@ -71,6 +67,13 @@ load(
 )
 
 swift_rules_extra_dependencies()
+
+load(
+    "@cgrindel_rules_swiftformat//swiftformat:defs.bzl",
+    "swiftformat_register_prebuilt_toolchains",
+)
+
+swiftformat_register_prebuilt_toolchains()
 ```
 <!-- END WORKSPACE SNIPPET -->
 
