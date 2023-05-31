@@ -99,7 +99,7 @@ def _from_json(json_str):
         return _create(**result)
     fail("Unexpected result type decoding JSON string. %s" % (json_str))
 
-assets = struct(
+prebuilt_assets = struct(
     create = _create,
     create_swiftformat = _create_swiftformat,
     from_json = _from_json,

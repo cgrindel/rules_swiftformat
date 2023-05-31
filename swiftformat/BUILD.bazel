@@ -43,7 +43,6 @@ bzl_library(
     name = "deps",
     srcs = ["deps.bzl"],
     deps = [
-        "//swiftformat/toolchains:assets",
         "@bazel_tools//tools/build_defs/repo:http.bzl",
         "@bazel_tools//tools/build_defs/repo:utils.bzl",
     ],

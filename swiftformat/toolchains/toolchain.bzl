@@ -1,7 +1,7 @@
 """Define the toolchains for rules_swiftformat."""
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-load(":assets.bzl", "assets")
+load(":prebuilt_assets.bzl", "prebuilt_assets")
 
 SwiftformatInfo = provider(
     doc = "Provider for Swiftformat toolchain.",
@@ -33,39 +33,39 @@ swiftformat_toolchain = rule(
     doc = "Define a toolchain for Swiftformat.",
 )
 
-DEFAULT_SWIFTFORMAT_VERSION = "0.51.10"
-
+# Update this list by running the following and copying the `assets` list values.
+# `bazel run //tools:generate_assets_declaration -- "0.51.11"`
 DEFAULT_ASSETS = [
-    assets.create_swiftformat(
-        version = DEFAULT_SWIFTFORMAT_VERSION,
-        sha256 = "",
+    prebuilt_assets.create_swiftformat(
+        version = "0.51.11",
         os = "macos",
         cpu = "x86_64",
         file = "swiftformat",
+        sha256 = "e565ebf6c54ee8e1ac83e4974edae34e002f86eda358a5838c0171f32f00ab20",
     ),
-    assets.create_swiftformat(
-        version = DEFAULT_SWIFTFORMAT_VERSION,
-        sha256 = "",
+    prebuilt_assets.create_swiftformat(
+        version = "0.51.11",
         os = "macos",
         cpu = "arm64",
         file = "swiftformat",
+        sha256 = "e565ebf6c54ee8e1ac83e4974edae34e002f86eda358a5838c0171f32f00ab20",
     ),
-    assets.create_swiftformat(
-        version = DEFAULT_SWIFTFORMAT_VERSION,
-        sha256 = "",
+    prebuilt_assets.create_swiftformat(
+        version = "0.51.11",
         os = "linux",
         cpu = "x86_64",
         file = "swiftformat_linux",
+        sha256 = "a49b79d97c234ccb5bcd2064ffec868e93e2eabf2d5de79974ca3802d8e389ec",
     ),
 ]
 
 def _swiftformat_toolchain_setup_impl(repository_ctx):
-    asset_list = assets.from_json(repository_ctx.attr.assets_json)
+    assets = prebuilt_assets.from_json(repository_ctx.attr.assets_json)
     content = """\
 load("@cgrindel_rules_swiftformat//swiftformat/toolchains:toolchain.bzl", "swiftformat_toolchain")
 
 """
-    for asset in asset_list:
+    for asset in assets:
         content += """\
 swiftformat_toolchain(
     name = "{swiftformat_toolchain_name}",
@@ -103,18 +103,18 @@ _swiftformat_toolchain_setup = repository_rule(
 
 def swiftformat_register_prebuilt_toolchains(
         name = "swiftformat_prebuilt_toolchains",
-        asset_list = DEFAULT_ASSETS,
+        assets = DEFAULT_ASSETS,
         register_toolchains = True):
     """Register the toolchains for SwiftFormat.
 
     Args:
         name: The name for the toolchains repository as a `string`.
-        asset_list: A `list` of tools to register.
+        assets: A `list` of tools to register.
         register_toolchains: Optional. A `bool` that determines whether this
             function should call `register_toolchains()`
     """
     toolchain_labels = []
-    for asset in asset_list:
+    for asset in assets:
         toolchain_label = "@{repo}//:{name}".format(
             repo = name,
             name = asset.toolchain_name,
@@ -138,7 +138,7 @@ genrule(
 
     _swiftformat_toolchain_setup(
         name = name,
-        assets_json = json.encode(asset_list),
+        assets_json = json.encode(assets),
     )
 
     if register_toolchains:
