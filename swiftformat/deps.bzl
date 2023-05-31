@@ -2,12 +2,6 @@
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
-load(
-    "//swiftformat/toolchains:assets.bzl",
-    _swiftformat_register_toolchains = "swiftformat_register_toolchains",
-)
-
-swiftformat_register_toolchains = _swiftformat_register_toolchains
 
 def swiftformat_rules_dependencies():
     """Loads the dependencies for `rules_swiftformat`."""

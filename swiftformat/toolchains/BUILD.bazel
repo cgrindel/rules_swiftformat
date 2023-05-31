@@ -1,6 +1,5 @@
 load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
 load("@cgrindel_bazel_starlib//bzlformat:defs.bzl", "bzlformat_pkg")
-load(":toolchain.bzl", "declare_swiftformat_toolchains")
 
 bzlformat_pkg(name = "bzlformat")
 
@@ -10,20 +9,23 @@ filegroup(
     visibility = ["//:__subpackages__"],
 )
 
-# Toolchain
-
-declare_swiftformat_toolchains()
-
 bzl_library(
-    name = "assets",
-    srcs = ["assets.bzl"],
+    name = "prebuilt_assets",
+    srcs = ["prebuilt_assets.bzl"],
     visibility = ["//visibility:public"],
-    deps = ["@bazel_tools//tools/build_defs/repo:http.bzl"],
+    deps = [
+        "@bazel_skylib//lib:types",
+        "@bazel_tools//tools/build_defs/repo:http.bzl",
+    ],
 )
 
 bzl_library(
     name = "toolchain",
     srcs = ["toolchain.bzl"],
     visibility = ["//visibility:public"],
-    deps = [":assets"],
+    deps = [
+        ":prebuilt_assets",
+        "@bazel_tools//tools/build_defs/repo:http.bzl",
+        "@bazel_tools//tools/build_defs/repo:utils.bzl",
+    ],
 )
