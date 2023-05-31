@@ -24,6 +24,13 @@ load(
     "//swiftformat/internal:swiftformat_test.bzl",
     _swiftformat_test = "swiftformat_test",
 )
+load(
+    "//swiftformat/toolchains:toolchain.bzl",
+    _swiftformat_register_prebuilt_toolchains = "swiftformat_register_prebuilt_toolchains",
+)
+
+# Toolchain Registration
+swiftformat_register_prebuilt_toolchains = _swiftformat_register_prebuilt_toolchains
 
 # Macros
 swiftformat_pkg = _swiftformat_pkg

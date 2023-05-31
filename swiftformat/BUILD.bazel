@@ -19,6 +19,7 @@ bzl_library(
         "//swiftformat/internal:swiftformat_library",
         "//swiftformat/internal:swiftformat_pkg",
         "//swiftformat/internal:swiftformat_test",
+        "//swiftformat/toolchains:toolchain",
     ],
 )
 

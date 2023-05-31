@@ -7,13 +7,14 @@ local_repository(
 
 load(
     "@cgrindel_rules_swiftformat//swiftformat:deps.bzl",
-    "swiftformat_register_prebuilt_toolchains",
     "swiftformat_rules_dependencies",
 )
 
 swiftformat_rules_dependencies()
 
-swiftformat_register_prebuilt_toolchains(version = "0.51.10")
+load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
+
+bazel_skylib_workspace()
 
 load(
     "@cgrindel_bazel_starlib//:deps.bzl",
@@ -35,3 +36,10 @@ load(
 )
 
 swift_rules_extra_dependencies()
+
+load(
+    "@cgrindel_rules_swiftformat//swiftformat:defs.bzl",
+    "swiftformat_register_prebuilt_toolchains",
+)
+
+swiftformat_register_prebuilt_toolchains()
