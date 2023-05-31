@@ -117,9 +117,7 @@ load(
     "swiftformat_pkg",
 )
 
-swiftformat_pkg(
-    name = "swiftformat",
-)
+swiftformat_pkg(name = "swiftformat")
 ```
 
 The [`swiftformat_pkg`](/doc/rules_and_macros_overview.md#swiftformat_pkg) macro defines targets for
@@ -141,20 +139,104 @@ $ bazel test //...
 
 ## Specifying the Version of SwiftFormat
 
-By default, `rules_swiftformat` will load the [latest release of
+By default, `rules_swiftformat` will load a [recent release of
 SwiftFormat](https://github.com/nicklockwood/SwiftFormat/releases). This works well for most cases.
-However, if you would like to specify the SwiftFormat release, you can do so by passing the version
-to the [`swiftformat_load_package`](/doc/repository_rules_overview.md#swiftformat_load_package) function in your `WORKSPACE`.
+However, if you would like to specify the SwiftFormat release, you can do so by specifying the
+assets to download when calling [`swiftformat_register_prebuilt_toolchains`](/doc/repository_rules_overview.md#swiftformat_register_prebuilt_toolchains) function in your `WORKSPACE`.
 
 ```python
-load("@cgrindel_rules_swiftformat//swiftformat:load_package.bzl", "swiftformat_load_package")
-
-swiftformat_load_package(version = "0.49.1")
+swiftformat_register_prebuilt_toolchains(
+    assets = [
+        prebuilt_assets.create_swiftformat(
+            version = "0.51.11",
+            os = "macos",
+            cpu = "x86_64",
+            file = "swiftformat",
+            sha256 = "e565ebf6c54ee8e1ac83e4974edae34e002f86eda358a5838c0171f32f00ab20",
+        ),
+        prebuilt_assets.create_swiftformat(
+            version = "0.51.11",
+            os = "macos",
+            cpu = "arm64",
+            file = "swiftformat",
+            sha256 = "e565ebf6c54ee8e1ac83e4974edae34e002f86eda358a5838c0171f32f00ab20",
+        ),
+        prebuilt_assets.create_swiftformat(
+            version = "0.51.11",
+            os = "linux",
+            cpu = "x86_64",
+            file = "swiftformat_linux",
+            sha256 = "a49b79d97c234ccb5bcd2064ffec868e93e2eabf2d5de79974ca3802d8e389ec",
+        ),
+    ],
+)
 ```
 
-One reason you may want to do so is to ensure that everyone working on your project is using the
-same version of SwiftFormat. Without the version specification, Bazel will cache whichever version
-was the latest when the project was run for the first time after the cache was cleared.
+To make this easier, this repository includes a tool called `generate_assets_declaration`. Executing
+this tool will generate the appropriate declaration to download and configure the desired version of
+SwiftFormat.
+
+```sh
+# Specify the desired version 
+$ bazel run //tools:generate_assets_declaration -- "0.51.11"
+load(
+    "@cgrindel_rules_swiftformat//swiftformat:defs.bzl",
+    "swiftformat_register_prebuilt_toolchains",
+    "prebuilt_assets",
+)
+
+swiftformat_register_prebuilt_toolchains(
+    assets = [
+        prebuilt_assets.create_swiftformat(
+            version = "0.51.11",
+            os = "macos",
+            cpu = "x86_64",
+            file = "swiftformat",
+            sha256 = "e565ebf6c54ee8e1ac83e4974edae34e002f86eda358a5838c0171f32f00ab20",
+        ),
+        prebuilt_assets.create_swiftformat(
+            version = "0.51.11",
+            os = "macos",
+            cpu = "arm64",
+            file = "swiftformat",
+            sha256 = "e565ebf6c54ee8e1ac83e4974edae34e002f86eda358a5838c0171f32f00ab20",
+        ),
+        prebuilt_assets.create_swiftformat(
+            version = "0.51.11",
+            os = "linux",
+            cpu = "x86_64",
+            file = "swiftformat_linux",
+            sha256 = "a49b79d97c234ccb5bcd2064ffec868e93e2eabf2d5de79974ca3802d8e389ec",
+        ),
+    ],
+)
+```
+
+## Special Instructions for Linux Users
+
+By default, this ruleset downloads prebuilt binaries from
+[nicklockwood/SwiftFormat](https://github.com/nicklockwood/SwiftFormat). The Linux binaries provided
+by this website dynamically load certain shared libraries (e.g. Foundation). On Linux, Swift
+finds these libraries by searching the directories specified by the `LD_LIBRARY_PATH` envronment
+variable.  Be sure to update this environment variable with the path to the shard libraries provided
+by the Swift SDK.
+
+For instance, on Ubuntu, on might install Swift to `$HOME/swift-5.7.2-RELEASE-ubuntu22.04`. The
+shared library directory for this installation is 
+`$HOME/swift-5.7.2-RELEASE-ubuntu22.04/usr/lib/swift/linux`.
+
+In addition to setting the `LD_LIBRARY_PATH` environment variable, you must tell Bazel to provide
+this value to its actions. This is done by using the `--action_env` flag. Update the `.bazelrc` file
+for your project to include the following:
+
+```
+# Need to expose the PATH so that the Swift toolchain can be found
+build --action_env=PATH
+
+# Need to expose the LD_LIBRARY_PATH so that the Swift dynamic loaded 
+# so files can be found
+build --action_env=LD_LIBRARY_PATH
+```
 
 ## Learn More
 
