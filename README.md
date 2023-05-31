@@ -13,7 +13,8 @@ files exist in the workspace directory, and copy the formatted files to the work
   * [2\. Update the BUILD\.bazel at the root of your workspace](#2-update-the-buildbazel-at-the-root-of-your-workspace)
   * [3\. Add swiftformat\_pkg to every Bazel package with Swift source files](#3-add-swiftformat_pkg-to-every-bazel-package-with-swift-source-files)
   * [4\. Format, Update, and Test](#4-format-update-and-test)
-* [Specifying the Version of SwiftFormat](#specifying-the-version-of-swiftformat)
+* [Specifying the SwiftFormat Version](#specifying-the-swiftformat-version)
+* [Special Instructions for Linux Users](#special-instructions-for-linux-users)
 * [Learn More](#learn-more)
 
 <a id="#quickstart"></a>
@@ -137,7 +138,7 @@ $ bazel run //:update_all
 $ bazel test //...
 ```
 
-## Specifying the Version of SwiftFormat
+## Specifying the SwiftFormat Version
 
 By default, `rules_swiftformat` will load a [recent release of
 SwiftFormat](https://github.com/nicklockwood/SwiftFormat/releases). This works well for most cases.
@@ -154,20 +155,7 @@ swiftformat_register_prebuilt_toolchains(
             file = "swiftformat",
             sha256 = "e565ebf6c54ee8e1ac83e4974edae34e002f86eda358a5838c0171f32f00ab20",
         ),
-        prebuilt_assets.create_swiftformat(
-            version = "0.51.11",
-            os = "macos",
-            cpu = "arm64",
-            file = "swiftformat",
-            sha256 = "e565ebf6c54ee8e1ac83e4974edae34e002f86eda358a5838c0171f32f00ab20",
-        ),
-        prebuilt_assets.create_swiftformat(
-            version = "0.51.11",
-            os = "linux",
-            cpu = "x86_64",
-            file = "swiftformat_linux",
-            sha256 = "a49b79d97c234ccb5bcd2064ffec868e93e2eabf2d5de79974ca3802d8e389ec",
-        ),
+        # Other declarations...
     ],
 )
 ```
@@ -177,7 +165,7 @@ this tool will generate the appropriate declaration to download and configure th
 SwiftFormat.
 
 ```sh
-# Specify the desired version 
+# Specify the desired SwiftFormat version 
 $ bazel run //tools:generate_assets_declaration -- "0.51.11"
 load(
     "@cgrindel_rules_swiftformat//swiftformat:defs.bzl",
@@ -221,7 +209,7 @@ finds these libraries by searching the directories specified by the `LD_LIBRARY_
 variable.  Be sure to update this environment variable with the path to the shard libraries provided
 by the Swift SDK.
 
-For instance, on Ubuntu, on might install Swift to `$HOME/swift-5.7.2-RELEASE-ubuntu22.04`. The
+For instance, on Ubuntu, one might install Swift to `$HOME/swift-5.7.2-RELEASE-ubuntu22.04`. The
 shared library directory for this installation is 
 `$HOME/swift-5.7.2-RELEASE-ubuntu22.04/usr/lib/swift/linux`.
 
