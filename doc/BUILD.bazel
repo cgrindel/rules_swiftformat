@@ -17,6 +17,7 @@ _RULES_AND_MACROS_DOC_PROVIDER = doc_providers.create(
         "swiftformat_format",
         "swiftformat_library",
         "swiftformat_pkg",
+        "swiftformat_register_prebuilt_toolchains",
         "swiftformat_test",
     ],
     deps = ["//swiftformat"],

@@ -103,16 +103,20 @@ _swiftformat_toolchain_setup = repository_rule(
 
 def swiftformat_register_prebuilt_toolchains(
         name = "swiftformat_prebuilt_toolchains",
-        assets = DEFAULT_ASSETS,
+        assets = None,
         register_toolchains = True):
-    """Register the toolchains for SwiftFormat.
+    """Register and configure the toolchains to download pre-built SwiftFormat \
+    binaries.
 
     Args:
-        name: The name for the toolchains repository as a `string`.
-        assets: A `list` of tools to register.
+        name: Optional. The name for the toolchains repository as a `string`.
+        assets: Optional. A `list` of tools to register. If not specified, it
+            uses a recent version of SwiftFormat.
         register_toolchains: Optional. A `bool` that determines whether this
-            function should call `register_toolchains()`
+            function should call `register_toolchains()`.
     """
+    if assets == None:
+        assets = DEFAULT_ASSETS
     toolchain_labels = []
     for asset in assets:
         toolchain_label = "@{repo}//:{name}".format(

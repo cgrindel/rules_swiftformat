@@ -10,6 +10,7 @@ On this page:
   * [swiftformat_format](#swiftformat_format)
   * [swiftformat_library](#swiftformat_library)
   * [swiftformat_pkg](#swiftformat_pkg)
+  * [swiftformat_register_prebuilt_toolchains](#swiftformat_register_prebuilt_toolchains)
   * [swiftformat_test](#swiftformat_test)
 
 
@@ -108,6 +109,26 @@ NOTE: Any labels detected in the `srcs` will be ignored.
 | <a id="swiftformat_pkg-name"></a>name |  The base name for the targets that will be defined.   |  none |
 | <a id="swiftformat_pkg-srcs"></a>srcs |  Optional. The Swift source files that should be formatted.   |  <code>None</code> |
 | <a id="swiftformat_pkg-config"></a>config |  Optional. The swiftformat YAML configuration file.   |  <code>None</code> |
+
+
+<a id="swiftformat_register_prebuilt_toolchains"></a>
+
+## swiftformat_register_prebuilt_toolchains
+
+<pre>
+swiftformat_register_prebuilt_toolchains(<a href="#swiftformat_register_prebuilt_toolchains-name">name</a>, <a href="#swiftformat_register_prebuilt_toolchains-assets">assets</a>, <a href="#swiftformat_register_prebuilt_toolchains-register_toolchains">register_toolchains</a>)
+</pre>
+
+Register and configure the toolchains to download pre-built SwiftFormat     binaries.
+
+**PARAMETERS**
+
+
+| Name  | Description | Default Value |
+| :------------- | :------------- | :------------- |
+| <a id="swiftformat_register_prebuilt_toolchains-name"></a>name |  Optional. The name for the toolchains repository as a <code>string</code>.   |  <code>"swiftformat_prebuilt_toolchains"</code> |
+| <a id="swiftformat_register_prebuilt_toolchains-assets"></a>assets |  Optional. A <code>list</code> of tools to register. If not specified, it uses a recent version of SwiftFormat.   |  <code>None</code> |
+| <a id="swiftformat_register_prebuilt_toolchains-register_toolchains"></a>register_toolchains |  Optional. A <code>bool</code> that determines whether this function should call <code>register_toolchains()</code>.   |  <code>True</code> |
 
 
 <a id="swiftformat_test"></a>
