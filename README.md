@@ -32,7 +32,7 @@ Add the following to your `WORKSPACE` file to add this repository and its depend
 # Download and configure rules_swiftformat.
 
 http_archive(
-    name = "cgrindel_rules_swiftformat",
+    name = "rules_swift_tidy",
     sha256 = "f496774f56e8260e277dc17366cf670b55dee3616327a13d2d04bd1b62cdcc88",
     strip_prefix = "rules_swiftformat-0.4.1",
     urls = [
@@ -70,7 +70,7 @@ load(
 swift_rules_extra_dependencies()
 
 load(
-    "@cgrindel_rules_swiftformat//swiftformat:defs.bzl",
+    "@rules_swift_tidy//swiftformat:defs.bzl",
     "swiftformat_register_prebuilt_toolchains",
 )
 
@@ -114,7 +114,7 @@ In every Bazel package that contains Swift source files, add a
 
 ```python
 load(
-    "@cgrindel_rules_swiftformat//swiftformat:defs.bzl",
+    "@rules_swift_tidy//swiftformat:defs.bzl",
     "swiftformat_pkg",
 )
 
@@ -168,7 +168,7 @@ SwiftFormat.
 # Specify the desired SwiftFormat version 
 $ bazel run //tools:generate_assets_declaration -- "0.51.11"
 load(
-    "@cgrindel_rules_swiftformat//swiftformat:defs.bzl",
+    "@rules_swift_tidy//swiftformat:defs.bzl",
     "swiftformat_register_prebuilt_toolchains",
     "prebuilt_assets",
 )

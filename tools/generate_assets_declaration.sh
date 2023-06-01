@@ -53,7 +53,7 @@ assets+=( "$(generate_swiftformat_asset "$version" linux x86_64 "$swiftformat_li
 
 cat <<-EOF
 load(
-    "@cgrindel_rules_swiftformat//swiftformat:defs.bzl", 
+    "@rules_swift_tidy//swiftformat:defs.bzl", 
     "swiftformat_register_prebuilt_toolchains", 
     "prebuilt_assets",
 )
