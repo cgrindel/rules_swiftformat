@@ -124,6 +124,7 @@ def swiftformat_register_prebuilt_toolchains(
         http_archive(
             name = asset.repo,
             urls = asset.urls,
+            sha256 = asset.sha256,
             build_file_content = """\
 package(default_visibility = ["//visibility:public"])
 
