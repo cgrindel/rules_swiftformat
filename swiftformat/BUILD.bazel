@@ -47,3 +47,9 @@ bzl_library(
         "@bazel_tools//tools/build_defs/repo:utils.bzl",
     ],
 )
+
+bzl_library(
+    name = "extensions",
+    srcs = ["extensions.bzl"],
+    deps = ["//swiftformat/bzlmod:swift_tidy_tools"],
+)

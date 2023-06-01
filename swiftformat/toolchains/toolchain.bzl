@@ -35,26 +35,23 @@ swiftformat_toolchain = rule(
 
 # Update this list by running the following and copying the `assets` list values.
 # `bazel run //tools:generate_assets_declaration -- "0.51.11"`
-DEFAULT_ASSETS = [
+DEFAULT_SWIFTFORMAT_ASSETS = [
     prebuilt_assets.create_swiftformat(
         version = "0.51.11",
         os = "macos",
         cpu = "x86_64",
-        file = "swiftformat",
         sha256 = "e565ebf6c54ee8e1ac83e4974edae34e002f86eda358a5838c0171f32f00ab20",
     ),
     prebuilt_assets.create_swiftformat(
         version = "0.51.11",
         os = "macos",
         cpu = "arm64",
-        file = "swiftformat",
         sha256 = "e565ebf6c54ee8e1ac83e4974edae34e002f86eda358a5838c0171f32f00ab20",
     ),
     prebuilt_assets.create_swiftformat(
         version = "0.51.11",
         os = "linux",
         cpu = "x86_64",
-        file = "swiftformat_linux",
         sha256 = "a49b79d97c234ccb5bcd2064ffec868e93e2eabf2d5de79974ca3802d8e389ec",
     ),
 ]
@@ -102,23 +99,23 @@ _swiftformat_toolchain_setup = repository_rule(
 )
 
 def swiftformat_register_prebuilt_toolchains(
-        name = "swiftformat_prebuilt_toolchains",
-        assets = None,
+        name = "swift_tidy_prebuilt_toolchains",
+        swiftformat_assets = None,
         register_toolchains = True):
     """Register and configure the toolchains to download pre-built SwiftFormat \
     binaries.
 
     Args:
         name: Optional. The name for the toolchains repository as a `string`.
-        assets: Optional. A `list` of tools to register. If not specified, it
-            uses a recent version of SwiftFormat.
+        swiftformat_assets: Optional. A `list` of tools to register. If not
+            specified, it uses a recent version of SwiftFormat.
         register_toolchains: Optional. A `bool` that determines whether this
             function should call `register_toolchains()`.
     """
-    if assets == None:
-        assets = DEFAULT_ASSETS
+    if swiftformat_assets == None:
+        swiftformat_assets = DEFAULT_SWIFTFORMAT_ASSETS
     toolchain_labels = []
-    for asset in assets:
+    for asset in swiftformat_assets:
         toolchain_label = "@{repo}//:{name}".format(
             repo = name,
             name = asset.toolchain_name,
@@ -142,7 +139,7 @@ genrule(
 
     _swiftformat_toolchain_setup(
         name = name,
-        assets_json = json.encode(assets),
+        assets_json = json.encode(swiftformat_assets),
     )
 
     if register_toolchains:

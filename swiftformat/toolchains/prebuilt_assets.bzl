@@ -53,14 +53,14 @@ _SWIFTFORMAT_DOWNLOAD_URL_TEMPLATE = """\
 https://github.com/nicklockwood/SwiftFormat/releases/download/{version}/{archive}\
 """
 
-def _create_swiftformat(version, os, cpu, file, sha256 = None):
+def _create_swiftformat(version, os, cpu, file = None, sha256 = None):
     """Create an asset declaration for the swiftformat tool.
 
     Args:
         version: The version as a `string`.
         os: The operating system name as a `string`.
         cpu: The cpu as a `string`.
-        file: The name of the executable in the archive as a `string`.
+        file: Optional. The name of the executable in the archive as a `string`.
         sha256: Optional. The SHA256 value for the archive file as a `string`.
 
     Returns:
@@ -70,6 +70,8 @@ def _create_swiftformat(version, os, cpu, file, sha256 = None):
         os = os,
         cpu = cpu,
     )
+    if file == None:
+        file = "swiftformat_linux" if os == "linux" else "swiftformat"
     archive = file + ".zip"
     return _create(
         os = os,

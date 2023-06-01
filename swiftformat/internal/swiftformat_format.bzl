@@ -54,7 +54,8 @@ swiftformat_format = rule(
         "config": attr.label(
             allow_single_file = True,
             doc = "A swiftformat config file.",
-            default = "@//:.swiftformat",
+            # TODO(chuck): Figure out how to provide default.
+            # default = "@//:.swiftformat",
         ),
         "output_suffix": attr.string(
             default = "_formatted",
