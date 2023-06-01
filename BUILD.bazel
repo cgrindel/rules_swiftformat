@@ -72,6 +72,7 @@ filegroup(
     name = "local_repository_files",
     srcs = [
         "BUILD.bazel",
+        "MODULE.bazel",
         "WORKSPACE",
         "//swiftformat:all_files",
         "//swiftformat/internal:all_files",
