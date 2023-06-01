@@ -20,7 +20,7 @@ assertions_sh="$(rlocation "${assertions_sh_location}")" || \
 # shellcheck disable=SC1090
 source "${assertions_sh}"
 
-generate_assets_declaration_sh_location=cgrindel_rules_swiftformat/tools/generate_assets_declaration.sh
+generate_assets_declaration_sh_location=rules_swift_tidy/tools/generate_assets_declaration.sh
 generate_assets_declaration_sh="$(rlocation "${generate_assets_declaration_sh_location}")" || \
   (echo >&2 "Failed to locate ${generate_assets_declaration_sh_location}" && exit 1)
 

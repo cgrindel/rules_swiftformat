@@ -1,5 +1,5 @@
 load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
-load("@cgrindel_rules_swiftformat//swiftformat:defs.bzl", "swiftformat_pkg")
+load("@rules_swift_tidy//swiftformat:defs.bzl", "swiftformat_pkg")
 
 swift_library(
     name = "Foo",

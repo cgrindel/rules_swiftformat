@@ -1,12 +1,12 @@
 workspace(name = "exclude_files_example")
 
 local_repository(
-    name = "cgrindel_rules_swiftformat",
+    name = "rules_swift_tidy",
     path = "../..",
 )
 
 load(
-    "@cgrindel_rules_swiftformat//swiftformat:deps.bzl",
+    "@rules_swift_tidy//swiftformat:deps.bzl",
     "swiftformat_rules_dependencies",
 )
 
@@ -34,7 +34,7 @@ load(
 swift_rules_extra_dependencies()
 
 load(
-    "@cgrindel_rules_swiftformat//swiftformat:defs.bzl",
+    "@rules_swift_tidy//swiftformat:defs.bzl",
     "swiftformat_register_prebuilt_toolchains",
 )
 

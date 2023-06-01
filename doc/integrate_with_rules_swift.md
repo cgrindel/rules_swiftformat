@@ -43,7 +43,7 @@ The following shows a `BUILD.bazel` file that uses the
 
 ```python
 load(
-    "@cgrindel_rules_swiftformat//swiftformat:defs.bzl",
+    "@rules_swift_tidy//swiftformat:defs.bzl",
     "swiftformat_library",
 )
 
@@ -74,7 +74,7 @@ Now, create a `swift_library.bzl` file with the following contents:
 
 ```python
 load(
-    "@cgrindel_rules_swiftformat//swiftformat:defs.bzl",
+    "@rules_swift_tidy//swiftformat:defs.bzl",
     "swiftformat_library",
 )
 

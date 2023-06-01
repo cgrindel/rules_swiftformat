@@ -62,7 +62,7 @@ DEFAULT_ASSETS = [
 def _swiftformat_toolchain_setup_impl(repository_ctx):
     assets = prebuilt_assets.from_json(repository_ctx.attr.assets_json)
     content = """\
-load("@cgrindel_rules_swiftformat//swiftformat/toolchains:toolchain.bzl", "swiftformat_toolchain")
+load("@rules_swift_tidy//swiftformat/toolchains:toolchain.bzl", "swiftformat_toolchain")
 
 """
     for asset in assets:
@@ -79,7 +79,7 @@ toolchain(
         "@platforms//cpu:{cpu}",
     ],
     toolchain = "{swiftformat_toolchain_name}",
-    toolchain_type = "@cgrindel_rules_swiftformat//swiftformat:toolchain",
+    toolchain_type = "@rules_swift_tidy//swiftformat:toolchain",
 )
 """.format(
             cpu = asset.cpu,

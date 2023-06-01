@@ -1,4 +1,4 @@
-workspace(name = "cgrindel_rules_swiftformat")
+workspace(name = "rules_swift_tidy")
 
 load(
     "//swiftformat:deps.bzl",
