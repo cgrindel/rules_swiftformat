@@ -37,6 +37,8 @@ generate_swiftformat_asset() {
 EOF
 }
 
+# TODO(chuck): UPDATE ME TO SUPPORT BZLMOD AND THE NEW PARAM NAMES
+
 swiftformat_base_url="https://github.com/nicklockwood/SwiftFormat/releases/download/${version}"
 assets=()
 
