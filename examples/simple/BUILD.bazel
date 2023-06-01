@@ -1,11 +1,11 @@
 load("@build_bazel_rules_swift//swift:swift.bzl", "swift_binary")
 load(
-    "@rules_swift_tidy//swiftformat:defs.bzl",
-    "swiftformat_pkg",
-)
-load(
     "@cgrindel_bazel_starlib//updatesrc:defs.bzl",
     "updatesrc_update_all",
+)
+load(
+    "@rules_swift_tidy//swiftformat:defs.bzl",
+    "swiftformat_pkg",
 )
 
 # MARK: - Swift Targets
@@ -34,13 +34,12 @@ exports_files([".swiftformat"])
 
 # Defines a target that will copy all of the formatted Swift source files to
 # the workspace directory.
-updatesrc_update_all(
-    name = "update_all",
-)
+updatesrc_update_all(name = "update_all")
 
 # Defines targets for this package which will format the Swift source files,
 # test that the formatted files are in the workspace directory and copies
 # the formatted files to the workspace directory.
 swiftformat_pkg(
     name = "swiftformat",
+    config = "//:.swiftformat",
 )

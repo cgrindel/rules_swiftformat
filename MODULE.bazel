@@ -3,6 +3,7 @@ module(
     version = "0.0.0",
 )
 
+bazel_dep(name = "platforms", version = "0.0.6")
 bazel_dep(name = "bazel_skylib", version = "1.4.2")
 bazel_dep(name = "cgrindel_bazel_starlib", version = "0.16.0")
 bazel_dep(
@@ -10,6 +11,14 @@ bazel_dep(
     version = "1.8.0",
     repo_name = "build_bazel_rules_swift",
 )
+
+swift_tidy_tools = use_extension(
+    "//swiftformat:extensions.bzl",
+    "swift_tidy_tools",
+)
+use_repo(swift_tidy_tools, "swift_tidy_prebuilt_toolchains")
+
+register_toolchains("@swift_tidy_prebuilt_toolchains//:all")
 
 bazel_dep(
     name = "gazelle",
