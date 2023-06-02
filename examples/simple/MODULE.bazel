@@ -20,7 +20,7 @@ bazel_dep(
 )
 
 swift_tidy_tools = use_extension(
-    "//swiftformat:extensions.bzl",
+    "@rules_swift_tidy//swiftformat:extensions.bzl",
     "swift_tidy_tools",
     dev_dependency = True,
 )
