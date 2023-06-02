@@ -1,0 +1,55 @@
+workspace(name = "legacy_example")
+
+local_repository(
+    name = "rules_swift_tidy",
+    path = "../..",
+)
+
+load(
+    "@rules_swift_tidy//swiftformat:deps.bzl",
+    "swiftformat_rules_dependencies",
+)
+
+swiftformat_rules_dependencies()
+
+load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
+
+bazel_skylib_workspace()
+
+load(
+    "@cgrindel_bazel_starlib//:deps.bzl",
+    "bazel_starlib_dependencies",
+)
+
+bazel_starlib_dependencies()
+
+load(
+    "@build_bazel_rules_swift//swift:repositories.bzl",
+    "swift_rules_dependencies",
+)
+
+swift_rules_dependencies()
+
+load(
+    "@build_bazel_rules_swift//swift:extras.bzl",
+    "swift_rules_extra_dependencies",
+)
+
+swift_rules_extra_dependencies()
+
+load(
+    "@rules_swift_tidy//swiftformat:defs.bzl",
+    "swiftformat_register_prebuilt_toolchains",
+)
+
+swiftformat_register_prebuilt_toolchains()
+
+# Buildifier Dependencies
+
+load("@buildifier_prebuilt//:deps.bzl", "buildifier_prebuilt_deps")
+
+buildifier_prebuilt_deps()
+
+load("@buildifier_prebuilt//:defs.bzl", "buildifier_prebuilt_register_toolchains")
+
+buildifier_prebuilt_register_toolchains()

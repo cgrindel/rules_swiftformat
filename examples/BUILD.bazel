@@ -26,6 +26,7 @@ _EXAMPLE_NAMES = [
     "simple",
     "exclude_files",
     "rules_swift_helpers",
+    "legacy",
 ]
 
 default_test_runner(

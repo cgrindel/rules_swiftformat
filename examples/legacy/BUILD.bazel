@@ -1,0 +1,48 @@
+load("@build_bazel_rules_swift//swift:swift.bzl", "swift_binary")
+load("@cgrindel_bazel_starlib//bzlformat:defs.bzl", "bzlformat_pkg")
+load(
+    "@cgrindel_bazel_starlib//updatesrc:defs.bzl",
+    "updatesrc_update_all",
+)
+load(
+    "@rules_swift_tidy//swiftformat:defs.bzl",
+    "swiftformat_pkg",
+)
+
+# MARK: - Swift Targets
+
+swift_binary(
+    name = "simple",
+    srcs = ["main.swift"],
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//Foo",
+    ],
+)
+
+sh_test(
+    name = "simple_test",
+    srcs = ["simple_test.sh"],
+    data = [":simple"],
+    deps = ["@bazel_tools//tools/bash/runfiles"],
+)
+
+# MARK: - SwiftFormat Targets
+
+# We only need to export this file if there are any other packages that need to
+# reference the config file.
+exports_files([".swiftformat"])
+
+# Defines a target that will copy all of the formatted Swift source files to
+# the workspace directory.
+updatesrc_update_all(name = "update_all")
+
+# Defines targets for this package which will format the Swift source files,
+# test that the formatted files are in the workspace directory and copies
+# the formatted files to the workspace directory.
+swiftformat_pkg(
+    name = "swiftformat",
+    config = "//:.swiftformat",
+)
+
+bzlformat_pkg(name = "bzlformat")
