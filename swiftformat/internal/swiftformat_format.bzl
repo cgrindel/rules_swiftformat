@@ -21,7 +21,7 @@ def _swiftformat_format_impl(ctx):
         if ctx.attr.swift_version != "":
             args.add_all(["--swiftversion", ctx.attr.swift_version])
 
-        toolchain_info = ctx.toolchains["//swiftformat:toolchain"]
+        toolchain_info = ctx.toolchains["@rules_swift_tidy//swiftformat:toolchain"]
         swiftformat_info = toolchain_info.swiftformat_info
         args.add_all([
             "--quiet",
@@ -54,7 +54,8 @@ swiftformat_format = rule(
         "config": attr.label(
             allow_single_file = True,
             doc = "A swiftformat config file.",
-            default = "@//:.swiftformat",
+            # TODO(chuck): Figure out how to provide default.
+            # default = "@//:.swiftformat",
         ),
         "output_suffix": attr.string(
             default = "_formatted",
@@ -72,6 +73,6 @@ to your config file instead of adding it here.\
 """,
         ),
     },
-    toolchains = ["//swiftformat:toolchain"],
+    toolchains = ["@rules_swift_tidy//swiftformat:toolchain"],
     doc = "Formats the Swift source files using `nicklockwood/SwiftFormat`.",
 )

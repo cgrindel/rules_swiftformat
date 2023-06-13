@@ -1,5 +1,5 @@
 load(
-    "@cgrindel_rules_swiftformat//swiftformat:defs.bzl",
+    "@rules_swift_tidy//swiftformat:defs.bzl",
     "swiftformat_library",
 )
 
@@ -17,6 +17,7 @@ swiftformat_library(
     # The generated file should be skipped for formatting because it is a label.
     srcs = glob(["*.swift"]) + [":poorly_formatted_gen_file"],
     module_name = "Foo",
+    swiftformat_config = "//:.swiftformat",
     swiftformat_exclude = ["PoorlyFormatted.swift"],
     visibility = ["//:__subpackages__"],
 )

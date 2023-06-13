@@ -1,5 +1,5 @@
 load(
-    "@cgrindel_rules_swiftformat//swiftformat:defs.bzl",
+    "@rules_swift_tidy//swiftformat:defs.bzl",
     "swiftformat_library",
 )
 
@@ -7,5 +7,6 @@ swiftformat_library(
     name = "Foo",
     srcs = glob(["*.swift"]),
     module_name = "Foo",
+    swiftformat_config = "//:.swiftformat",
     visibility = ["//:__subpackages__"],
 )

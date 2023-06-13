@@ -37,6 +37,8 @@ generate_swiftformat_asset() {
 EOF
 }
 
+# TODO(chuck): UPDATE ME TO SUPPORT BZLMOD AND THE NEW PARAM NAMES
+
 swiftformat_base_url="https://github.com/nicklockwood/SwiftFormat/releases/download/${version}"
 assets=()
 
@@ -53,7 +55,7 @@ assets+=( "$(generate_swiftformat_asset "$version" linux x86_64 "$swiftformat_li
 
 cat <<-EOF
 load(
-    "@cgrindel_rules_swiftformat//swiftformat:defs.bzl", 
+    "@rules_swift_tidy//swiftformat:defs.bzl", 
     "swiftformat_register_prebuilt_toolchains", 
     "prebuilt_assets",
 )

@@ -1,10 +1,11 @@
 load(
-    "@cgrindel_rules_swiftformat//swiftformat:defs.bzl",
+    "@rules_swift_tidy//swiftformat:defs.bzl",
     "swiftformat_test",
 )
 
 swiftformat_test(
     name = "FooTests",
+    swiftformat_config = "//:.swiftformat",
     deps = [
         "//Sources/Foo",
     ],
