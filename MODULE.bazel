@@ -16,7 +16,13 @@ swift_tidy_tools = use_extension(
     "//swiftformat:extensions.bzl",
     "swift_tidy_tools",
 )
-use_repo(swift_tidy_tools, "swift_tidy_prebuilt_toolchains")
+use_repo(
+    swift_tidy_tools,
+    "swift_tidy_prebuilt_toolchains",
+    "swiftformat_download_linux_x86_64",
+    "swiftformat_download_macos_arm64",
+    "swiftformat_download_macos_x86_64",
+)
 
 register_toolchains("@swift_tidy_prebuilt_toolchains//:all")
 

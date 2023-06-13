@@ -75,6 +75,7 @@ filegroup(
         "MODULE.bazel",
         "WORKSPACE",
         "//swiftformat:all_files",
+        "//swiftformat/bzlmod:all_files",
         "//swiftformat/internal:all_files",
         "//swiftformat/toolchains:all_files",
     ],

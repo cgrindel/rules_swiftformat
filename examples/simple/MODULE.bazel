@@ -1,6 +1,7 @@
 bazel_dep(
     name = "rules_swift_tidy",
     version = "0.0.0",
+    dev_dependency = True,
 )
 local_path_override(
     module_name = "rules_swift_tidy",
@@ -18,10 +19,3 @@ bazel_dep(
     version = "0.16.0",
     dev_dependency = True,
 )
-
-swift_tidy_tools = use_extension(
-    "//swiftformat:extensions.bzl",
-    "swift_tidy_tools",
-    dev_dependency = True,
-)
-use_repo(swift_tidy_tools, "swift_tidy_prebuilt_toolchains")
