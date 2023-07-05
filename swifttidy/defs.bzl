@@ -29,8 +29,6 @@ load(
     _swiftformat_register_prebuilt_toolchains = "swiftformat_register_prebuilt_toolchains",
 )
 
-# TODO(chuck): Rename swiftformat_register_prebuilt_toolchains.
-
 # Toolchain Registration
 swiftformat_register_prebuilt_toolchains = _swiftformat_register_prebuilt_toolchains
 
