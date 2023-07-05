@@ -14,7 +14,7 @@ bzl_library(
     srcs = ["swift_tidy_tools.bzl"],
     visibility = ["//visibility:public"],
     deps = [
-        "//swiftformat/toolchains:prebuilt_assets",
-        "//swiftformat/toolchains:toolchain",
+        "//swifttidy/toolchains:prebuilt_assets",
+        "//swifttidy/toolchains:toolchain",
     ],
 )

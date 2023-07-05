@@ -75,9 +75,11 @@ filegroup(
         "MODULE.bazel",
         "WORKSPACE",
         "//swiftformat:all_files",
-        "//swiftformat/bzlmod:all_files",
         "//swiftformat/internal:all_files",
-        "//swiftformat/toolchains:all_files",
+        "//swifttidy:all_files",
+        "//swifttidy/bzlmod:all_files",
+        "//swifttidy/internal:all_files",
+        "//swifttidy/toolchains:all_files",
     ],
     visibility = ["//:__subpackages__"],
 )

@@ -1,31 +1,25 @@
-"""Public API for rules_swiftformat."""
+"""Deprecated. Public API for rules_swiftformat."""
 
-load(
-    "//swiftformat/internal:src_utils.bzl",
-    _src_utils = "src_utils",
-)
+# NOTE: This file is deprecated and will be removed in a future release. Please use
+# //swifttidy:defs.bzl intead.
+
 load(
     "//swiftformat/internal:swiftformat_binary.bzl",
     _swiftformat_binary = "swiftformat_binary",
-)
-load(
-    "//swiftformat/internal:swiftformat_format.bzl",
-    _swiftformat_format = "swiftformat_format",
 )
 load(
     "//swiftformat/internal:swiftformat_library.bzl",
     _swiftformat_library = "swiftformat_library",
 )
 load(
-    "//swiftformat/internal:swiftformat_pkg.bzl",
-    _swiftformat_pkg = "swiftformat_pkg",
-)
-load(
     "//swiftformat/internal:swiftformat_test.bzl",
     _swiftformat_test = "swiftformat_test",
 )
 load(
-    "//swiftformat/toolchains:toolchain.bzl",
+    "//swifttidy:defs.bzl",
+    _src_utils = "src_utils",
+    _swiftformat_format = "swiftformat_format",
+    _swiftformat_pkg = "swiftformat_pkg",
     _swiftformat_register_prebuilt_toolchains = "swiftformat_register_prebuilt_toolchains",
 )
 

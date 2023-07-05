@@ -1,10 +1,10 @@
 """Deprecated. Public API for rules_swiftformat."""
 
 # NOTE: This file is deprecated and will be removed in a future release. Please use
-# //swiftformat:defs.bzl intead.
+# //swifttidy:defs.bzl intead.
 
 load(
-    "//swiftformat:defs.bzl",
+    "//swifttidy:defs.bzl",
     _src_utils = "src_utils",
     _swiftformat_binary = "swiftformat_binary",
     _swiftformat_format = "swiftformat_format",

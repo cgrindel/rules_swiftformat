@@ -4,7 +4,7 @@ load(
     "updatesrc_update_all",
 )
 load(
-    "@rules_swift_tidy//swiftformat:defs.bzl",
+    "@rules_swift_tidy//swifttidy:defs.bzl",
     "swiftformat_pkg",
 )
 

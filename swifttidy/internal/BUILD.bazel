@@ -1,0 +1,41 @@
+load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
+load("@cgrindel_bazel_starlib//bzlformat:defs.bzl", "bzlformat_pkg")
+
+package(default_visibility = ["//swifttidy:__subpackages__"])
+
+bzlformat_pkg(
+    name = "bzlformat",
+    format_visibility = ["//visibility:private"],
+    update_visibility = ["//:__subpackages__"],
+)
+
+bzl_library(
+    name = "swiftformat_format",
+    srcs = ["swiftformat_format.bzl"],
+    deps = [
+        "@bazel_skylib//lib:paths",
+        "@cgrindel_bazel_starlib//updatesrc:defs",
+    ],
+)
+
+bzl_library(
+    name = "swiftformat_pkg",
+    srcs = ["swiftformat_pkg.bzl"],
+    deps = [
+        ":src_utils",
+        ":swiftformat_format",
+        "@bazel_skylib//rules:diff_test",
+        "@cgrindel_bazel_starlib//updatesrc:defs",
+    ],
+)
+
+filegroup(
+    name = "all_files",
+    srcs = glob(["*"]),
+    visibility = ["//:__subpackages__"],
+)
+
+bzl_library(
+    name = "src_utils",
+    srcs = ["src_utils.bzl"],
+)

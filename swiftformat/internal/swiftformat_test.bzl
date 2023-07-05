@@ -1,7 +1,7 @@
 """Definition for swiftformat_test macro."""
 
 load("@build_bazel_rules_swift//swift:swift.bzl", "swift_test")
-load(":swiftformat_pkg.bzl", "swiftformat_pkg")
+load("//swifttidy:defs.bzl", "swiftformat_pkg")
 
 def swiftformat_test(
         name,

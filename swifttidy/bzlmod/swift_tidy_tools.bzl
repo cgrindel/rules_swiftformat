@@ -1,8 +1,8 @@
 """Extension for downloading the tools used by `rules_swift_tidy`."""
 
-load("//swiftformat/toolchains:prebuilt_assets.bzl", "prebuilt_assets")
+load("//swifttidy/toolchains:prebuilt_assets.bzl", "prebuilt_assets")
 load(
-    "//swiftformat/toolchains:toolchain.bzl",
+    "//swifttidy/toolchains:toolchain.bzl",
     "swiftformat_register_prebuilt_toolchains",
 )
 
