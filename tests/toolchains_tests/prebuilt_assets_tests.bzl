@@ -1,7 +1,7 @@
 """Tests for `prebuilt_assets` module."""
 
 load("@bazel_skylib//lib:unittest.bzl", "asserts", "unittest")
-load("//swiftformat/toolchains:prebuilt_assets.bzl", "prebuilt_assets")
+load("//swifttidy/toolchains:prebuilt_assets.bzl", "prebuilt_assets")
 
 def _create_test(ctx):
     env = unittest.begin(ctx)

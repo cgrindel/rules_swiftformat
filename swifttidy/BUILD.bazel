@@ -1,0 +1,54 @@
+load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
+load("@cgrindel_bazel_starlib//bzlformat:defs.bzl", "bzlformat_pkg")
+
+package(default_visibility = ["//visibility:public"])
+
+bzlformat_pkg(
+    name = "bzlformat",
+    format_visibility = ["//visibility:private"],
+    update_visibility = ["//:__subpackages__"],
+)
+
+bzl_library(
+    name = "defs",
+    srcs = ["defs.bzl"],
+    deps = [
+        "//swifttidy/internal:src_utils",
+        "//swifttidy/internal:swiftformat_binary",
+        "//swifttidy/internal:swiftformat_format",
+        "//swifttidy/internal:swiftformat_library",
+        "//swifttidy/internal:swiftformat_pkg",
+        "//swifttidy/internal:swiftformat_test",
+        "//swifttidy/toolchains:toolchain",
+    ],
+)
+
+bzl_library(
+    name = "swiftformat",
+    deps = [
+        ":defs",
+    ],
+)
+
+filegroup(
+    name = "all_files",
+    srcs = glob(["*"]),
+    visibility = ["//:__subpackages__"],
+)
+
+toolchain_type(name = "toolchain")
+
+bzl_library(
+    name = "deps",
+    srcs = ["deps.bzl"],
+    deps = [
+        "@bazel_tools//tools/build_defs/repo:http.bzl",
+        "@bazel_tools//tools/build_defs/repo:utils.bzl",
+    ],
+)
+
+bzl_library(
+    name = "extensions",
+    srcs = ["extensions.bzl"],
+    deps = ["//swifttidy/bzlmod:swift_tidy_tools"],
+)
