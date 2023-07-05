@@ -1,23 +1,23 @@
-"""Definition for swiftformat_binary macro."""
+"""Definition for swiftformat_test macro."""
 
-load("@build_bazel_rules_swift//swift:swift.bzl", "swift_binary")
-load(":swiftformat_pkg.bzl", "swiftformat_pkg")
+load("@build_bazel_rules_swift//swift:swift.bzl", "swift_test")
+load("//swifttidy:defs.bzl", "swiftformat_pkg")
 
-def swiftformat_binary(
+def swiftformat_test(
         name,
         swiftformat_config = None,
         swiftformat_exclude = [],
         srcs = None,
         **kwargs):
-    """Defines a `swift_binary` along with a `swiftformat_pkg`.
+    """Defines a `swift_test` along with a `swiftformat_pkg`.
 
     Args:
-        name: The name for the swift_binary as a `string`.
+        name: The name for the swift_test as a `string`.
         swiftformat_config: A `label` for the SwiftFormat config file.
         swiftformat_exclude: A `list` of files or glob patterns that should
                              be ignored for formatting.
-        srcs: The Swift sources that should be used by the `swift_binary` and the `swiftformat_pkg`.
-        **kwargs: The attributes for `swift_binary`.
+        srcs: The Swift sources that should be used by the `swift_test` and the `swiftformat_pkg`.
+        **kwargs: The attributes for `swift_test`.
 
     Returns:
         None.
@@ -26,7 +26,7 @@ def swiftformat_binary(
         srcs = native.glob(["*.swift"])
 
     # Define the swift binary
-    swift_binary(
+    swift_test(
         name = name,
         srcs = srcs,
         **kwargs

@@ -14,11 +14,8 @@ bzl_library(
     srcs = ["defs.bzl"],
     deps = [
         "//swifttidy/internal:src_utils",
-        "//swifttidy/internal:swiftformat_binary",
         "//swifttidy/internal:swiftformat_format",
-        "//swifttidy/internal:swiftformat_library",
         "//swifttidy/internal:swiftformat_pkg",
-        "//swifttidy/internal:swiftformat_test",
         "//swifttidy/toolchains:toolchain",
     ],
 )
