@@ -6,11 +6,11 @@ local_repository(
 )
 
 load(
-    "@rules_swift_tidy//swiftformat:deps.bzl",
-    "swiftformat_rules_dependencies",
+    "@rules_swift_tidy//swifttidy:deps.bzl",
+    "swifttidy_rules_dependencies",
 )
 
-swiftformat_rules_dependencies()
+swifttidy_rules_dependencies()
 
 load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
 
