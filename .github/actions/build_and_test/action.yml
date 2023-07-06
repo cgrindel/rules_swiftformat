@@ -13,10 +13,10 @@ runs:
       run: |
         bazelisk build //... 
 
-    - name: Ensure all packages have bzlformat checks
+    - name: Ensure everything is tidy
       shell: bash
       run: |
-        bazelisk run //:bzlformat_missing_pkgs_test
+        bazelisk run //:tidy_check
 
     - name: Execute Integration Tests
       shell: bash
