@@ -1,11 +1,18 @@
 load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
 load("@cgrindel_bazel_starlib//bzlformat:defs.bzl", "bzlformat_pkg")
 
+package(default_visibility = ["//visibility:public"])
+
 bzl_library(
     name = "defs",
     srcs = ["defs.bzl"],
     visibility = ["//visibility:public"],
-    deps = ["//swifttidy:defs"],
+    deps = [
+        "//swiftformat/internal:swiftformat_binary",
+        "//swiftformat/internal:swiftformat_library",
+        "//swiftformat/internal:swiftformat_test",
+        "//swifttidy:defs",
+    ],
 )
 
 bzl_library(

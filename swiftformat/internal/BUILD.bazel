@@ -24,6 +24,7 @@ bzl_library(
 bzl_library(
     name = "swiftformat_test",
     srcs = ["swiftformat_test.bzl"],  # keep
+    visibility = ["//swiftformat:__subpackages__"],
     deps = [
         "//swifttidy:defs",
         "@build_bazel_rules_swift//swift",

@@ -1,17 +1,14 @@
 <!-- Generated with Stardoc, Do Not Edit! -->
 # Rules and Macros
 
-The rules and macros described below are used to format, test and 
-copy Swift source files.
+The rules and macros described below are used to tidy Swift source 
+files.
 
 On this page:
 
-  * [swiftformat_binary](#swiftformat_binary)
   * [swiftformat_format](#swiftformat_format)
-  * [swiftformat_library](#swiftformat_library)
   * [swiftformat_pkg](#swiftformat_pkg)
   * [swiftformat_register_prebuilt_toolchains](#swiftformat_register_prebuilt_toolchains)
-  * [swiftformat_test](#swiftformat_test)
 
 
 <a id="swiftformat_format"></a>
@@ -30,62 +27,10 @@ Formats the Swift source files using `nicklockwood/SwiftFormat`.
 | Name  | Description | Type | Mandatory | Default |
 | :------------- | :------------- | :------------- | :------------- | :------------- |
 | <a id="swiftformat_format-name"></a>name |  A unique name for this target.   | <a href="https://bazel.build/concepts/labels#target-names">Name</a> | required |  |
-| <a id="swiftformat_format-config"></a>config |  A swiftformat config file.   | <a href="https://bazel.build/concepts/labels">Label</a> | optional | <code>@//:.swiftformat</code> |
+| <a id="swiftformat_format-config"></a>config |  A swiftformat config file.   | <a href="https://bazel.build/concepts/labels">Label</a> | optional | <code>None</code> |
 | <a id="swiftformat_format-output_suffix"></a>output_suffix |  The suffix to add to the output filename.   | String | optional | <code>"_formatted"</code> |
 | <a id="swiftformat_format-srcs"></a>srcs |  The Swift source files to format.   | <a href="https://bazel.build/concepts/labels">List of labels</a> | required |  |
 | <a id="swiftformat_format-swift_version"></a>swift_version |  The Swift version to be used by <code>swiftformat</code>. You probably want to add this to your config file instead of adding it here.   | String | optional | <code>""</code> |
-
-
-<a id="swiftformat_binary"></a>
-
-## swiftformat_binary
-
-<pre>
-swiftformat_binary(<a href="#swiftformat_binary-name">name</a>, <a href="#swiftformat_binary-swiftformat_config">swiftformat_config</a>, <a href="#swiftformat_binary-swiftformat_exclude">swiftformat_exclude</a>, <a href="#swiftformat_binary-srcs">srcs</a>, <a href="#swiftformat_binary-kwargs">kwargs</a>)
-</pre>
-
-Defines a `swift_binary` along with a `swiftformat_pkg`.
-
-**PARAMETERS**
-
-
-| Name  | Description | Default Value |
-| :------------- | :------------- | :------------- |
-| <a id="swiftformat_binary-name"></a>name |  The name for the swift_binary as a <code>string</code>.   |  none |
-| <a id="swiftformat_binary-swiftformat_config"></a>swiftformat_config |  A <code>label</code> for the SwiftFormat config file.   |  <code>None</code> |
-| <a id="swiftformat_binary-swiftformat_exclude"></a>swiftformat_exclude |  A <code>list</code> of files or glob patterns that should be ignored for formatting.   |  <code>[]</code> |
-| <a id="swiftformat_binary-srcs"></a>srcs |  The Swift sources that should be used by the <code>swift_binary</code> and the <code>swiftformat_pkg</code>.   |  <code>None</code> |
-| <a id="swiftformat_binary-kwargs"></a>kwargs |  The attributes for <code>swift_binary</code>.   |  none |
-
-**RETURNS**
-
-None.
-
-
-<a id="swiftformat_library"></a>
-
-## swiftformat_library
-
-<pre>
-swiftformat_library(<a href="#swiftformat_library-name">name</a>, <a href="#swiftformat_library-swiftformat_config">swiftformat_config</a>, <a href="#swiftformat_library-swiftformat_exclude">swiftformat_exclude</a>, <a href="#swiftformat_library-srcs">srcs</a>, <a href="#swiftformat_library-kwargs">kwargs</a>)
-</pre>
-
-Defines a `swift_library` along with a `swiftformat_pkg`.
-
-**PARAMETERS**
-
-
-| Name  | Description | Default Value |
-| :------------- | :------------- | :------------- |
-| <a id="swiftformat_library-name"></a>name |  The name for the swift_library as a <code>string</code>.   |  none |
-| <a id="swiftformat_library-swiftformat_config"></a>swiftformat_config |  A <code>label</code> for the SwiftFormat config file.   |  <code>None</code> |
-| <a id="swiftformat_library-swiftformat_exclude"></a>swiftformat_exclude |  A <code>list</code> of files or glob patterns that should be ignored for formatting.   |  <code>[]</code> |
-| <a id="swiftformat_library-srcs"></a>srcs |  The Swift sources that should be used by the <code>swift_library</code> and the <code>swiftformat_pkg</code>.   |  <code>None</code> |
-| <a id="swiftformat_library-kwargs"></a>kwargs |  The attributes for <code>swift_library</code>.   |  none |
-
-**RETURNS**
-
-None.
 
 
 <a id="swiftformat_pkg"></a>
@@ -116,7 +61,7 @@ NOTE: Any labels detected in the `srcs` will be ignored.
 ## swiftformat_register_prebuilt_toolchains
 
 <pre>
-swiftformat_register_prebuilt_toolchains(<a href="#swiftformat_register_prebuilt_toolchains-name">name</a>, <a href="#swiftformat_register_prebuilt_toolchains-assets">assets</a>, <a href="#swiftformat_register_prebuilt_toolchains-register_toolchains">register_toolchains</a>)
+swiftformat_register_prebuilt_toolchains(<a href="#swiftformat_register_prebuilt_toolchains-name">name</a>, <a href="#swiftformat_register_prebuilt_toolchains-swiftformat_assets">swiftformat_assets</a>, <a href="#swiftformat_register_prebuilt_toolchains-register_toolchains">register_toolchains</a>)
 </pre>
 
 Register and configure the toolchains to download pre-built SwiftFormat     binaries.
@@ -126,34 +71,8 @@ Register and configure the toolchains to download pre-built SwiftFormat     bina
 
 | Name  | Description | Default Value |
 | :------------- | :------------- | :------------- |
-| <a id="swiftformat_register_prebuilt_toolchains-name"></a>name |  Optional. The name for the toolchains repository as a <code>string</code>.   |  <code>"swiftformat_prebuilt_toolchains"</code> |
-| <a id="swiftformat_register_prebuilt_toolchains-assets"></a>assets |  Optional. A <code>list</code> of tools to register. If not specified, it uses a recent version of SwiftFormat.   |  <code>None</code> |
+| <a id="swiftformat_register_prebuilt_toolchains-name"></a>name |  Optional. The name for the toolchains repository as a <code>string</code>.   |  <code>"swift_tidy_prebuilt_toolchains"</code> |
+| <a id="swiftformat_register_prebuilt_toolchains-swiftformat_assets"></a>swiftformat_assets |  Optional. A <code>list</code> of tools to register. If not specified, it uses a recent version of SwiftFormat.   |  <code>None</code> |
 | <a id="swiftformat_register_prebuilt_toolchains-register_toolchains"></a>register_toolchains |  Optional. A <code>bool</code> that determines whether this function should call <code>register_toolchains()</code>.   |  <code>True</code> |
-
-
-<a id="swiftformat_test"></a>
-
-## swiftformat_test
-
-<pre>
-swiftformat_test(<a href="#swiftformat_test-name">name</a>, <a href="#swiftformat_test-swiftformat_config">swiftformat_config</a>, <a href="#swiftformat_test-swiftformat_exclude">swiftformat_exclude</a>, <a href="#swiftformat_test-srcs">srcs</a>, <a href="#swiftformat_test-kwargs">kwargs</a>)
-</pre>
-
-Defines a `swift_test` along with a `swiftformat_pkg`.
-
-**PARAMETERS**
-
-
-| Name  | Description | Default Value |
-| :------------- | :------------- | :------------- |
-| <a id="swiftformat_test-name"></a>name |  The name for the swift_test as a <code>string</code>.   |  none |
-| <a id="swiftformat_test-swiftformat_config"></a>swiftformat_config |  A <code>label</code> for the SwiftFormat config file.   |  <code>None</code> |
-| <a id="swiftformat_test-swiftformat_exclude"></a>swiftformat_exclude |  A <code>list</code> of files or glob patterns that should be ignored for formatting.   |  <code>[]</code> |
-| <a id="swiftformat_test-srcs"></a>srcs |  The Swift sources that should be used by the <code>swift_test</code> and the <code>swiftformat_pkg</code>.   |  <code>None</code> |
-| <a id="swiftformat_test-kwargs"></a>kwargs |  The attributes for <code>swift_test</code>.   |  none |
-
-**RETURNS**
-
-None.
 
 
