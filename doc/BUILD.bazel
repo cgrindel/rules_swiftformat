@@ -9,18 +9,34 @@ load("@cgrindel_bazel_starlib//bzlformat:defs.bzl", "bzlformat_pkg")
 
 # MARK: - Documentation Providers
 
-_RULES_AND_MACROS_DOC_PROVIDER = doc_providers.create(
+_SWIFTTIDY_DOC_DEPS = [
+    "//swiftformat:defs",
+]
+
+_SWIFTFORMAT_DOC_DEPS = [
+    "//swiftformat:defs",
+]
+
+_SWIFTTIDY_RULES_DOC_PROVIDER = doc_providers.create(
     name = "rules_and_macros_overview",
+    stardoc_input = "//swifttidy:defs.bzl",
+    symbols = [
+        "swiftformat_format",
+        "swiftformat_pkg",
+        "swiftformat_register_prebuilt_toolchains",
+    ],
+    deps = _SWIFTTIDY_DOC_DEPS,
+)
+
+_SWIFTFORMAT_RULES_DOC_PROVIDER = doc_providers.create(
+    name = "swiftformat_rules_and_macros_overview",
     stardoc_input = "//swiftformat:defs.bzl",
     symbols = [
         "swiftformat_binary",
-        "swiftformat_format",
         "swiftformat_library",
-        "swiftformat_pkg",
-        "swiftformat_register_prebuilt_toolchains",
         "swiftformat_test",
     ],
-    deps = ["//swiftformat"],
+    deps = _SWIFTFORMAT_DOC_DEPS,
 )
 
 _API_SRCS = [
@@ -30,34 +46,46 @@ _API_SRCS = [
 _API_DOC_PROVIDERS = [
     doc_providers.create(
         name = name,
-        stardoc_input = "//swiftformat:defs.bzl",
+        stardoc_input = "//swifttidy:defs.bzl",
         symbols = [name],
-        deps = ["//swiftformat"],
+        deps = _SWIFTTIDY_DOC_DEPS,
     )
     for name in _API_SRCS
 ]
 
 _ALL_DOC_PROVIDERS = [
-    _RULES_AND_MACROS_DOC_PROVIDER,
+    _SWIFTTIDY_RULES_DOC_PROVIDER,
+    _SWIFTFORMAT_RULES_DOC_PROVIDER,
     doc_providers.create(
         name = "api",
         is_stardoc = False,
-        stardoc_input = "//swiftformat:defs.bzl",
-        deps = ["//swiftformat"],
+        stardoc_input = "//swifttidy:defs.bzl",
+        deps = _SWIFTTIDY_DOC_DEPS,
     ),
 ] + _API_DOC_PROVIDERS
 
 # MARK: - Headers
 
 write_header(
-    name = _RULES_AND_MACROS_DOC_PROVIDER.header_label,
+    name = _SWIFTTIDY_RULES_DOC_PROVIDER.header_label,
     header_content = [
         "# Rules and Macros",
+        "",
+        "The rules and macros described below are used to tidy Swift source ",
+        "files.",
+    ],
+    symbols = _SWIFTTIDY_RULES_DOC_PROVIDER.symbols,
+)
+
+write_header(
+    name = _SWIFTFORMAT_RULES_DOC_PROVIDER.header_label,
+    header_content = [
+        "# Deprecated Rules and Macros",
         "",
         "The rules and macros described below are used to format, test and ",
         "copy Swift source files.",
     ],
-    symbols = _RULES_AND_MACROS_DOC_PROVIDER.symbols,
+    symbols = _SWIFTFORMAT_RULES_DOC_PROVIDER.symbols,
 )
 
 # Write the API headers
@@ -81,9 +109,9 @@ write_file_list(
     out = "api.md_",
     doc_provs = _API_DOC_PROVIDERS,
     header_content = [
-        "# Build API",
+        "# API",
         "",
-        "The APIs list below are used by rules_swiftformat.",
+        "The APIs list below are used by rules_swifttidy.",
         "",
     ],
 )

@@ -1,7 +1,7 @@
 <!-- Generated with Stardoc, Do Not Edit! -->
-# Build API
+# API
 
-The APIs list below are used by rules_swiftformat.
+The APIs list below are used by rules_swifttidy.
 
   * [src_utils](/doc/src_utils.md)
 
