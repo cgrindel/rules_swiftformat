@@ -4,7 +4,7 @@ load(
     "bzlformat_missing_pkgs",
     "bzlformat_pkg",
 )
-load("@cgrindel_bazel_starlib//bzltidy:defs.bzl", "tidy")
+load("@cgrindel_bazel_starlib//bzltidy:defs.bzl", "tidy", "tidy_all")
 load(
     "@cgrindel_bazel_starlib//updatesrc:defs.bzl",
     "updatesrc_update_all",
@@ -31,6 +31,13 @@ tidy(
         ":update_all",
         ":update_build_files",
     ],
+)
+
+tidy_all(name = "tidy_all")
+
+tidy_all(
+    name = "tidy_modified",
+    mode = "modified",
 )
 
 updatesrc_update_all(
