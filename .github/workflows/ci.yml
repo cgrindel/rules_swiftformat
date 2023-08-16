@@ -7,6 +7,10 @@ on:
     # Every day at 11:16 UTC.
     - cron: '16 11 * * *'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   macos_build:
     runs-on: macos-13
