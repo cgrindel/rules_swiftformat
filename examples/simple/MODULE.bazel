@@ -16,6 +16,6 @@ bazel_dep(
 
 bazel_dep(
     name = "cgrindel_bazel_starlib",
-    version = "0.16.2",
+    version = "0.17.0",
     dev_dependency = True,
 )
