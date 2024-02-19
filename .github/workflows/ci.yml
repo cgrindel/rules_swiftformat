@@ -20,11 +20,8 @@ jobs:
       with:
         repo_name: rules_swiftformat
     # DEBUG BEGIN
-    - name: Setup upterm session
-      uses: lhotari/action-upterm@v1
-      with:
-        limit-access-to-actor: true
-        wait-timeout-minutes: 5
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
     # DEBUG END
     - uses: ./.github/actions/build_and_test
 
