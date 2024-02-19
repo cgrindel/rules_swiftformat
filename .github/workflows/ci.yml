@@ -19,6 +19,13 @@ jobs:
     - uses: cgrindel/gha_set_up_bazel@v1
       with:
         repo_name: rules_swiftformat
+    # DEBUG BEGIN
+    - name: Setup upterm session
+      uses: lhotari/action-upterm@v1
+      with:
+        limit-access-to-actor: true
+        wait-timeout-minutes: 5
+    # DEBUG END
     - uses: ./.github/actions/build_and_test
 
   ubuntu_build:
