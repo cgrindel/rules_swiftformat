@@ -22,12 +22,12 @@ jobs:
     - uses: cgrindel/gha_set_up_bazel@v1
       with:
         repo_name: rules_swiftformat
-    # # DEBUG BEGIN
-    # - name: Setup tmate session
-    #   uses: mxschmitt/action-tmate@v3
-    #   with:
-    #     limit-access-to-actor: true
-    # # DEBUG END
+    # DEBUG BEGIN
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
+      with:
+        limit-access-to-actor: true
+    # DEBUG END
     - uses: ./.github/actions/build_and_test
 
   ubuntu_build:
