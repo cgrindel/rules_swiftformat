@@ -99,3 +99,21 @@ test_suite(
     ],
     visibility = ["//:__subpackages__"],
 )
+
+# In February 2024, the following tests started failing in CI on the GitHub
+# macos-13 runner.
+#   //examples:exclude_files_test
+#   //examples:rules_swift_helpers_test
+# There is no output in the failure. Debugging on the runner shows that xctest
+# is failing with exit code 83. I have not found a solution to this problem.
+# We will not run these tests on MacOS.
+# NOTE: These tests succeed when run locally.
+test_suite(
+    name = "macos_ci_integration_tests",
+    tags = integration_test_utils.DEFAULT_INTEGRATION_TEST_TAGS,
+    tests = [
+        "//examples:legacy_test",
+        "//examples:simple_test",
+    ],
+    visibility = ["//:__subpackages__"],
+)

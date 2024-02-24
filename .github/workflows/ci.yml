@@ -23,6 +23,11 @@ jobs:
       with:
         repo_name: rules_swiftformat
     - uses: ./.github/actions/build_and_test
+    # See comment in BUILD.bazel for more details.
+    - name: Execute Integration Tests
+      shell: bash
+      run: |
+        bazelisk test //:macos_ci_integration_tests
 
   ubuntu_build:
     runs-on: ubuntu-22.04
@@ -49,6 +54,10 @@ jobs:
         build --action_env=LD_LIBRARY_PATH
         EOF
     - uses: ./.github/actions/build_and_test
+    - name: Execute Integration Tests
+      shell: bash
+      run: |
+        bazelisk test //:all_integration_tests
 
   all_ci_tests:
     runs-on: ubuntu-22.04
