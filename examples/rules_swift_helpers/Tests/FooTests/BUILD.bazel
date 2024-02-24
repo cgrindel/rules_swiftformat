@@ -1,20 +1,12 @@
-# load(
-#     "@rules_swift_tidy//swiftformat:defs.bzl",
-#     "swiftformat_test",
-# )
+load(
+    "@rules_swift_tidy//swiftformat:defs.bzl",
+    "swiftformat_test",
+)
 
-# swiftformat_test(
-#     name = "FooTests",
-#     swiftformat_config = "//:.swiftformat",
-#     deps = [
-#         "//Sources/Foo",
-#     ],
-# )
-
-load("@build_bazel_rules_swift//swift:swift.bzl", "swift_test")
-
-swift_test(
+swiftformat_test(
     name = "FooTests",
-    srcs = glob(["*.swift"]),
-    deps = ["//Sources/Foo"],
+    swiftformat_config = "//:.swiftformat",
+    deps = [
+        "//Sources/Foo",
+    ],
 )
