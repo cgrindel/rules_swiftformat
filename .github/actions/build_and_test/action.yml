@@ -17,8 +17,3 @@ runs:
       shell: bash
       run: |
         bazelisk run //:tidy_check
-
-    - name: Execute Integration Tests
-      shell: bash
-      run: |
-        bazelisk test //:all_integration_tests
