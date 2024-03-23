@@ -20,7 +20,7 @@ def swifttidy_rules_dependencies():
         name = "cgrindel_bazel_starlib",
         sha256 = "00b084e895146d2dc8c76437dd5f91a7203c7b46bb4edd1896d018b8795bc927",
         urls = [
-            "https://github.com/cgrindel/bazel-starlib/releases/download/v0.20.1/bazel-starlib.v0.20.1.tar.gz",
+            "https://github.com/cgrindel/bazel-starlib/releases/download/v0.20.2/bazel-starlib.v0.20.2.tar.gz",
         ],
     )
 
