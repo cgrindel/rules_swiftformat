@@ -18,9 +18,9 @@ def swifttidy_rules_dependencies():
     maybe(
         http_archive,
         name = "cgrindel_bazel_starlib",
-        sha256 = "8389deb2d177b3f099fbb1d2733c2e45d07f7b26b1fb5cabc15a7e21594af63b",
+        sha256 = "00b084e895146d2dc8c76437dd5f91a7203c7b46bb4edd1896d018b8795bc927",
         urls = [
-            "https://github.com/cgrindel/bazel-starlib/releases/download/v0.20.0/bazel-starlib.v0.20.0.tar.gz",
+            "https://github.com/cgrindel/bazel-starlib/releases/download/v0.20.1/bazel-starlib.v0.20.1.tar.gz",
         ],
     )
 
