@@ -30,7 +30,7 @@ jobs:
         bazelisk test //:macos_ci_integration_tests
 
   ubuntu_build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     env:
       CC: clang
     steps:
@@ -60,7 +60,7 @@ jobs:
         bazelisk test //:all_integration_tests
 
   all_ci_tests:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: [macos_build, ubuntu_build]
     if: ${{ always() }}
     steps:
