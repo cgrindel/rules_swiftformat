@@ -27,6 +27,6 @@ def swifttidy_rules_dependencies():
     maybe(
         http_archive,
         name = "build_bazel_rules_swift",
-        sha256 = "9919ed1d8dae509645bfd380537ae6501528d8de971caebed6d5185b9970dc4d",
-        url = "https://github.com/bazelbuild/rules_swift/releases/download/2.1.1/rules_swift.2.1.1.tar.gz",
+        sha256 = "37424170f8a7597cced37480e78b55607d91d56a7d4d25430d435abbb833e4a7",
+        url = "https://github.com/bazelbuild/rules_swift/releases/download/3.0.0/rules_swift.3.0.0.tar.gz",
     )
