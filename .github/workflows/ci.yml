@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   macos_build:
-    runs-on: macos-14
+    runs-on: macos-15
     steps:
     - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
     - uses: maxim-lobanov/setup-xcode@v1
