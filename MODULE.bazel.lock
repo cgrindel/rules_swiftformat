@@ -5,11 +5,12 @@
     "https://bcr.bazel.build/modules/abseil-cpp/20210324.2/MODULE.bazel": "7cd0312e064fde87c8d1cd79ba06c876bd23630c83466e9500321be55c96ace2",
     "https://bcr.bazel.build/modules/abseil-cpp/20211102.0/MODULE.bazel": "70390338f7a5106231d20620712f7cccb659cd0e9d073d1991c038eb9fc57589",
     "https://bcr.bazel.build/modules/abseil-cpp/20211102.0/source.json": "7e3a9adf473e9af076ae485ed649d5641ad50ec5c11718103f34de03170d94ad",
-    "https://bcr.bazel.build/modules/apple_support/1.5.0/MODULE.bazel": "50341a62efbc483e8a2a6aec30994a58749bd7b885e18dd96aa8c33031e558ef",
+    "https://bcr.bazel.build/modules/apple_support/1.23.1/MODULE.bazel": "53763fed456a968cf919b3240427cf3a9d5481ec5466abc9d5dc51bc70087442",
+    "https://bcr.bazel.build/modules/apple_support/1.23.1/source.json": "d888b44312eb0ad2c21a91d026753f330caa48a25c9b2102fae75eb2b0dcfdd2",
     "https://bcr.bazel.build/modules/apple_support/1.7.0/MODULE.bazel": "24046c8f609d95eae47bdf514863a1329b95b81d05be1a21b60127affdca0cfe",
-    "https://bcr.bazel.build/modules/apple_support/1.7.0/source.json": "9a5bb12a0a159d1a199f09838e17b957ee546793dc380d119f94c67dc92ac8a6",
     "https://bcr.bazel.build/modules/bazel_features/1.11.0/MODULE.bazel": "f9382337dd5a474c3b7d334c2f83e50b6eaedc284253334cf823044a26de03e8",
-    "https://bcr.bazel.build/modules/bazel_features/1.11.0/source.json": "c9320aa53cd1c441d24bd6b716da087ad7e4ff0d9742a9884587596edfe53015",
+    "https://bcr.bazel.build/modules/bazel_features/1.27.0/MODULE.bazel": "621eeee06c4458a9121d1f104efb80f39d34deff4984e778359c60eaf1a8cb65",
+    "https://bcr.bazel.build/modules/bazel_features/1.27.0/source.json": "ed8cf0ef05c858dce3661689d0a2b110ff398e63994e178e4f1f7555a8067fed",
     "https://bcr.bazel.build/modules/bazel_skylib/1.0.3/MODULE.bazel": "bcb0fd896384802d1ad283b4e4eb4d718eebd8cb820b0a2c3a347fb971afd9d8",
     "https://bcr.bazel.build/modules/bazel_skylib/1.2.0/MODULE.bazel": "44fe84260e454ed94ad326352a698422dbe372b21a1ac9f3eab76eb531223686",
     "https://bcr.bazel.build/modules/bazel_skylib/1.2.1/MODULE.bazel": "f35baf9da0efe45fa3da1696ae906eea3d615ad41e2e3def4aeb4e8bc0ef9a7a",
@@ -17,7 +18,8 @@
     "https://bcr.bazel.build/modules/bazel_skylib/1.4.1/MODULE.bazel": "a0dcb779424be33100dcae821e9e27e4f2901d9dfd5333efe5ac6a8d7ab75e1d",
     "https://bcr.bazel.build/modules/bazel_skylib/1.4.2/MODULE.bazel": "3bd40978e7a1fac911d5989e6b09d8f64921865a45822d8b09e815eaa726a651",
     "https://bcr.bazel.build/modules/bazel_skylib/1.6.1/MODULE.bazel": "8fdee2dbaace6c252131c00e1de4b165dc65af02ea278476187765e1a617b917",
-    "https://bcr.bazel.build/modules/bazel_skylib/1.6.1/source.json": "082ed5f9837901fada8c68c2f3ddc958bb22b6d654f71dd73f3df30d45d4b749",
+    "https://bcr.bazel.build/modules/bazel_skylib/1.7.1/MODULE.bazel": "3120d80c5861aa616222ec015332e5f8d3171e062e3e804a2a0253e1be26e59b",
+    "https://bcr.bazel.build/modules/bazel_skylib/1.7.1/source.json": "f121b43eeefc7c29efbd51b83d08631e2347297c95aac9764a701f2a6a2bb953",
     "https://bcr.bazel.build/modules/bazel_skylib_gazelle_plugin/1.4.2/MODULE.bazel": "51eaa4de95eeb0ab744a6b56e43e549ebe8a3bc319e02b3a4e8399957ba9745f",
     "https://bcr.bazel.build/modules/bazel_skylib_gazelle_plugin/1.4.2/source.json": "44d42c58eae570de9481fd2ac140743d370ce28a3c31b15616b242fe279ea51b",
     "https://bcr.bazel.build/modules/buildifier_prebuilt/6.0.0.1/MODULE.bazel": "5d23708e6a5527ab4f151da7accabc22808cb5fb579c8cc4cd4a292da57a5c97",
@@ -37,12 +39,13 @@
     "https://bcr.bazel.build/modules/googletest/1.11.0/source.json": "c73d9ef4268c91bd0c1cd88f1f9dfa08e814b1dbe89b5f594a9f08ba0244d206",
     "https://bcr.bazel.build/modules/nlohmann_json/3.6.1/MODULE.bazel": "6f7b417dcc794d9add9e556673ad25cb3ba835224290f4f848f8e2db1e1fca74",
     "https://bcr.bazel.build/modules/nlohmann_json/3.6.1/source.json": "f448c6e8963fdfa7eb831457df83ad63d3d6355018f6574fb017e8169deb43a9",
+    "https://bcr.bazel.build/modules/platforms/0.0.10/MODULE.bazel": "8cb8efaf200bdeb2150d93e162c40f388529a25852b332cec879373771e48ed5",
+    "https://bcr.bazel.build/modules/platforms/0.0.10/source.json": "f22828ff4cf021a6b577f1bf6341cb9dcd7965092a439f64fc1bb3b7a5ae4bd5",
     "https://bcr.bazel.build/modules/platforms/0.0.4/MODULE.bazel": "9b328e31ee156f53f3c416a64f8491f7eb731742655a47c9eec4703a71644aee",
     "https://bcr.bazel.build/modules/platforms/0.0.5/MODULE.bazel": "5733b54ea419d5eaf7997054bb55f6a1d0b5ff8aedf0176fef9eea44f3acda37",
     "https://bcr.bazel.build/modules/platforms/0.0.6/MODULE.bazel": "ad6eeef431dc52aefd2d77ed20a4b353f8ebf0f4ecdd26a807d2da5aa8cd0615",
     "https://bcr.bazel.build/modules/platforms/0.0.7/MODULE.bazel": "72fd4a0ede9ee5c021f6a8dd92b503e089f46c227ba2813ff183b71616034814",
     "https://bcr.bazel.build/modules/platforms/0.0.9/MODULE.bazel": "4a87a60c927b56ddd67db50c89acaa62f4ce2a1d2149ccb63ffd871d5ce29ebc",
-    "https://bcr.bazel.build/modules/platforms/0.0.9/source.json": "cd74d854bf16a9e002fb2ca7b1a421f4403cda29f824a765acd3a8c56f8d43e6",
     "https://bcr.bazel.build/modules/protobuf/21.7/MODULE.bazel": "a5a29bb89544f9b97edce05642fac225a808b5b7be74038ea3640fae2f8e66a7",
     "https://bcr.bazel.build/modules/protobuf/21.7/source.json": "bbe500720421e582ff2d18b0802464205138c06056f443184de39fbb8187b09b",
     "https://bcr.bazel.build/modules/protobuf/3.19.0/MODULE.bazel": "6b5fbb433f760a99a22b18b6850ed5784ef0e9928a72668b66e4d7ccd47db9b0",
@@ -51,10 +54,10 @@
     "https://bcr.bazel.build/modules/rules_bazel_integration_test/0.14.1/MODULE.bazel": "f7cf70cdd4fc79e7a2b98712c26d012b05bd78aeeb81cfb091ac279736b4b377",
     "https://bcr.bazel.build/modules/rules_bazel_integration_test/0.14.1/source.json": "8be26a4f25d7e943bde44fafccf52036e5cc8b37d46a37043919af65a3b6b47c",
     "https://bcr.bazel.build/modules/rules_cc/0.0.1/MODULE.bazel": "cb2aa0747f84c6c3a78dad4e2049c154f08ab9d166b1273835a8174940365647",
+    "https://bcr.bazel.build/modules/rules_cc/0.0.11/MODULE.bazel": "9f249c5624a4788067b96b8b896be10c7e8b4375dc46f6d8e1e51100113e0992",
+    "https://bcr.bazel.build/modules/rules_cc/0.0.11/source.json": "4616b48edd4d735f2effe7f5a05ec20c7fa5f46270a145e1365652d8a0faca58",
     "https://bcr.bazel.build/modules/rules_cc/0.0.2/MODULE.bazel": "6915987c90970493ab97393024c156ea8fb9f3bea953b2f3ec05c34f19b5695c",
     "https://bcr.bazel.build/modules/rules_cc/0.0.8/MODULE.bazel": "964c85c82cfeb6f3855e6a07054fdb159aced38e99a5eecf7bce9d53990afa3e",
-    "https://bcr.bazel.build/modules/rules_cc/0.0.9/MODULE.bazel": "836e76439f354b89afe6a911a7adf59a6b2518fafb174483ad78a2a2fde7b1c5",
-    "https://bcr.bazel.build/modules/rules_cc/0.0.9/source.json": "1f1ba6fea244b616de4a554a0f4983c91a9301640c8fe0dd1d410254115c8430",
     "https://bcr.bazel.build/modules/rules_go/0.33.0/MODULE.bazel": "a2b11b64cd24bf94f57454f53288a5dacfe6cb86453eee7761b7637728c1910c",
     "https://bcr.bazel.build/modules/rules_go/0.37.0/MODULE.bazel": "7639dae065f071efebbe73c03dc8330c3293206cf073af7c7084add4e0120aba",
     "https://bcr.bazel.build/modules/rules_go/0.38.1/MODULE.bazel": "fb8e73dd3b6fc4ff9d260ceacd830114891d49904f5bda1c16bc147bcc254f71",
@@ -97,7 +100,7 @@
   "moduleExtensions": {
     "//swifttidy:extensions.bzl%swift_tidy_tools": {
       "general": {
-        "bzlTransitiveDigest": "T2pd8LuOy9mzadBifUbRy6gz3OoZC2s7VmUSmj0xQf0=",
+        "bzlTransitiveDigest": "qh56X052Q+8N/DqjSQ1svbMcNBZAjFxcsxRBGUUWuv0=",
         "usagesDigest": "mxkGfQHmjJHyOy8YPOgL1CqQLreBH4E2wiXzuRY4fZ0=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
@@ -158,37 +161,9 @@
         ]
       }
     },
-    "@@apple_support~//crosstool:setup.bzl%apple_cc_configure_extension": {
-      "general": {
-        "bzlTransitiveDigest": "q0dH4ScKg+iqX2b48eS0TqW/om2vadbxxakVgtOLSGM=",
-        "usagesDigest": "J21CZ33Ga7rE3dc1DDhr0Kk68Jx9cRstKieD1v7Yp/o=",
-        "recordedFileInputs": {},
-        "recordedDirentsInputs": {},
-        "envVariables": {},
-        "generatedRepoSpecs": {
-          "local_config_apple_cc_toolchains": {
-            "bzlFile": "@@apple_support~//crosstool:setup.bzl",
-            "ruleClassName": "_apple_cc_autoconf_toolchains",
-            "attributes": {}
-          },
-          "local_config_apple_cc": {
-            "bzlFile": "@@apple_support~//crosstool:setup.bzl",
-            "ruleClassName": "_apple_cc_autoconf",
-            "attributes": {}
-          }
-        },
-        "recordedRepoMappingEntries": [
-          [
-            "apple_support~",
-            "bazel_tools",
-            "bazel_tools"
-          ]
-        ]
-      }
-    },
     "@@buildifier_prebuilt~//:defs.bzl%buildifier_prebuilt_deps_extension": {
       "general": {
-        "bzlTransitiveDigest": "WTn48JPBL4zmwsh+OhmRkarAG4xAT6MJBtEwf9o+Vx4=",
+        "bzlTransitiveDigest": "1W1asoxigb0GYGyqEN16pw9nj9WvC6RtzpxSI+weruA=",
         "usagesDigest": "/djAHUkkeT9Y0ppH5iX466cjbOidLFe2AbTVrGjj1Y0=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
@@ -314,7 +289,7 @@
     },
     "@@gazelle~//:extensions.bzl%go_deps": {
       "general": {
-        "bzlTransitiveDigest": "GQJwTj8mNP2Y2CSOhQkglCUIxMRJwbvd8Sg6BFCaF2s=",
+        "bzlTransitiveDigest": "87vZwjzgw+gwfzCr4kMRO730wyiKIq6xLE+fSh0jD+s=",
         "usagesDigest": "M+Qi8jQNAvw6wa+MAu6gX3vP+v1LIOKWbm636izAV5k=",
         "recordedFileInputs": {
           "@@rules_go~//go.mod": "a7143f329c2a3e0b983ce74a96c0c25b0d0c59d236d75f7e1b069aadd988d55e",
@@ -730,7 +705,7 @@
     "@@platforms//host:extension.bzl%host_platform": {
       "general": {
         "bzlTransitiveDigest": "xelQcPZH8+tmuOHVjL9vDxMnnQNMlwj0SlvgoqBkm4U=",
-        "usagesDigest": "pCYpDQmqMbmiiPI1p2Kd3VLm5T48rRAht5WdW0X2GlA=",
+        "usagesDigest": "hgylFkgWSg0ulUwWZzEM1aIftlUnbmw2ynWLdEfHnZc=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},
@@ -781,7 +756,7 @@
     },
     "@@rules_go~//go:extensions.bzl%go_sdk": {
       "general": {
-        "bzlTransitiveDigest": "6OpUR/yglzmu6OR0l9BvoXNEmRETCk2i9/mg6yhIbMA=",
+        "bzlTransitiveDigest": "baN9z29fYCBxsKJ9k+IZablPhdZchm8wGM/3s2a7qoY=",
         "usagesDigest": "hlXC+xkMROaRlvG8sEpzXAa0gV0wBlafm6RtTiSj4vg=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
@@ -843,7 +818,7 @@
     },
     "@@rules_go~//go/private:extensions.bzl%non_module_dependencies": {
       "general": {
-        "bzlTransitiveDigest": "Ehhmk6356y8X4aajUzY5M6ySMoLN69uOR15zGg1n3IM=",
+        "bzlTransitiveDigest": "a8pDcuGF/q0cZIZC0DYQeNuroawyS9cz9r/A6BKURa0=",
         "usagesDigest": "n7nOucyQXYnXaGoVT3r0e6N8JHZW7mv95Cgk+SjPy14=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
