@@ -9,7 +9,7 @@ files exist in the workspace directory, and copy the formatted files to the work
 ## Table of Contents
 
 * [Quickstart](#quickstart)
-  * [1\. Configure your workspace to use rules\_swiftformat](#1-configure-your-workspace-to-use-rules_swiftformat)
+  * [1\. Add rules\_swift\_tidy to your MODULE\.bazel](#1-add-rules_swift_tidy-to-your-modulebazel)
   * [2\. Update the BUILD\.bazel at the root of your workspace](#2-update-the-buildbazel-at-the-root-of-your-workspace)
   * [3\. Add swiftformat\_pkg to every Bazel package with Swift source files](#3-add-swiftformat_pkg-to-every-bazel-package-with-swift-source-files)
   * [4\. Format, Update, and Test](#4-format-update-and-test)
@@ -23,60 +23,33 @@ files exist in the workspace directory, and copy the formatted files to the work
 The following provides a quick introduction on how to use the rules in this repository. Also, check
 out [the documentation](/doc/) and [the examples](/examples/) for more information.
 
-### 1. Configure your workspace to use `rules_swiftformat`
+### 1. Add `rules_swift_tidy` to your `MODULE.bazel`
 
-Add the following to your `WORKSPACE` file to add this repository and its dependencies.
+Add the following to your `MODULE.bazel` file.
 
-<!-- BEGIN WORKSPACE SNIPPET -->
+<!-- BEGIN MODULE SNIPPET -->
 ```python
-# Download and configure rules_swiftformat.
-
-http_archive(
-    name = "rules_swift_tidy",
-    sha256 = "f496774f56e8260e277dc17366cf670b55dee3616327a13d2d04bd1b62cdcc88",
-    strip_prefix = "rules_swiftformat-0.4.1",
-    urls = [
-        "http://github.com/cgrindel/rules_swiftformat/archive/v0.4.1.tar.gz",
-    ],
-)
-load(
-    "//swiftformat:deps.bzl",
-    "swiftformat_rules_dependencies",
-)
-
-swiftformat_rules_dependencies()
-
-# Configure the dependencies for rules_swiftformat
-
-load(
-    "@cgrindel_bazel_starlib//:deps.bzl",
-    "bazel_starlib_dependencies",
-)
-
-bazel_starlib_dependencies()
-
-load(
-    "@build_bazel_rules_swift//swift:repositories.bzl",
-    "swift_rules_dependencies",
-)
-
-swift_rules_dependencies()
-
-load(
-    "@build_bazel_rules_swift//swift:extras.bzl",
-    "swift_rules_extra_dependencies",
-)
-
-swift_rules_extra_dependencies()
-
-load(
-    "@rules_swift_tidy//swiftformat:defs.bzl",
-    "swiftformat_register_prebuilt_toolchains",
-)
-
-swiftformat_register_prebuilt_toolchains()
+bazel_dep(name = "rules_swift_tidy", version = "0.0.0")
 ```
-<!-- END WORKSPACE SNIPPET -->
+<!-- END MODULE SNIPPET -->
+
+The root `BUILD.bazel` in the next step loads from `cgrindel_bazel_starlib`, so add it as a direct
+dependency too.
+
+```python
+bazel_dep(name = "cgrindel_bazel_starlib", version = "0.18.1")
+```
+
+`rules_swift_tidy` is not yet published to the Bazel Central Registry. Until it is, pin a commit
+with `git_override`.
+
+```python
+git_override(
+    module_name = "rules_swift_tidy",
+    commit = "<commit>",
+    remote = "https://github.com/cgrindel/rules_swiftformat.git",
+)
+```
 
 ### 2. Update the `BUILD.bazel` at the root of your workspace
 
@@ -140,63 +113,40 @@ $ bazel test //...
 
 ## Specifying the SwiftFormat Version
 
-By default, `rules_swiftformat` will load a [recent release of
+By default, `rules_swift_tidy` will load a [recent release of
 SwiftFormat](https://github.com/nicklockwood/SwiftFormat/releases). This works well for most cases.
-However, if you would like to specify the SwiftFormat release, you can do so by specifying the
-assets to download when calling [`swiftformat_register_prebuilt_toolchains`](/doc/repository_rules_overview.md#swiftformat_register_prebuilt_toolchains) function in your `WORKSPACE`.
-
-```python
-swiftformat_register_prebuilt_toolchains(
-    assets = [
-        prebuilt_assets.create_swiftformat(
-            version = "0.51.11",
-            os = "macos",
-            cpu = "x86_64",
-            file = "swiftformat",
-            sha256 = "e565ebf6c54ee8e1ac83e4974edae34e002f86eda358a5838c0171f32f00ab20",
-        ),
-        # Other declarations...
-    ],
-)
-```
+However, if you would like to specify the SwiftFormat release, you can do so by declaring
+`swiftformat` tags on the `swift_tidy_tools` extension in your `MODULE.bazel`. Declare a tag for
+each of the three supported platforms: `macos`/`x86_64`, `macos`/`arm64`, and `linux`/`x86_64`.
 
 To make this easier, this repository includes a tool called `generate_assets_declaration`. Executing
 this tool will generate the appropriate declaration to download and configure the desired version of
 SwiftFormat.
 
 ```sh
-# Specify the desired SwiftFormat version 
+# Specify the desired SwiftFormat version
 $ bazel run //tools:generate_assets_declaration -- "0.51.11"
-load(
-    "@rules_swift_tidy//swiftformat:defs.bzl",
-    "swiftformat_register_prebuilt_toolchains",
-    "prebuilt_assets",
+swift_tidy_tools = use_extension(
+    "@rules_swift_tidy//swifttidy:extensions.bzl",
+    "swift_tidy_tools",
 )
-
-swiftformat_register_prebuilt_toolchains(
-    assets = [
-        prebuilt_assets.create_swiftformat(
-            version = "0.51.11",
-            os = "macos",
-            cpu = "x86_64",
-            file = "swiftformat",
-            sha256 = "e565ebf6c54ee8e1ac83e4974edae34e002f86eda358a5838c0171f32f00ab20",
-        ),
-        prebuilt_assets.create_swiftformat(
-            version = "0.51.11",
-            os = "macos",
-            cpu = "arm64",
-            file = "swiftformat",
-            sha256 = "e565ebf6c54ee8e1ac83e4974edae34e002f86eda358a5838c0171f32f00ab20",
-        ),
-        prebuilt_assets.create_swiftformat(
-            version = "0.51.11",
-            os = "linux",
-            cpu = "x86_64",
-            file = "swiftformat_linux",
-            sha256 = "a49b79d97c234ccb5bcd2064ffec868e93e2eabf2d5de79974ca3802d8e389ec",
-        ),
-    ],
+swift_tidy_tools.swiftformat(
+    version = "0.51.11",
+    os = "macos",
+    cpu = "x86_64",
+    sha256 = "e565ebf6c54ee8e1ac83e4974edae34e002f86eda358a5838c0171f32f00ab20",
+)
+swift_tidy_tools.swiftformat(
+    version = "0.51.11",
+    os = "macos",
+    cpu = "arm64",
+    sha256 = "e565ebf6c54ee8e1ac83e4974edae34e002f86eda358a5838c0171f32f00ab20",
+)
+swift_tidy_tools.swiftformat(
+    version = "0.51.11",
+    os = "linux",
+    cpu = "x86_64",
+    sha256 = "a49b79d97c234ccb5bcd2064ffec868e93e2eabf2d5de79974ca3802d8e389ec",
 )
 ```
 

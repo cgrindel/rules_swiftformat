@@ -36,15 +36,6 @@ filegroup(
 toolchain_type(name = "toolchain")
 
 bzl_library(
-    name = "deps",
-    srcs = ["deps.bzl"],
-    deps = [
-        "@bazel_tools//tools/build_defs/repo:http.bzl",
-        "@bazel_tools//tools/build_defs/repo:utils.bzl",
-    ],
-)
-
-bzl_library(
     name = "extensions",
     srcs = ["extensions.bzl"],
     deps = ["//swifttidy/bzlmod:swift_tidy_tools"],

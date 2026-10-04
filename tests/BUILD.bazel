@@ -7,7 +7,6 @@ bzlformat_pkg(name = "bzlformat")
 build_test(
     name = "public_api",
     targets = [
-        "//swiftformat:deps",
         "//swiftformat:swiftformat",
     ],
 )
