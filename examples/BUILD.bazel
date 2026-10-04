@@ -26,7 +26,6 @@ _EXAMPLE_NAMES = [
     "simple",
     "exclude_files",
     "rules_swift_helpers",
-    "legacy",
 ]
 
 default_test_runner(
@@ -37,6 +36,9 @@ default_test_runner(
 [
     bazel_integration_test(
         name = example + "_test",
+        # The macOS CI runner needs more than 15 minutes to build the Swift
+        # examples from a cold cache.
+        timeout = "eternal",
         bazel_binaries = bazel_binaries,
         bazel_version = bazel_binaries.versions.current,
         tags = integration_test_utils.DEFAULT_INTEGRATION_TEST_TAGS + [

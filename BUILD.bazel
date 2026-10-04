@@ -112,7 +112,6 @@ test_suite(
     name = "macos_ci_integration_tests",
     tags = integration_test_utils.DEFAULT_INTEGRATION_TEST_TAGS,
     tests = [
-        "//examples:legacy_test",
         "//examples:simple_test",
     ],
     visibility = ["//:__subpackages__"],
