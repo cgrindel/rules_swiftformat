@@ -100,27 +100,19 @@ _swiftformat_toolchain_setup = repository_rule(
 
 def swiftformat_register_prebuilt_toolchains(
         name = "swift_tidy_prebuilt_toolchains",
-        swiftformat_assets = None,
-        register_toolchains = True):
-    """Register and configure the toolchains to download pre-built SwiftFormat \
-    binaries.
+        swiftformat_assets = None):
+    """Declare the repositories for the pre-built SwiftFormat toolchains.
+
+    The toolchains are registered by `register_toolchains` in `MODULE.bazel`.
 
     Args:
         name: Optional. The name for the toolchains repository as a `string`.
         swiftformat_assets: Optional. A `list` of tools to register. If not
             specified, it uses a recent version of SwiftFormat.
-        register_toolchains: Optional. A `bool` that determines whether this
-            function should call `register_toolchains()`.
     """
     if swiftformat_assets == None:
         swiftformat_assets = DEFAULT_SWIFTFORMAT_ASSETS
-    toolchain_labels = []
     for asset in swiftformat_assets:
-        toolchain_label = "@{repo}//:{name}".format(
-            repo = name,
-            name = asset.toolchain_name,
-        )
-        toolchain_labels.append(toolchain_label)
         http_archive(
             name = asset.repo,
             urls = asset.urls,
@@ -142,6 +134,3 @@ genrule(
         name = name,
         assets_json = json.encode(swiftformat_assets),
     )
-
-    if register_toolchains:
-        native.register_toolchains(*toolchain_labels)

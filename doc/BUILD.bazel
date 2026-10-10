@@ -23,7 +23,6 @@ _SWIFTTIDY_RULES_DOC_PROVIDER = doc_providers.create(
     symbols = [
         "swiftformat_format",
         "swiftformat_pkg",
-        "swiftformat_register_prebuilt_toolchains",
     ],
     deps = _SWIFTTIDY_DOC_DEPS,
 )

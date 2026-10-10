@@ -20,11 +20,7 @@ load(
     _src_utils = "src_utils",
     _swiftformat_format = "swiftformat_format",
     _swiftformat_pkg = "swiftformat_pkg",
-    _swiftformat_register_prebuilt_toolchains = "swiftformat_register_prebuilt_toolchains",
 )
-
-# Toolchain Registration
-swiftformat_register_prebuilt_toolchains = _swiftformat_register_prebuilt_toolchains
 
 # Macros
 swiftformat_pkg = _swiftformat_pkg

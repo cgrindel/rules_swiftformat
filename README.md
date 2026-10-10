@@ -116,8 +116,10 @@ $ bazel test //...
 By default, `rules_swift_tidy` will load a [recent release of
 SwiftFormat](https://github.com/nicklockwood/SwiftFormat/releases). This works well for most cases.
 However, if you would like to specify the SwiftFormat release, you can do so by declaring
-`swiftformat` tags on the `swift_tidy_tools` extension in your `MODULE.bazel`. Declare a tag for
-each of the three supported platforms: `macos`/`x86_64`, `macos`/`arm64`, and `linux`/`x86_64`.
+`swiftformat` tags on the `swift_tidy_tools` extension in your `MODULE.bazel`. You must declare a
+tag for each of the three supported platforms: `macos`/`x86_64`, `macos`/`arm64`, and
+`linux`/`x86_64`. Declaring any tag replaces all of the defaults, so if a platform is missing, Bazel
+fails with `does not generate repository "swiftformat_download_<os>_<cpu>"`.
 
 To make this easier, this repository includes a tool called `generate_assets_declaration`. Executing
 this tool will generate the appropriate declaration to download and configure the desired version of

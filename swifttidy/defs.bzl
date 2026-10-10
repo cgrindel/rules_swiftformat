@@ -12,13 +12,6 @@ load(
     "//swifttidy/internal:swiftformat_pkg.bzl",
     _swiftformat_pkg = "swiftformat_pkg",
 )
-load(
-    "//swifttidy/toolchains:toolchain.bzl",
-    _swiftformat_register_prebuilt_toolchains = "swiftformat_register_prebuilt_toolchains",
-)
-
-# Toolchain Registration
-swiftformat_register_prebuilt_toolchains = _swiftformat_register_prebuilt_toolchains
 
 # Macros
 swiftformat_pkg = _swiftformat_pkg

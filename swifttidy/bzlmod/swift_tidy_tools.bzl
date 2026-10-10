@@ -26,7 +26,6 @@ def _swift_tidy_tools_impl(module_ctx):
 
     swiftformat_register_prebuilt_toolchains(
         swiftformat_assets = assets_by_type.get("swiftformat"),
-        register_toolchains = False,
     )
 
 _swiftformat_tag = tag_class(
