@@ -100,7 +100,7 @@
   "moduleExtensions": {
     "//swifttidy:extensions.bzl%swift_tidy_tools": {
       "general": {
-        "bzlTransitiveDigest": "qh56X052Q+8N/DqjSQ1svbMcNBZAjFxcsxRBGUUWuv0=",
+        "bzlTransitiveDigest": "d42CxQUNpmK6sixa2PVmJwbSeUZ1Fy54Zks+Bpj1lPc=",
         "usagesDigest": "mxkGfQHmjJHyOy8YPOgL1CqQLreBH4E2wiXzuRY4fZ0=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},

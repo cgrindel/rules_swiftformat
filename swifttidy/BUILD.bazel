@@ -16,7 +16,6 @@ bzl_library(
         "//swifttidy/internal:src_utils",
         "//swifttidy/internal:swiftformat_format",
         "//swifttidy/internal:swiftformat_pkg",
-        "//swifttidy/toolchains:toolchain",
     ],
 )
 
@@ -34,15 +33,6 @@ filegroup(
 )
 
 toolchain_type(name = "toolchain")
-
-bzl_library(
-    name = "deps",
-    srcs = ["deps.bzl"],
-    deps = [
-        "@bazel_tools//tools/build_defs/repo:http.bzl",
-        "@bazel_tools//tools/build_defs/repo:utils.bzl",
-    ],
-)
 
 bzl_library(
     name = "extensions",
